@@ -1,0 +1,33 @@
+{
+  "name": "sih",
+  "version": "1.0.0",
+  "description": "SIH (Student Innovation Hub) is an integrated platform for collaboration between students from different universities for knowledge, project, and resource sharing.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeCrafters032/SIH.git#main"
+  },
+  "keywords": [
+    "SIH",
+    "node.js"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodeCrafters032/SIH/issues"
+  },
+  "homepage": "https://github.com/CodeCrafters032/SIH/tree/main#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.5.2",
+    "nodemon": "^3.0.1"
+  }
+}
