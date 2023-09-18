@@ -20,7 +20,7 @@ module.exports = {
       accent: {
         green: '#56ca00',
         red: '#ff3e1d',
-        wait: '#ffb400',
+        yellow: '#ffb400',
         cyan: '#16b1ff',
         gray: '#8a8d93',
       }
