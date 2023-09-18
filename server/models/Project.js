@@ -20,11 +20,28 @@ const projectSchema = mongoose.Schema({
         ref: "Student",
         required: true
     }],
-    collaborator: [{
+    collaborators: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Student",
         required: false
     }],
+    status: {
+        type: String,
+        enum: ['pending', 'verified', 'rejected'],
+        required: true,
+    },
+    verifiedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        refPath: 'verifiedByType', 
+        required: function () {
+            return this.status === 'verified'; 
+        },
+    },
+    verifiedByType: {
+        type: String,
+        enum: ['Spoc', 'UniversityAdmin'],
+        default: null, 
+    },
 }, { timestamps: true });
 
 const Project = mongoose.model("Project", projectSchema);

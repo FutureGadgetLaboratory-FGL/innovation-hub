@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const superAdminSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     name: { type: String, required: true },
     email: {
         type: String,
@@ -13,8 +13,9 @@ const superAdminSchema = mongoose.Schema({
     password: { type: String, required: true },
     gender: { type: String, enum: ["Male", "Female"], required: true },
     profilePhoto: { type: String, required: false },
+    role: { type: String, enum: ["Student", "Spoc", "UniversityAdmin", "SuperAdmin"], required: true },
 }, { timestamps: true });
 
-const SuperAdmin = mongoose.model("SuperAdmin", superAdminSchema);
+const User = mongoose.model("User", userSchema);
 
-export default SuperAdmin;
+export default User;
