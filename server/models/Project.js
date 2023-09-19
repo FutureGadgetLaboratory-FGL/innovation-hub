@@ -1,5 +1,40 @@
 import mongoose from "mongoose";
 
+const likeSchema = mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User", 
+        required: true,
+    },
+});
+
+const reviewSchema = mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User", 
+        required: true,
+    },
+    text: { type: String, required: true },
+    rating: { type: Number, required: true },
+});
+
+const commentSchema = mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User", 
+        required: true,
+    },
+    text: { type: String, required: true },
+});
+
+const shareSchema = mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User", 
+        required: true,
+    },
+});
+
 const projectSchema = mongoose.Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
@@ -8,41 +43,50 @@ const projectSchema = mongoose.Schema({
     report: {
         data: Buffer,
         contentType: String,
-        filename: String
+        filename: String,
     },
-    files: [{
-        data: Buffer,
-        contentType: String,
-        filename: String
-    }],
-    owner: [{
+    files: [
+        {
+            data: Buffer,
+            contentType: String,
+            filename: String,
+        },
+    ],
+    owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Student",
-        required: true
-    }],
-    collaborators: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Student",
-        required: false
-    }],
+        required: true,
+    },
+    collaborators: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Student",
+            required: false,
+        },
+    ],
     status: {
         type: String,
-        enum: ['pending', 'verified', 'rejected'],
+        enum: ["pending", "verified", "rejected"],
         required: true,
     },
     verifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
-        refPath: 'verifiedByType', 
+        refPath: "verifiedByType",
         required: function () {
-            return this.status === 'verified'; 
+            return this.status === "verified";
         },
     },
     verifiedByType: {
         type: String,
-        enum: ['Spoc', 'UniversityAdmin'],
-        default: null, 
+        enum: ["Spoc", "UniversityAdmin"],
+        default: null,
     },
-}, { timestamps: true });
+    likes: [likeSchema], 
+    reviews: [reviewSchema], 
+    comments: [commentSchema], 
+    shares: [shareSchema], 
+},
+    { timestamps: true });
 
 const Project = mongoose.model("Project", projectSchema);
 

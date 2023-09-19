@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-import userSchema from "./User";
+import userSchema from "./User.js";
 
 const studentSchema = mongoose.Schema({
     university: { type: mongoose.Schema.Types.ObjectId, ref: "University", required: true },
-    branch: { type: String, enum: ["Computer Science", "Electrical Engineering", "Mechanical Engineering", "Other"], required: true },
+    course: { type: String, enum: ["Computer Science", "Electrical Engineering", "Mechanical Engineering", "Other"], required: true },
     workEmail: {
         type: String,
         required: false,
@@ -50,6 +50,7 @@ const spocSchema = mongoose.Schema({
         type: String,
         enum: ['pending', 'verified', 'rejected'],
         required: true,
+        default: "pending"
     },
     verifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
@@ -94,10 +95,8 @@ const recruiterSchema = mongoose.Schema({
     
 })
 
-const SuperAdmin = userSchema.discriminator('SuperAdmin', superAdminSchema);
-const Spoc = userSchema.discriminator('Spoc', spocSchema);
-const UniversityAdmin = userSchema.discriminator('UniversityAdmin', universityAdminSchema);
-const Student = userSchema.discriminator('Student', studentSchema);
-const Recruiter = userSchema.discriminator('Recruiter', recruiterSchema);
-
-export default { SuperAdmin, Spoc, UniversityAdmin, Student, Recruiter };
+export const SuperAdmin = userSchema.discriminator('SuperAdmin', superAdminSchema);
+export const Spoc = userSchema.discriminator('Spoc', spocSchema);
+export const UniversityAdmin = userSchema.discriminator('UniversityAdmin', universityAdminSchema);
+export const Student = userSchema.discriminator('Student', studentSchema);
+export const Recruiter = userSchema.discriminator('Recruiter', recruiterSchema);
