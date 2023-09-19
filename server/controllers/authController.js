@@ -95,17 +95,50 @@ export const signup = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         switch (role) {
             case "Student":
-                user = await Student.create({ ...rest, password: hashedPassword });
+                try {
+                    user = await Student.create({ ...rest, password: hashedPassword, sihGems: 0, popularity: 0, status: "pending", verifiedBy: null });
+                } catch (err) {
+                    return res.status(400).json({
+                        success: false,
+                        message: "Bad Request. Required fields to create a Student record not found or are not in correct format."
+                    })
+                }
                 break;
             case "UniversityAdmin":
-                user = await UniversityAdmin.create({ ...rest, password: hashedPassword });
+                try {
+                    user = await UniversityAdmin.create({ ...rest, password: hashedPassword, status: "pending", verifiedBy: null });
+                } catch (err) {
+                    return res.status(400).json({
+                        success: false,
+                        message: `Bad Request. Required fields to create a ${role} record not found or are not in correct format.`
+                    })
+                }
                 break;
             case "Spoc":
-                user = await Spoc.create({ ...rest, password: hashedPassword });
+                try {
+                    user = await Spoc.create({ ...rest, password: hashedPassword, status: "pending", verifiedBy: null });
+                } catch (err) {
+                    return res.status(400).json({
+                        success: false,
+                        message: `Bad Request. Required fields to create a ${role} record not found or are not in correct format.`
+                    })
+                }
                 break;
             case "Recruiter":
-                user = await Recruiter.create({ ...rest, password: hashedPassword });
+                try {
+                    user = await Recruiter.create({ ...rest, password: hashedPassword });
+                } catch (err) {
+                    return res.status(400).json({
+                        success: false,
+                        message: `Bad Request. Required fields to create a ${role} record not found or are not in correct format.`
+                    })
+                }
                 break;
+            default: 
+                return res.status(400).json({
+                    success: false,
+                    message: "No such role exists"
+                })
         }
 
         const token = jwt.sign({ id: _id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1000h' });

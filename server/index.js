@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import dbConnect from './config/database.js';
+import authRouter from './routes/authRouter.js';
 
 const app = express();
 dotenv.config();
