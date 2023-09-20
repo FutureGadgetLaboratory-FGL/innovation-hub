@@ -1,11 +1,17 @@
-import React from 'react';
+import {React,useState }from 'react';
 import { Link,useNavigate } from 'react-router-dom';
+import SignupStu from '../components/SignupStu'
+import SignupSPOC from '../components/SignupSPOC';
 
 const Signup = () => {
   let navigate=useNavigate();
+  const [selectedRole, setSelectedRole] = useState("1");
+  const handleRoleChange = (e) => {
+    setSelectedRole(e.target.value);
+  };
   return (
     <>
-      <div className='flex items-center justify-center bg-background '>
+      <div className='flex items-center justify-center bg-background'>    
         <div className='block w-full md:w-1/2 lg:w-1/3 p-11 border-1 border-dark bg-background-light'>
         <div className='flex justify-start'> 
           <img className='w-16 h-16 hover:cursor-pointer' style={{marginTop:"-9px"}} src='../images/965230-200.png' onClick={()=>navigate("/")} alt=""/>
@@ -31,12 +37,12 @@ const Signup = () => {
             </div>
              <div className='my-1 flex border-2 border-accent-dark justify-between rounded-md h-12 p-2 w-full lg:w-80'>
             <label className='text-accent-gray'>Role</label>
-            <select className='h-6 w-24 outline-none bg-accent-dark text-background-light rounded-md'>
-              <option>
+            <select className='h-6 w-24 outline-none bg-accent-dark text-background-light rounded-md'  value={selectedRole} onChange={handleRoleChange}>
+              <option value="1">
                 Student
               </option>
-              <option>SPOC</option>
-              <option>University Admin</option> <option>Super Admin</option> <option>Recruiter</option>
+              <option value="2">SPOC</option>
+              <option value="3">University Admin</option> <option value="4">Super Admin</option> <option value="5">Recruiter</option>
              
               
             </select>
@@ -71,7 +77,20 @@ const Signup = () => {
           </div>
 
         </div>
+        {selectedRole === "1" && (
+        <div className='block float-right mb-3 ml-10 bg-white p-3 rounded-lg border-1 border-black'>
+          <SignupStu />
+        </div>
+      )}
+
+      {(selectedRole ==="2" || selectedRole ==="3" )&& (
+        <div className='block float-right mb-3 ml-10 bg-white p-3 rounded-lg border-1 border-black'>
+          <SignupSPOC />
+        </div>
+      )}
+    
       </div>  
+      
     </>
   )
 }
