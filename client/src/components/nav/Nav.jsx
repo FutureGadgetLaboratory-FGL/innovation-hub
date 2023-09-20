@@ -1,4 +1,3 @@
-
 const Nav = ()=>{
     return (
 			<nav className="w-[83%] h-[70px] bg-background flex justify-between pl-20 pr-20  items-center">
