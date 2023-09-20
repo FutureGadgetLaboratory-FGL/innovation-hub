@@ -17,7 +17,7 @@ const Login = () => {
           <p className='mt-2 text-start text-accent-gray'>Please sign-in to your account and start the adventure</p>
           
           <div className='mt-6'>
-            <input className='my-3 border-2 border-accent-dark rounded-md h-12 p-4 w-full lg:w-80' placeholder='Username or E-mail' type='email'/>
+            <input className='my-3 border-2 border-accent-dark rounded-md h-12 p-4 w-full lg:w-80' placeholder='E-mail' type='email'/>
             <input className='my-3 border-2 border-accent-dark rounded-md h-12 p-4 w-full lg:w-80' placeholder='Password'type='password'/>
           </div>  
           
