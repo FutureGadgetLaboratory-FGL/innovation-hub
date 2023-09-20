@@ -29,8 +29,8 @@ function PopularityStats() {
                 totalPopularity / universityData.length;
     return(
           
-                <div className="app p-4 w-full h-fit outline outline-1 rounded-md m-2">
-                    <h1 className="text-2xl font-semibold mb-4">University Popularity Statistics</h1>
+                <div className="app p-4 w-1/2 h-fit m-1 outline outline-1 rounded-md">
+                    <h1 className="text-2xl font-semibold m-2">University Popularity Statistics</h1>
 
                      {/* use inside the open popularity button*/}
                     {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -42,7 +42,7 @@ function PopularityStats() {
                             />
                         ))}
                     </div> */}
-                    <div className="mt-4">
+                    <div className="mt-4 p-2">
                         <p className="text-lg font-semibold">Average Popularity:</p>
                         <p>{averagePopularity.toFixed(2)}%</p>
                        
@@ -53,7 +53,7 @@ function PopularityStats() {
                         </div>
                     </div>
                     <Link to="/university_popularity">
-                    <button className="float-right active:scale-95 w-fit mt-2 px-4 py-2 font-semibold text-sm bg-primary hover:bg-primary-light text-white rounded-md shadow-sm">View Details</button>
+                    <button className="float-right border border-black active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-primary hover:bg-primary-light text-white rounded-md shadow-sm">View Details</button>
                     </Link>
                 </div>
           

@@ -56,8 +56,8 @@ function StudentActivity()  {
     students.sort((a, b) => b.popularity - a.popularity);
 
     return(
-        <div className="drop-shadow-md hover:drop-shadow-xl flex flex-col items-center justify-center container rounded-md w-1/3 outline-1 outline px-1 m-1 ">
-            <h3 className="mx-auto w-fit font-semibold mt-2">Student Leaderboards</h3>
+        <div className="drop-shadow-md hover:drop-shadow-xl flex flex-col items-center justify-center rounded-md w-1/2 outline-1 outline p-2 m-1 ">
+            <h1 className="mx-auto w-fit font-semibold text-2xl">Student Leaderboards</h1>
                     <ul className="w-full mx-1 mt-3 bg-transparent h-fit font-semibold text-sm">
                     {students.map((item, index) => (
                         <li className="flex p-2 w-full items-center gap-2 rounded bg-white bg-opacity-20" key={index}>
@@ -78,7 +78,7 @@ function StudentActivity()  {
             </div> */}
 
             <Link className='w-full' to="/student_leaderboards">
-            <button className="active:scale-95 w-full mb-1 px-4 py-2 font-semibold text-sm bg-primary hover:bg-primary-light text-white rounded-md shadow-sm">Open Leaderboards</button>
+            <button className="active:scale-95 border border-black w-full px-4 py-2 font-semibold text-sm bg-primary hover:bg-primary-light text-white rounded-md shadow-sm">Open Leaderboards</button>
             </Link>
         </div>
     );

@@ -2,12 +2,12 @@ function ProjectFeed() {
   const projectFeed = [
     {
       owner: {
-        profilePhoto: "https://example.com/owner1.jpg",
+        profilePhoto: "https://picsum.photos/80",
         name: "Alice Smith",
         branch: "Electrical Engineering",
         university: "Harvard University",
       },
-      coverPhoto: "https://example.com/cover1.jpg",
+      coverPhoto: "https://picsum.photos/1080/300",
       title: "Electricity Generation Project",
       description:
         "This project explores innovative methods for generating clean and sustainable electricity. It involves the design and testing of solar panels and wind turbines.",
@@ -22,12 +22,12 @@ function ProjectFeed() {
     },
     {
       owner: {
-        profilePhoto: "https://example.com/owner2.jpg",
+        profilePhoto: "https://picsum.photos/80",
         name: "Bob Johnson",
         branch: "Mechanical Engineering",
         university: "MIT",
       },
-      coverPhoto: "https://example.com/cover2.jpg",
+      coverPhoto: "https://picsum.photos/1080/300",
       title: "Mechanical Design Challenge",
       description:
         "In this project, we tackle complex mechanical design challenges, such as creating efficient gears and mechanisms for industrial applications.",
@@ -42,12 +42,12 @@ function ProjectFeed() {
     },
     {
       owner: {
-        profilePhoto: "https://example.com/owner3.jpg",
+        profilePhoto: "https://picsum.photos/80",
         name: "Eva Brown",
         branch: "Computer Science",
         university: "Stanford University",
       },
-      coverPhoto: "https://example.com/cover3.jpg",
+      coverPhoto: "https://picsum.photos/1080/300",
       title: "AI Chatbot Development",
       description:
         "Our team is working on creating an advanced AI chatbot using natural language processing and machine learning techniques. Stay tuned for updates!",
@@ -70,7 +70,7 @@ function ProjectFeed() {
             className="rounded-md w-full m-2 p-2 shadow-md"
           >
             <div className="h-fit w-full flex p-1 justify-start cursor-pointer">
-              <img src={item.owner.profilePhoto} alt="pfp not available!" />
+              <img className="rounded-full border border-black" src={item.owner.profilePhoto} alt="pfp not available!" />
               <div className="ml-5 p-1">
                 <h2 className="font-semibold text-lg">{item.owner.name}</h2>
                 <p className="text-sm opacity-75">{item.owner.branch}</p>

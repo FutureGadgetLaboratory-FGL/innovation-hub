@@ -16,6 +16,8 @@ module.exports = {
           light: "#79767e",
         },
         accent: {
+          lpurple: 'rgba(195, 163, 254, 1)',
+          dpurple: 'rgba(146, 86, 253, 1)',
           green: "#56ca00",
           red: "#ff3e1d",
           yellow: "#ffb400",
