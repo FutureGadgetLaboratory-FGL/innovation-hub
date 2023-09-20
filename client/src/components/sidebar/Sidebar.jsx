@@ -1,4 +1,5 @@
-
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Sidebar = () => {
 	return (
@@ -25,12 +26,14 @@ const Sidebar = () => {
 					<a href="/">Profile</a>
 				</li>
 				<li className="text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
+					<i className="bi bi-gear-fill"></i>
 					<a href="/">Settings</a>
 				</li>
 				<li className="text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
 					<a href="/">Contact Us</a>
 				</li>
 				<li className="text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
+					<FontAwesomeIcon icon="sign-out-alt" />
 					<a href="/">Log Out</a>
 				</li>
 			</ul>
