@@ -435,6 +435,7 @@ export const createProject = async (req, res) => {
             message: "Bad Request. Required fields not found."
         });
 
+
         const project = new Project({
             title,
             description,

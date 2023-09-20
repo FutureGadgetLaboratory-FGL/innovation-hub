@@ -25,7 +25,7 @@ const commentSchema = mongoose.Schema({
         required: true,
     },
     text: { type: String, required: true },
-});
+}, { timestamps: true });
 
 const shareSchema = mongoose.Schema({
     userId: {
@@ -86,7 +86,6 @@ const projectSchema = mongoose.Schema({
     verifiedByType: {
         type: String,
         enum: ["Spoc", "UniversityAdmin"],
-        default: null,
     },
     likes: [likeSchema], 
     reviews: [reviewSchema], 

@@ -9,6 +9,7 @@ import spocRouter from './routes/spocRouter.js';
 import universityRouter from './routes/universityRouter.js';
 import universityAdminRouter from './routes/universityAdminRouter.js';
 import studentRouter from './routes/studentRouter.js';
+import projectRouter from './routes/projectRouter.js';
 
 const app = express();
 dotenv.config();
@@ -25,6 +26,7 @@ app.use('/spoc', spocRouter);
 app.use('/university', universityRouter);
 app.use('/universityAdmin', universityAdminRouter);
 app.use('/student', studentRouter);
+app.use('/project', projectRouter);
 
 dbConnect();
 
