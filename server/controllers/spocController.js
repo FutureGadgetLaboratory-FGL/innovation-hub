@@ -1,7 +1,25 @@
 import { Spoc } from "../models/Roles.js";
 import User from "../models/User.js";
 
-export const getUniversitySpoc = async (req, res) => {
+export const getAllSpocs = async (req, res) => {
+    try {
+        const spocs = await Spoc.find();
+        return res.status(200).json({
+            success: true,
+            data: spocs,
+            message: "Spocs' details fetched successfully."
+        })
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong while fetching spoc details. Check err for more details.",
+            err
+        })
+    }
+}
+
+export const getSpocByUniversityId = async (req, res) => {
     try {
         const university = req.params.id;
         if (!university) return res.status(400).json({
@@ -61,7 +79,13 @@ export const getSpocById = async (req, res) => {
 
 export const updateSpoc = async (req, res) => {
     try {
-        const { id, status, verifiedBy, ...rest } = req.body;
+        const id = req.params.id;
+        if (!id) return res.status(400).json({
+            success: false,
+            message: "Id not recived from client side."
+        });
+
+        const { status, verifiedBy, ...rest } = req.body;
         if (!id) return res.status(400).json({
             success: false,
             message: "Id not recived from client side."
@@ -103,7 +127,7 @@ export const updateSpoc = async (req, res) => {
     }
 }
 
-export const updateStatus = async (req, res) => {
+export const updateSpocStatus = async (req, res) => {
     try {
         const id = req.params.id;
         if (!id) return res.status(400).json({
@@ -117,7 +141,7 @@ export const updateStatus = async (req, res) => {
             message: "Bad Request. Required fields not found."
         });
 
-        const spoc = await Spoc.findByIdAndUpdate(id, { status, verifiedBy });
+        const spoc = await Spoc.findByIdAndUpdate(id, { status, verifiedBy }, { new: true });
         if (!spoc) return res.status(404).json({
             success: false,
             message: "No spoc found with that id."
@@ -153,9 +177,10 @@ export const deleteSpoc = async (req, res) => {
         });
 
         await Spoc.findByIdAndDelete(id);
-
+        
         return res.status(200).json({
             success: true, 
+            data: spoc,
             message: "Deleted spoc record successfully."
         })
     } catch (err) {

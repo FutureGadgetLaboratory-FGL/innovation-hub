@@ -14,9 +14,9 @@ const reviewSchema = mongoose.Schema({
         ref: "User", 
         required: true,
     },
-    text: { type: String, required: true },
-    rating: { type: Number, required: true },
-});
+    text: { type: String, required: false },
+    rating: { type: Number, enum: [1, 2, 3, 4, 5], required: true },
+}, { timestamps: true });
 
 const commentSchema = mongoose.Schema({
     userId: {
@@ -45,6 +45,7 @@ const projectSchema = mongoose.Schema({
         contentType: String,
         filename: String,
     },
+    coverPhoto: { type: String, required: false },
     files: [
         {
             data: Buffer,
@@ -52,6 +53,11 @@ const projectSchema = mongoose.Schema({
             filename: String,
         },
     ],
+    university: {
+        type: mongoose.Schema.Types.ObjectId,   
+        ref: "University",
+        required: true,
+    },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Student",
@@ -68,6 +74,7 @@ const projectSchema = mongoose.Schema({
         type: String,
         enum: ["pending", "verified", "rejected"],
         required: true,
+        default: "pending",
     },
     verifiedBy: {
         type: mongoose.Schema.Types.ObjectId,

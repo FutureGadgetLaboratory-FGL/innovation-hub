@@ -4,8 +4,8 @@ import { getAllUniversityAdmin, getUniversityAdmin, getUniversityAdminById, upda
 const router = express.Router();
 
 router.get('/', getAllUniversityAdmin);
-router.get('/university/:id', getUniversityAdmin);
 router.get('/get/:id', getUniversityAdminById);
+router.get('/university/:id', getUniversityAdmin);
 router.put('/update/:id', updateUniversityAdmin);
 router.put('/update/status/:id', updateStatus);
 router.delete('/delete/:id', deleteUniversityAdmin);

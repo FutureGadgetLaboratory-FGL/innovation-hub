@@ -1,4 +1,5 @@
 import { Student } from "../models/Roles.js";
+import User from "../models/User.js";
 
 export const getAllStudents = async (req, res) => {
     try {
@@ -58,7 +59,7 @@ export const updateStudent = async (req, res) => {
         const { role, sihGems, popularity, status, verifiedBy, email, ...rest } = req.body;
         if (email) {
             const user = await User.findOne({ email });
-            if (!user) return res.status(404).json({
+            if (!user) return rhes.status(404).json({
                 success: false,
                 message: "No user found with that email."
             });
@@ -150,7 +151,7 @@ export const deleteStudent = async (req, res) => {
 
 export const getStudentsByUniversityId = async (req, res) => {
     try {
-        const universityId = req.params.universityId;
+        const universityId = req.params.id;
         if (!universityId) return res.status(400).json({
             success: false,
             message: "University Id not recived from client side."
