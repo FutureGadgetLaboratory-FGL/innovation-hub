@@ -4,8 +4,8 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}","./public/index.html",
   ],
   theme: {
-    extend: {},
-    colors: {
+    extend: {
+     colors: {
       background: {
         DEFAULT: '#f4f5fa',
         dark:'#000000',
@@ -31,7 +31,8 @@ module.exports = {
         indigo:'#9155fd',
         indigo1:'#8b4bfd'
       }
-    }
+    }},
+   
   },
   plugins: [],
 }
