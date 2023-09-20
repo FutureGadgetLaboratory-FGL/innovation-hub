@@ -1,9 +1,13 @@
+
+import Sidebar from './components/sidebar/Sidebar';
+import Nav from './components/nav/Nav';
 function App() {
   return (
-    <div className="">
-      SIH
-    </div>
-  );
+		<div className="flex ">
+			<Sidebar />
+			<Nav />
+		</div>
+	);
 }
 
 export default App;
