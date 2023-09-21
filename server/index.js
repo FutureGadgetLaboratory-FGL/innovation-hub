@@ -5,6 +5,13 @@ import dotenv from 'dotenv';
 import dbConnect from './config/database.js';
 import fileUpload from 'express-fileupload';
 import { v2 as cloudinary } from 'cloudinary';
+import authRouter from './routes/authRouter.js';
+import superAdminRouter from './routes/superAdminRouter.js';
+import spocRouter from './routes/spocRouter.js';
+import universityRouter from './routes/universityRouter.js';
+import universityAdminRouter from './routes/universityAdminRouter.js';
+import studentRouter from './routes/studentRouter.js';
+import projectRouter from './routes/projectRouter.js';
 
 dotenv.config();
 
@@ -35,6 +42,13 @@ app.post("/upload/cloud", async (req, res) => {
     });
     res.json(result.url);
 });
+app.use('/auth', authRouter);
+app.use('/superAdmin', superAdminRouter);
+app.use('/spoc', spocRouter);
+app.use('/university', universityRouter);
+app.use('/universityAdmin', universityAdminRouter);
+app.use('/student', studentRouter);
+app.use('/project', projectRouter);
 
 dbConnect();
 
