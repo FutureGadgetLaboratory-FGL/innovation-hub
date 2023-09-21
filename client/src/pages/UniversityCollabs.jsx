@@ -1,3 +1,6 @@
+import Nav from "../components/nav/Nav";
+import Sidebar from "../components/sidebar/Sidebar";
+
 function UniversityCollabs() {
 
     const projectFeed = [
@@ -74,8 +77,12 @@ function UniversityCollabs() {
     
     
     return(
-  
-    <div className="w-full h-full overflow-y-auto">
+
+      <div className="flex ">
+			<Sidebar />
+			<div className="w-[83%]">
+				<Nav />
+        <div className="w-full h-full overflow-y-auto">
         <h1 className="font-semibold text-3xl w-full text-center m-2">My Collabs</h1>
     <div className="flex flex-wrap">
       {projectFeed.map((item, index) => {
@@ -95,6 +102,8 @@ function UniversityCollabs() {
       })}
     </div>
   </div>
+      </div>
+      </div>  
     )
 }
 

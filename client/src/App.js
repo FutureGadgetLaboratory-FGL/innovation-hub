@@ -10,6 +10,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter, faFontAwesome } from "@fortawesome/free-brands-svg-icons";
+import SpocCollabRequests from "./pages/SpocCollabRequest";
+import VerifyStudent from "./pages/VerifyStudent";
+import CompetitionsHome from "./pages/CompetitionsHome";
 import UploadProjectPage from "./pages/UploadProjectPage";
 library.add(fas, faTwitter, faFontAwesome);
 function App() {
@@ -27,8 +30,13 @@ function App() {
         <Route path="/university_popularity" element={<UniversityPopularity />} />
         <Route path="/university_uploads" element={<Uploads/>} />
         <Route path="/university_collabs" element={<UniversityCollabs />} />
+        <Route path="/spoc_collab_requests" element={<SpocCollabRequests/>}/>
+        <Route path="/verify_student" element={<VerifyStudent/>}/>
+        <Route path="/compete" element={<CompetitionsHome/>}/>
       </Routes>
     </Router>
+    // <SpocCollabRequests/>
+
   );
 }
 
