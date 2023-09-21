@@ -1,4 +1,5 @@
 import CollaboratedProjects from "../components/CollaboratedProjects";
+import Competitions from "../components/Competitions";
 import PopularityStats from "../components/PopularityStats";
 import ProjectFeed from "../components/ProjectFeed";
 import StudentActivity from "../components/StudentActivity";
