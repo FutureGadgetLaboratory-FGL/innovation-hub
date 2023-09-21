@@ -13,7 +13,7 @@ const userSchema = mongoose.Schema({
     password: { type: String, required: true },
     gender: { type: String, enum: ["Male", "Female"], required: true },
     profilePhoto: { type: String, required: false },
-    role: { type: String, enum: ["Student", "Spoc", "UniversityAdmin", "SuperAdmin"], required: true },
+    role: { type: String, enum: ["Student", "Spoc", "UniversityAdmin", "SuperAdmin", "Recruiter"], required: true },
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);
