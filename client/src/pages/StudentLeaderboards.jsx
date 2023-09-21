@@ -1,5 +1,6 @@
-import Nav from "../components/nav/Nav";
+import Leaderboard from "../components/leaderboard/Leaderboard";
 import Sidebar from "../components/sidebar/Sidebar";
+import Nav from "../components/nav/Nav";
 
 function StudentLeaderboard() {
   const students = [

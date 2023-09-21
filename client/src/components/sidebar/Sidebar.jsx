@@ -1,5 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { NavLink } from "react-router-dom";
+import Nav from "../nav/Nav";
 
 const Sidebar = () => {
 	const user={
@@ -9,8 +11,8 @@ const Sidebar = () => {
 		}
 	}
 	return (
-		<aside className="w-[17%] h-screen bg-[#f4f5fa] sticky top-0">
-			<div className="text-[#7445cb] text-[1.4rem] h-[70px] font-bold  flex justify-center items-center border-b ">
+		<aside className="w-[17%] h-screen bg-[#f4f5fa] border-r pr-1 sticky top-0">
+			<div className="text-[#7445cb] text-[1.2rem] h-[60px] font-bold  flex justify-center items-center border-b mb-3 ">
 				<h2>INNOVATION HUB</h2>
 			</div>
 			{ user.user.role==="SPOC"?
