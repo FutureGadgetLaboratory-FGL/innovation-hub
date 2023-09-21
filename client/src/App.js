@@ -1,6 +1,3 @@
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { faTwitter, faFontAwesome } from "@fortawesome/free-brands-svg-icons";
 import Dashboard from "./pages/Dashboard";
 import StudentLeaderboard from "./pages/StudentLeaderboards";
 import UniversityCollabs from "./pages/UniversityCollabs";
@@ -8,6 +5,9 @@ import UniversityPopularity from "./pages/UniversityPopularity";
 import UniversityUploads from "./pages/UniversityUploads";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { faTwitter, faFontAwesome } from "@fortawesome/free-brands-svg-icons";
 library.add(fas, faTwitter, faFontAwesome);
 function App() {
 	return (
