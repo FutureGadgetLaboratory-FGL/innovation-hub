@@ -27,7 +27,7 @@ function UniversityPopularity() {
     universityData.sort((a, b) => b.popularity - a.popularity);
   }
   return (
-    <div className="p-4 w-100 min-h-screen rounded-md flex flex-wrap ">
+    <div className="p-4 w-[100%] min-h-screen rounded-md flex flex-wrap ">
       <h1 className="text-2xl font-semibold mb-4 w-full h-fit text-center">
         University Popularity Statistics
       </h1>
