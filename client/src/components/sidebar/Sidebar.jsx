@@ -66,7 +66,7 @@ const Sidebar = () => {
 					<a href="/">Collaboration</a>
 				</li>
 				<li className="ease-in duration-150 text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
-					<a href="/">Upload Project</a>
+					<a href="/student/upload-project">Upload Project</a>
 				</li>
 				<hr className="w-[100%] mt-5 mb-3"></hr>
 				<li className="ease-in duration-150 text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
