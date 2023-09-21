@@ -90,18 +90,16 @@ const Signup = () => {
         )}
 
       </div>
-      {selectedRole ==="2" && (
+      {selectedRole === "2" && (
         <div className='block float-right mb-3 ml-10 bg-white p-3 rounded-lg border-1 border-black'>
           <SignupSPOC />
         </div>
       )}
-       {selectedRole ==="3" && (
+      {selectedRole === "3" && (
         <div className='block float-right mb-3 ml-10 bg-white p-3 rounded-lg border-1 border-black'>
           <SignupUAdmin />
         </div>
       )}
-    
-      </div>  
     </>
   )
 }

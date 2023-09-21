@@ -12,8 +12,10 @@ export const userSlice = createSlice({
     },
     reducers: {
         logout: (state) => {
-            localStorage.clear();
-            state = initialState;
+            localStorage.removeItem('user');
+            state.user = null;
+            state.loading = false;
+            state.err = null;
             window.location.reload();
         }
     },
