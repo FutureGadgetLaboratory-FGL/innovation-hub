@@ -42,8 +42,8 @@ function PopularityStats() {
                         ))}
                     </div> */}
 				<div className="mt-4">
-					<p className="text-lg font-medium">Average Popularity:</p>
-					<p className='mb-2'>{averagePopularity.toFixed(2)}%</p>
+					<p className="text-[14px] font-normal">Average Popularity:</p>
+					<p className='mb-1 mt-2 font-semibold text-[12px]'>{averagePopularity.toFixed(2)}%</p>
 
 					<div className="w-full h-fit bg-slate-300 rounded ">
 						<div className=" h-5 bg-primary-light rounded" style={{ width: `${averagePopularity}%` }}></div>

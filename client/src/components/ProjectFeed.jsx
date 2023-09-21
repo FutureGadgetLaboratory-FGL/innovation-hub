@@ -62,45 +62,43 @@ function ProjectFeed() {
 
 	return (
 		<div className=" w-full h-full mt-5">
-			<h1 className="ml-4 mb-4  text-[25px] font-bold">Projects Feed</h1>
-			<hr className="w-1/3 ml-4 mb-5" />
-			<div className="flex flex-col gap-5 justify-center items-start">
+			<h1 className="ml-5 mb-4  text-[20px] font-bold">Projects Feed</h1>
+			<hr className="w-1/3 ml-5 mb-3" />
+			<div className="flex flex-col gap-3 justify-center items-start">
 				{projectFeed.map((item, index) => {
 					return (
 						<div
 							key={index}
-							className="bg-white m-3 rounded-xl shadow-[rgba(0,0,0,0.1)_0px_15px_20px_0px,rgba(0,0,0,0.04)_0px_10px_10px_-5px] ml-3 p-4 flex gap-5 "
+							className="bg-white mr-4 mb-2 rounded-xl shadow-[rgba(0,0,0,0.1)_0px_15px_20px_0px,rgba(0,0,0,0.04)_0px_10px_10px_-5px] ml-4 p-3 flex gap-5 "
 						>
 							<div className="left w-1/2">
 								<img className="h-full" src={item.coverPhoto} alt="img" />
 							</div>
 							<div className="right flex flex-col gap-3 w-1/2">
 								<div className="profile">
-									<div className="flex justify-start items-center gap-4">
+									<div className="flex justify-start items-center gap-3">
 										<img className="rounded-full" src={item.owner.profilePhoto} alt="pfp not available!" />
 										<div className="flex flex-col gap-0">
-											<h2 className="text-[14px] font-normal">{item.owner.name}</h2>
-											<p className="text-[14px] font-normal">{item.owner.branch}</p>
-											<h3 className="text-[14px] font-normal">{item.owner.university}</h3>
+											<h2 className="text-[12px] font-normal">{item.owner.name}</h2>
+											<p className="text-[12px] font-normal">{item.owner.branch}</p>
+											<h3 className="text-[12px] font-normal">{item.owner.university}</h3>
 										</div>
 									</div>
 								</div>
 								<div className="flex flex-col gap-2">
-									<h1 className="text-[18px] font-semibold">{item.title}</h1>
-									<p className="text-[14px] break-words">{item.description}</p>
-									<p className="text-[12px] font-medium mt-2">
-										<FontAwesomeIcon icon="fa-solid fa-heart" className="mr-3" />
-										{item.likes.length}
-									</p>
+									<h1 className="text-lg font-semibold">{item.title}</h1>
+									<p className="text-sm break-words">{item.description}</p>
+								
 								</div>
 								<div className="flex justify-start gap-4 mt-8 ">
-									<button className="bg-transparent text-[20px] text-accent-red">
-										<FontAwesomeIcon icon=" fa-heart" />
+									<button className="bg-transparent text-lg text-accent-red">
+										<FontAwesomeIcon icon=" fa-heart" className="mr-2"/>
+										{item.likes.length}
 									</button>
-									<button className="bg-transparent text-[20px] text-accent-gray">
+									<button className="bg-transparent text-lg text-accent-gray">
 										<FontAwesomeIcon icon=" fa-comment" />
 									</button>
-									<button className="bg-transparent text-[20px] text-sky-700">
+									<button className="bg-transparent text-lg text-sky-700">
 										<FontAwesomeIcon icon=" fa-share" />
 									</button>
 								</div>

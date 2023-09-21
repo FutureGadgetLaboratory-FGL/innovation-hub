@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-function UploadedProjects() {
+function UploadedProjectsCard() {
     return (
 			<div className="bg-white flex justify-between flex-col m-3 p-3 w-1/3 rounded-xl shadow-[rgba(0,0,0,0.1)_0px_15px_20px_0px,rgba(0,0,0,0.04)_0px_10px_10px_-5px]">
 				<h2 className="text-[16px] font-semibold">Uploaded Projects</h2>
@@ -18,4 +18,4 @@ function UploadedProjects() {
 		);
 }
 
-export default UploadedProjects;
+export default UploadedProjectsCard;

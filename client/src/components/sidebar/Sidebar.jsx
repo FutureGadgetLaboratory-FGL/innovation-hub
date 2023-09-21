@@ -1,43 +1,84 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { NavLink } from "react-router-dom";
+import Nav from "../nav/Nav";
 
 const Sidebar = () => {
 	return (
-		<aside className="w-[17%] h-screen bg-[#f4f5fa] sticky top-0">
-			<div className="text-[#7445cb] text-[1.4rem] h-[70px] font-bold  flex justify-center items-center border-b ">
+		<aside className="w-[17%] h-screen bg-[#f4f5fa] border-r pr-1 sticky top-0">
+			<div className="text-[#7445cb] text-[1.2rem] h-[60px] font-bold  flex justify-center items-center border-b mb-3 ">
 				<h2>INNOVATION HUB</h2>
 			</div>
 			<ul className="flex flex-col items-start">
-				<li className="ease-in duration-150 text-[#534f5a] text-[1.2rem] font-normal mt-2 w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] text-[white] bg-gradient-to-r  from-accent-lpurple to-accent-dpurple">
-					<i className="fa-solid fa-house"></i>
-					<a href="/">Dashboard</a>
-				</li>
-				<li className="ease-in duration-150 text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
-					<a href="/">Upload Projects</a>
-				</li>
-				<li className="ease-in duration-150 text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
-					<a href="/">Verify Students</a>
-				</li>
-				<li className="ease-in duration-150 text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
-					<a href="/">Assign Admin</a>
-				</li>
-				<hr className="w-[100%] mt-5 mb-3"></hr>
-				<li className="ease-in duration-150 text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
-					<FontAwesomeIcon icon="fa-solid fa-user" className="pr-3" />
-					<a href="/">Profile</a>
-				</li>
-				<li className="ease-in duration-150 text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
-					<FontAwesomeIcon icon="fa-solid fa-gear" className="pr-3" />
-					<a href="/">Settings</a>
-				</li>
-				<li className="ease-in duration-150 text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
-					<FontAwesomeIcon icon="fa-solid fa-message" className="pr-3" />
-					<a href="/">Contact Us</a>
-				</li>
-				<li className="ease-in duration-150 text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
-					<FontAwesomeIcon icon="sign-out-alt" className="pr-3" />
-					<a href="/">Log Out</a>
-				</li>
+				<NavLink
+					to={"/spoc/dashboard"}
+					className="w-full ease-in duration-150 text-[#534f5a] text-[.9rem] font-normal mb-[5px] pl-6 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
+				>
+					<li className="">
+						<i className="fa-solid fa-house"></i>
+						Dashboard
+					</li>
+				</NavLink>
+				<NavLink
+					to={"/student/upload-project"}
+					className="w-full ease-in duration-150 text-[#534f5a] text-[.9rem] font-normal mb-[5px] pl-6 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
+				>
+					<li className=" ">Upload Projects</li>
+				</NavLink>
+				<NavLink
+					to={"/spoc/verify-students"}
+					className="w-full ease-in duration-150 text-[#534f5a] text-[.9rem] font-normal mb-[5px] pl-6 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0]"
+				>
+					<li>Verify Students</li>
+				</NavLink>
+
+				<NavLink
+					to={"/spoc/assign-admin"}
+					className="w-full ease-in duration-150 text-[#534f5a] text-[.9rem] font-normal mb-[5px] pl-6 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0]"
+				>
+					<li>Assign Admin</li>
+				</NavLink>
+				<hr className="w-[100%] mt-3 mb-2"></hr>
+
+				<NavLink
+					to={"/spoc/profile"}
+					className="w-full ease-in duration-150 text-[#534f5a] text-[.9rem] font-normal mb-[5px] pl-6 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0]"
+				>
+					<li>
+						<FontAwesomeIcon icon="fa-solid fa-user" className="pr-3" />
+						Profile
+					</li>
+				</NavLink>
+
+				<NavLink
+					to={"/spoc/settings"}
+					className="w-full ease-in duration-150 text-[#534f5a] text-[.9rem] font-normal mb-[5px] pl-6 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0]"
+				>
+					<li>
+						<FontAwesomeIcon icon="fa-solid fa-gear" className="pr-3" />
+						Settings
+					</li>
+				</NavLink>
+
+				<NavLink
+					to={"/spoc/contact-us"}
+					className="w-full ease-in duration-150 text-[#534f5a] text-[.9rem] font-normal mb-[5px] pl-6 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0]"
+				>
+					<li>
+						<FontAwesomeIcon icon="fa-solid fa-message" className="pr-3" />
+						Contact Us
+					</li>
+				</NavLink>
+
+				<NavLink
+					to={"/spoc/logout"}
+					className="w-full ease-in duration-150 text-[#534f5a] text-[.9rem] font-normal mb-[5px] pl-6 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0]"
+				>
+					<li>
+						<FontAwesomeIcon icon="sign-out-alt" className="pr-3" />
+						Log Out
+					</li>
+				</NavLink>
 			</ul>
 		</aside>
 	);

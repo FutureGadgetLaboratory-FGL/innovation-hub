@@ -14,6 +14,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.active{
+  @apply text-[white] bg-gradient-to-r from-accent-lpurple to-accent-dpurple
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
