@@ -14,7 +14,7 @@ module.exports = {
       primary: {
         DEFAULT: '#9155fd',
         light: '#c5a6fe',
-         dark:'#000000'
+        dark:'#000000'
       },
       font: {
         DEFAULT: '#534f5a',
@@ -22,6 +22,8 @@ module.exports = {
         dark:'#000000'
       },
       accent: {
+				lpurple: "rgba(195, 163, 254, 1)",
+				dpurple: "rgba(146, 86, 253, 1)",
         green: '#56ca00',
         red: '#ff3e1d',
         yellow: '#ffb400',
@@ -36,4 +38,3 @@ module.exports = {
   },
   plugins: [],
 }
-
