@@ -14,20 +14,20 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 library.add(fas, faTwitter, faFontAwesome);
 function App() {
-	return (
-		<Router>
-			<Routes>
-				<Route exact path="/" element={<Dashboard />} />
-        <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-				<Route path="/student_leaderboards" element={<StudentLeaderboard />} />
-				<Route path="/university_popularity" element={<UniversityPopularity />} />
-				<Route path="/university_uploads" element={<UniversityUploads />} />
-				<Route path="/university_collabs" element={<UniversityCollabs />} />
-			</Routes>
-		</Router>
-	);
+  return (
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/student_leaderboards" element={<StudentLeaderboard />} />
+        <Route path="/university_popularity" element={<UniversityPopularity />} />
+        <Route path="/university_uploads" element={<UniversityUploads />} />
+        <Route path="/university_collabs" element={<UniversityCollabs />} />
+      </Routes>
+    </Router>
+  );
+}
 export default App;
 
 
