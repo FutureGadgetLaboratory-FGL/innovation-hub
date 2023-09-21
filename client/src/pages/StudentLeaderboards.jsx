@@ -5,7 +5,7 @@ function StudentLeaderboard() {
       email: "alice@gmail.com",
       password: "password123",
       gender: "Female",
-      profilePhoto: "https://example.com/alice.jpg",
+      profilePhoto: "https://picsum.photos/64",
       role: "Student",
       university: "Amity",
       branch: "B.Tech.",
@@ -22,7 +22,7 @@ function StudentLeaderboard() {
       email: "bob@gmail.com",
       password: "secure123",
       gender: "Male",
-      profilePhoto: "https://example.com/bob.jpg",
+      profilePhoto: "https://picsum.photos/64",
       role: "Student",
       university: "Harvard",
       branch: "Computer Science",
@@ -39,7 +39,7 @@ function StudentLeaderboard() {
       email: "charlie@gmail.com",
       password: "strongPassword",
       gender: "Male",
-      profilePhoto: "https://example.com/charlie.jpg",
+      profilePhoto: "https://picsum.photos/64",
       role: "Student",
       university: "MIT",
       branch: "Electrical Engineering",
@@ -64,8 +64,8 @@ function StudentLeaderboard() {
             key={index}
           >
             <p>{index + 1}</p>
-            <div className="w-full flex">
-            <p className="w-1/4">{item.profilePhoto}</p>
+            <div className="w-full flex items-center">
+            <img className="rounded-full border border-black m-2" src={item.profilePhoto} alt="N/A"/>
             <p className="w-1/4">{item.name}</p>
             <p className="w-1/4">{item.branch}</p>
             <p className="w-1/4">{item.enrollment}</p>
