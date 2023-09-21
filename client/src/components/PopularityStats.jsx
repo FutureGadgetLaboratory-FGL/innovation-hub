@@ -27,13 +27,12 @@ function PopularityStats() {
             );
             const averagePopularity =
                 totalPopularity / universityData.length;
-    return(
-          
-                <div className="app p-4 w-1/2 h-fit m-1 outline outline-1 rounded-md">
-                    <h1 className="text-2xl font-semibold m-2">University Popularity Statistics</h1>
+    return (
+			<div className="app bg-white flex justify-between flex-col mt-3 ml-4 p-3 w-3/4 rounded-xl shadow-[rgba(0,0,0,0.1)_0px_15px_20px_0px,rgba(0,0,0,0.04)_0px_10px_10px_-5px]">
+				<h1 className="text-[16px] font-semibold">University Popularity Statistics</h1>
 
-                     {/* use inside the open popularity button*/}
-                    {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+				{/* use inside the open popularity button*/}
+				{/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {universityData.map((university, index) => (
                             <UniversityPopularityStats
                                 key={index}
@@ -42,24 +41,21 @@ function PopularityStats() {
                             />
                         ))}
                     </div> */}
-                    <div className="mt-4 p-2">
-                        <p className="text-lg font-semibold">Average Popularity:</p>
-                        <p>{averagePopularity.toFixed(2)}%</p>
-                       
-                        <div className="w-full h-fit bg-slate-300 rounded outline outline-1">
-                            <div className=" h-8 bg-primary-light rounded"
-                            style={{width: `${averagePopularity}%`}}>
-                            </div>
-                        </div>
-                    </div>
-                    <Link to="/university_popularity">
-                    <button className="float-right border border-black active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-primary hover:bg-primary-light text-white rounded-md shadow-sm">View Details</button>
-                    </Link>
-                </div>
-          
-        
-        
-    );
+				<div className="mt-4">
+					<p className="text-lg font-medium">Average Popularity:</p>
+					<p className='mb-2'>{averagePopularity.toFixed(2)}%</p>
+
+					<div className="w-full h-fit bg-slate-300 rounded ">
+						<div className=" h-5 bg-primary-light rounded" style={{ width: `${averagePopularity}%` }}></div>
+					</div>
+				</div>
+				<Link to="/university_popularity">
+					<button className="active:scale-95 mt-3 mb-1 px-4 py-2 font-semibold text-[12px] bg-primary text-white rounded-md">
+						View Details
+					</button>
+				</Link>
+			</div>
+		);
 }
 
 export default PopularityStats;

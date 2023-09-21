@@ -4,27 +4,27 @@ import PopularityStats from "../components/PopularityStats";
 import ProjectFeed from "../components/ProjectFeed";
 import StudentActivity from "../components/StudentActivity";
 import UploadedProjects from "../components/UploadedProjects";
+import Nav from "../components/nav/Nav";
+import Sidebar from "../components/sidebar/Sidebar";
 
 function Dashboard() {
-    return(
-        <div className="flex flex-wrap">
-     <div className="flex w-full">
-     <Competitions/>
-     <UploadedProjects/>
-     <CollaboratedProjects/>
-     </div>
-     <div className="flex w-full">
-     <StudentActivity/>
-     <PopularityStats/>
-     </div>
-     
-     <h1 className="text-center w-full font-bold text-xl">
-      Projects Feed
-      <hr/>
-     </h1>
-     <ProjectFeed/>    
-    </div>
-    )
+	return (
+		<div className="flex ">
+			<Sidebar />
+			<div className="w-[83%]">
+				<Nav />
+				<div className="flex flex-col pr-5 pl-5 pb-5 pt-1">
+					<div className="flex w-[100%]">
+						<StudentActivity />
+						<UploadedProjects />
+						<CollaboratedProjects />
+					</div>
+					<PopularityStats />
+					<ProjectFeed />
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default Dashboard;
