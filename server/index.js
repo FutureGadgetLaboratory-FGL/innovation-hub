@@ -12,6 +12,7 @@ import universityRouter from './routes/universityRouter.js';
 import universityAdminRouter from './routes/universityAdminRouter.js';
 import studentRouter from './routes/studentRouter.js';
 import projectRouter from './routes/projectRouter.js';
+import collaborationRouter from './routes/collaborationRouter.js';
 
 dotenv.config();
 
@@ -49,6 +50,7 @@ app.use('/university', universityRouter);
 app.use('/universityAdmin', universityAdminRouter);
 app.use('/student', studentRouter);
 app.use('/project', projectRouter);
+app.use('/collaboration', collaborationRouter);
 
 dbConnect();
 
