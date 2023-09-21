@@ -24,6 +24,7 @@ function App() {
         <Route path="/university_collabs" element={<UniversityCollabs />} />
       </Routes>
     </Router>
+
   );
 }
 
