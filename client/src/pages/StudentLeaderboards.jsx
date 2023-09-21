@@ -1,3 +1,6 @@
+import Nav from "../components/nav/Nav";
+import Sidebar from "../components/sidebar/Sidebar";
+
 function StudentLeaderboard() {
   const students = [
     {
@@ -54,7 +57,11 @@ function StudentLeaderboard() {
   ];
   students.sort((a, b) => b.popularity - a.popularity);
   return (
-    <div className="drop-shadow-md flex flex-col items-center justify-center container rounded-md w-full border px-1 m-1 ">
+    <div className="flex ">
+			<Sidebar />
+			<div className="w-[83%]">
+				<Nav />
+        <div className="drop-shadow-md flex flex-col items-center justify-center container rounded-md w-full border px-1 m-1 ">
       <h3 className="mx-auto w-fit font-semibold text-xl mt-2">Student Leaderboards</h3>
       <hr/>
       <ul className="w-full mx-1 mt-3 bg-transparent h-fit font-semibold text-sm">
@@ -75,6 +82,8 @@ function StudentLeaderboard() {
         ))}
       </ul>
     </div>
+      </div>
+    </div>    
   );
 }
 

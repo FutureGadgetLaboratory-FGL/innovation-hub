@@ -1,3 +1,6 @@
+import Nav from "../components/nav/Nav";
+import Sidebar from "../components/sidebar/Sidebar";
+
 function SpocCollabRequests() {
   const studentCollabReq = [
     {
@@ -41,7 +44,11 @@ function SpocCollabRequests() {
   ];
 
   return (
-    <div className="w-full h-fit overflow-y-auto overflow-x-hidden flex flex-wrap justify-between p-2">
+    <div className="flex ">
+			<Sidebar />
+			<div className="w-[83%]">
+				<Nav />
+                <div className="w-full h-fit overflow-y-auto overflow-x-hidden flex flex-wrap justify-between p-2">
       {studentCollabReq.map((item, index) => {
         return (
           <div
@@ -111,6 +118,8 @@ function SpocCollabRequests() {
           </div>
         );
       })}
+    </div>
+            </div>
     </div>
   );
 }

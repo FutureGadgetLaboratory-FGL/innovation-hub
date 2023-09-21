@@ -70,8 +70,7 @@ function ProjectFeed() {
 
 	const [currI,setCurrI] = useState(null);
 	
-
-
+	
 	return (
 		<div className=" w-full h-full mt-5">
 			<h1 className="ml-4 mb-4  text-[25px] font-bold">Projects Feed</h1>
