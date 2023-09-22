@@ -70,3 +70,6 @@ export const unlikeProject = (id) => api.put(`/project/unlike/${id}`);
 export const reviewProject = (id, review) => api.put(`/project/review/${id}`, review);
 export const commentProject = (id, comment) => api.put(`/project/comment/${id}`, comment);
 export const shareProject = (id, share) => api.put(`/project/share/${id}`, share);
+
+// cloudinary actions
+export const uploadFile = (file) => api.post('/upload/cloud', file);
