@@ -87,7 +87,7 @@ function ProjectFeed() {
 									<img className={`${index===currI?"w-0":"w-full"} h-full transition ease-in-out delay-500 duration-1000`} src={item.coverPhoto} alt="img" />
 									<div className={`h-full ${index===currI?"w-full":"w-0"} flex flex-col justify-evenly overflow-hidden transition ease-in-out delay-100 duration-1000`}>
 										<h1 className="w-full font-semibold p-2">Send Collaboration Request to your SPOC</h1>
-										<textarea className="border border-black justify-start w-full h-1/2 p-2 whitespace-normal break-words" placeholder="Tell us why you want to collaborate?"/>
+										<textarea className="border border-black justify-start w-full h-1/2 p-2 whitespace-normal break-words resize-none" placeholder="Tell us why you want to collaborate?"/>
 										<button className="active:scale-95 mt-3 w-fit mb-1 px-4 py-2 font-semibold text-[12px] bg-accent-green hover:bg-lime-600 text-white rounded-md">Submit</button>
 										
 									</div>
@@ -112,9 +112,9 @@ function ProjectFeed() {
 									<p className="text-sm break-words">{item.description}</p>
 								
 								</div>
-								<div className="flex justify-start gap-4 mt-8 ">
-									<button className="bg-transparent flex flex-col justify-center text-lg text-accent-red">
-										<FontAwesomeIcon icon=" fa-heart" className="mr-2"/>
+								<div className="flex items-center gap-4 mt-8 ">
+									<button className="bg-transparent flex justify-start text-lg text-accent-red">
+										<FontAwesomeIcon icon=" fa-heart" className="p-1"/>
 										{item.likes.length}
 									</button>
 									<button className="bg-transparent text-lg text-accent-gray">
