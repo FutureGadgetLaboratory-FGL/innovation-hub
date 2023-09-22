@@ -112,9 +112,9 @@ function ProjectFeed() {
 									<p className="text-sm break-words">{item.description}</p>
 								
 								</div>
-								<div className="flex justify-start gap-4 mt-8 ">
-									<button className="bg-transparent flex flex-col justify-center text-lg text-accent-red">
-										<FontAwesomeIcon icon=" fa-heart" className="mr-2"/>
+								<div className="flex items-center gap-4 mt-8 ">
+									<button className="bg-transparent flex justify-start text-lg text-accent-red">
+										<FontAwesomeIcon icon=" fa-heart" className="p-1"/>
 										{item.likes.length}
 									</button>
 									<button className="bg-transparent text-lg text-accent-gray">

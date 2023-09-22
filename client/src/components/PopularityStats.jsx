@@ -28,7 +28,7 @@ function PopularityStats() {
             const averagePopularity =
                 totalPopularity / universityData.length;
     return (
-			<div className="app bg-white flex justify-between flex-col mt-3 ml-4 p-3 w-3/4 rounded-xl shadow-[rgba(0,0,0,0.1)_0px_15px_20px_0px,rgba(0,0,0,0.04)_0px_10px_10px_-5px]">
+			<div className="bg-white flex justify-between flex-col mt-3 ml-4 p-3 w-3/4 rounded-xl shadow-[rgba(0,0,0,0.1)_0px_15px_20px_0px,rgba(0,0,0,0.04)_0px_10px_10px_-5px]">
 				<h1 className="text-[16px] font-semibold">University Popularity Statistics</h1>
 
 				{/* use inside the open popularity button*/}
@@ -41,7 +41,7 @@ function PopularityStats() {
                             />
                         ))}
                     </div> */}
-				<div className="mt-4">
+				<div className="mt-4 w-full">
 					<p className="text-[14px] font-normal">Average Popularity:</p>
 					<p className='mb-1 mt-2 font-semibold text-[12px]'>{averagePopularity.toFixed(2)}%</p>
 
@@ -49,10 +49,8 @@ function PopularityStats() {
 						<div className=" h-5 bg-primary-light rounded" style={{ width: `${averagePopularity}%` }}></div>
 					</div>
 				</div>
-				<Link to="/university_popularity">
-					<button className="active:scale-95 mt-3 mb-1 px-4 py-2 font-semibold text-[12px] bg-primary text-white rounded-md">
-						View Details
-					</button>
+				<Link className='w-fit' to="/university_popularity">
+					<button className="active:scale-95 mt-3 mb-1 px-4 py-2 font-semibold text-[12px] bg-primary text-white rounded-md">View Details</button>
 				</Link>
 			</div>
 		);
