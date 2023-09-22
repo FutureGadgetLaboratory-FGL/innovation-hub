@@ -7,7 +7,7 @@ const Sidebar = () => {
 	const user={
 		user:{
 			_id:"abcd",
-			role:"Student"
+			role:"SPOC"
 		}
 	}
 	return (
@@ -23,7 +23,7 @@ const Sidebar = () => {
 					<a href="/">Dashboard</a>
 				</li>
 				<li className="ease-in duration-150 text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
-					<a href="/">Upload Requests</a>
+					<a href="/student/upload-project">Upload Requests</a>
 				</li>
 				<li className="ease-in duration-150 text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
 					<a href="/spoc_collab_requests">Collaboration Requests</a>
