@@ -1,19 +1,20 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import Nav from "../nav/Nav";
 
 const Sidebar = () => {
 	const user={
 		user:{
 			_id:"abcd",
-			role:"SPOC"
+			role:"Student"
 		}
 	}
+	const navigate=useNavigate();
 	return (
 		<aside className="w-[17%] h-screen bg-[#f4f5fa] border-r pr-1 sticky top-0">
 			<div className="text-[#7445cb] text-[1.2rem] h-[60px] font-bold  flex justify-center items-center border-b mb-3 ">
-				<h2>INNOVATION HUB</h2>
+				<h2 className="cursor-pointer" onClick={()=>navigate("/")}>INNOVATION HUB</h2>
 			</div>
 			{ user.user.role==="SPOC"?
 					(
