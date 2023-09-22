@@ -1,5 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+
 function ProjectFeed() {
+	const user={
+		user:{
+			_id:"abcd",
+			role:"Student"
+		}
+	}
 	const projectFeed = [
 		{
 			owner: {
@@ -60,6 +68,9 @@ function ProjectFeed() {
 		},
 	];
 
+	const [currI,setCurrI] = useState(null);
+	
+	
 	return (
 		<div className=" w-full h-full mt-5">
 			<h1 className="ml-5 mb-4  text-[20px] font-bold">Projects Feed</h1>
@@ -71,9 +82,20 @@ function ProjectFeed() {
 							key={index}
 							className="bg-white mr-4 mb-2 rounded-xl shadow-[rgba(0,0,0,0.1)_0px_15px_20px_0px,rgba(0,0,0,0.04)_0px_10px_10px_-5px] ml-4 p-3 flex gap-5 "
 						>
-							<div className="left w-1/2">
-								<img className="h-full" src={item.coverPhoto} alt="img" />
-							</div>
+						
+									<div className="w-1/2 flex overflow-y-auto">
+									<img className={`${index===currI?"w-0":"w-full"} h-full transition ease-in-out delay-500 duration-1000`} src={item.coverPhoto} alt="img" />
+									<div className={`h-full ${index===currI?"w-full":"w-0"} flex flex-col justify-evenly overflow-hidden transition ease-in-out delay-100 duration-1000`}>
+										<h1 className="w-full font-semibold p-2">Send Collaboration Request to your SPOC</h1>
+										<textarea className="border border-black justify-start w-full h-1/2 p-2 whitespace-normal break-words" placeholder="Tell us why you want to collaborate?"/>
+										<button className="active:scale-95 mt-3 w-fit mb-1 px-4 py-2 font-semibold text-[12px] bg-accent-green hover:bg-lime-600 text-white rounded-md">Submit</button>
+										
+									</div>
+									</div>
+									
+								
+								
+							
 							<div className="right flex flex-col gap-3 w-1/2">
 								<div className="profile">
 									<div className="flex justify-start items-center gap-3">
@@ -91,7 +113,7 @@ function ProjectFeed() {
 								
 								</div>
 								<div className="flex justify-start gap-4 mt-8 ">
-									<button className="bg-transparent text-lg text-accent-red">
+									<button className="bg-transparent flex flex-col justify-center text-lg text-accent-red">
 										<FontAwesomeIcon icon=" fa-heart" className="mr-2"/>
 										{item.likes.length}
 									</button>
@@ -101,7 +123,17 @@ function ProjectFeed() {
 									<button className="bg-transparent text-lg text-sky-700">
 										<FontAwesomeIcon icon=" fa-share" />
 									</button>
+									{
+										user.user._id && user.user.role==="Student" && (
+											<div className="w-full flex justify-end">
+									<button onClick={(e)=>{setCurrI(index)}} className="active:scale-95 mt-3 mb-1 px-4 py-2 font-semibold text-[12px] bg-accent-green hover:bg-lime-600 text-white rounded-md">Request to Collaborate</button>
+									</div>
+										)
+									}
+
+									
 								</div>
+								
 							</div>
 						</div>
 					);

@@ -1,3 +1,5 @@
+import Nav from "../components/nav/Nav";
+import Sidebar from "../components/sidebar/Sidebar";
 
 function VerifyStudent() {
 
@@ -65,6 +67,10 @@ function VerifyStudent() {
 
 
     return(
+      <div className="flex ">
+			<Sidebar />
+			<div className="w-[83%]">
+				<Nav/>
         <div className="w-full h-fit overflow-y-auto overflow-x-hidden flex flex-wrap justify-between p-2">
       {studentReq.map((item, index) => {
         return (
@@ -119,6 +125,8 @@ function VerifyStudent() {
         );
       })}
       </div>
+        </div>
+        </div>
     )
 }
 export default VerifyStudent;
