@@ -1,7 +1,4 @@
-import Nav from "../components/nav/Nav";
-import Sidebar from "../components/sidebar/Sidebar";
-
-function Uploads() {
+const Collaborations=()=> {
 	const projectFeed = [
 		{
 			owner: {
@@ -75,16 +72,14 @@ function Uploads() {
 
 	return (
 		<div className="flex ">
-			<Sidebar />
 			<div className="w-[83%]">
-				<Nav />
 				<div className="w-full h-full overflow-y-auto">
-					<h1 className="font-semibold text-3xl w-full text-center m-2 mb-4">My Uploads</h1>
+					<h1 className="font-semibold text-3xl w-full text-center m-2">My Collabs</h1>
 					<div className="flex flex-wrap">
 						{projectFeed.map((item, index) => {
 							return (
 								<div key={index} className="w-1/2 rounded-md shadow-md border p-2">
-									<img className="w-full" src={item.coverPhoto} alt="Cover Image unavailable!" />
+									<img className="w-full" src={item.coverPhoto} alt="cover" />
 									<h1 className="font-semibold text-xl">{item.title}</h1>
 									<div className="p-2 w-full overflow-x-auto whitespace-normal break-normal">
 										{/* Added whitespace-normal class here */}
@@ -106,4 +101,4 @@ function Uploads() {
 	);
 }
 
-export default Uploads;
+export default Collaborations;

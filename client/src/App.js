@@ -10,14 +10,14 @@ import router from "./Routes";
 // import UniversityCollabs from "./pages/spoc/UniversityCollabs";
 // import UniversityPopularity from "./pages/universal/UniversityPopularity";
 // import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import { library } from "@fortawesome/fontawesome-svg-core";
-// import { fas } from "@fortawesome/free-solid-svg-icons";
-// import { faTwitter, faFontAwesome } from "@fortawesome/free-brands-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { faTwitter, faFontAwesome } from "@fortawesome/free-brands-svg-icons";
 // import SpocCollabRequests from "./pages/spoc/SpocCollabRequest";
 // import VerifyStudent from "./pages/spoc/VerifyStudent";
 // import CompetitionsHome from "./pages/student/CompetitionsHome";
 // import UploadProjectPage from "./pages/student/UploadProjectPage";
-// library.add(fas, faTwitter, faFontAwesome);
+library.add(fas, faTwitter, faFontAwesome);
 function App() {
 	return (
 		<>

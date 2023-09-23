@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
 import React from "react";
 
-import Nav from "../../components/universal/nav/Nav";
-import Sidebar from "../../components/universal/sidebar/Sidebar";
+import Nav from "../../components/universal/Nav";
+import Sidebar from "../../components/universal/Sidebar";
 
 const MainSpocPage = () => {
 	return (
