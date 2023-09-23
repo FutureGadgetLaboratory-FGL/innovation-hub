@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import Nav from "../nav/Nav";
 
 const Sidebar = () => {
@@ -10,10 +10,11 @@ const Sidebar = () => {
 			role:"Student"
 		}
 	}
+	const navigate=useNavigate();
 	return (
 		<aside className="w-[17%] h-screen bg-[#f4f5fa] border-r pr-1 sticky top-0">
 			<div className="text-[#7445cb] text-[1.2rem] h-[60px] font-bold  flex justify-center items-center border-b mb-3 ">
-				<h2>INNOVATION HUB</h2>
+				<h2 className="cursor-pointer" onClick={()=>navigate("/")}>INNOVATION HUB</h2>
 			</div>
 			{ user.user.role==="SPOC"?
 					(
@@ -23,7 +24,7 @@ const Sidebar = () => {
 					<a href="/">Dashboard</a>
 				</li>
 				<li className="ease-in duration-150 text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
-					<a href="/">Upload Requests</a>
+					<a href="/student/upload-project">Upload Requests</a>
 				</li>
 				<li className="ease-in duration-150 text-[#534f5a] text-[1.2rem] font-normal w-full mb-[5px] pl-5 pt-[7px] pb-[7px] hover:cursor-pointer hover:bg-[#cccdd1] hover:rounded-[0_50px_50px_0] active:text-[white] active:bg-gradient-to-r active: from-accent-lpurple active: to-accent-dpurple">
 					<a href="/spoc_collab_requests">Collaboration Requests</a>

@@ -50,7 +50,7 @@ function PopularityStats() {
                             />
                         ))}
                     </div> */}
-				<div className="mt-4">
+				<div className="mt-4 w-full">
 					<p className="text-[14px] font-normal">Average Popularity:</p>
 					<p className='mb-1 mt-2 font-semibold text-[12px]'>{averagePopularity.toFixed(2)}%</p>
 
