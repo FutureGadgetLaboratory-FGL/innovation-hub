@@ -9,7 +9,7 @@ function UploadedProjectsCard() {
 					of your projects.
 				</div>
 
-				<Link to="/university_uploads">
+				<Link className="w-fit" to="/university_uploads">
 					<button className="active:scale-95  mb-1 px-4 py-2 font-semibold text-[12px] bg-primary text-white rounded-md">
 						View Uploads
 					</button>

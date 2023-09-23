@@ -4,7 +4,7 @@ import Sidebar from "../components/sidebar/Sidebar";
 function VerifyStudent() {
 
     const studentReq=[{
-        name:"xyz",
+        name:"Naman",
         email:"xyz",
         gender:"M",
         profilePhoto:"xyz",
@@ -18,7 +18,7 @@ function VerifyStudent() {
         enrollment:"001100"
     },
     {
-        name:"xyz",
+        name:"Rahul",
         email:"xyz",
         gender:"M",
         profilePhoto:"xyz",
@@ -32,7 +32,7 @@ function VerifyStudent() {
         enrollment:"001100"
     },
     {
-        name:"xyz",
+        name:"Ashish",
         email:"xyz",
         gender:"M",
         profilePhoto:"xyz",
@@ -46,7 +46,7 @@ function VerifyStudent() {
         enrollment:"001100"
     },
     {
-        name:"xyz",
+        name:"Ashutosh",
         email:"xyz",
         gender:"M",
         profilePhoto:"xyz",

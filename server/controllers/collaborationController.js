@@ -1,6 +1,6 @@
 import Collaboration from "../models/Collaboration.js";
 import Project from "../models/Project.js";
-import Student from "../models/Student.js";
+import { Student } from "../models/Roles.js";
 
 export const getCollaborations = async (req, res) => {
     try {

@@ -1,5 +1,14 @@
-import {Link} from 'react-router-dom';
-function StudentActivity()  {
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getStudentsByUniversityId } from '../redux/actions/studentActions';
+function StudentActivity() {
+    // const dispatch = useDispatch();
+    // const user = useSelector(state => state.auth.user);
+    // useEffect(() => {
+    //     dispatch(getStudentsByUniversityId(user.university._id));
+    // }, [dispatch]);
+    // const students = useSelector(state => state.student.students);
     const students = [
         {
             name: "Alice",
@@ -77,7 +86,7 @@ function StudentActivity()  {
                 <p className="absolute right-0 px-2 inline-block">points</p><hr/>
             </div> */}
 
-				<Link to="/student_leaderboards">
+				<Link className='w-fit' to="/student_leaderboards">
 					<button className="active:scale-95  mb-1 px-4 py-2 font-semibold text-[12px] bg-primary text-white rounded-md ">
 						Open Leaderboard
 					</button>
