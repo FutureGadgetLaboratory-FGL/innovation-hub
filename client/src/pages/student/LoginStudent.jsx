@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const LoginStudent = () => {
   let navigate = useNavigate();
   return (
     <>
@@ -44,7 +44,7 @@ const Login = () => {
               <i className="bi bi-google hover:scale-y-105"></i>
               <i className="bi bi-github hover:scale-y-105"></i>
               <i className="bi bi-facebook hover:scale-y-105"></i>
-              <i class="bi bi-twitter-x hover:scale-y-105"></i>
+              <i className="bi bi-twitter-x hover:scale-y-105"></i>
             </div>
           </div>
 
@@ -54,4 +54,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default LoginStudent;

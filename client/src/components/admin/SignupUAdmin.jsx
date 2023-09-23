@@ -16,9 +16,9 @@ const SignupUAdmin = () => {
   <input className="form-control" type="email" id="email" required/>
 </div>
 
-<div class="mb-3">
-  <label for="formFileMultiple" class="form-label">ID Card</label>
-  <input class="form-control" type="file" id="formFileMultiple" multiple/>
+<div className="mb-3">
+  <label for="formFileMultiple" className="form-label">ID Card</label>
+  <input className="form-control" type="file" id="formFileMultiple" multiple/>
 </div>
 
 </>

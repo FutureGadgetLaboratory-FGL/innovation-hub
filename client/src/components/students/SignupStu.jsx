@@ -31,9 +31,9 @@ const SignupStu = () => {
         <input className="mb-3 form-control form-control-sm" placeholder="Start Year" id="duration" type="number" />
         <input className="form-control form-control-sm" placeholder="End Year" id="duration" type="number" />
       </div>
-      <div class="mb-3">
-        <label for="formFileMultiple" class="form-label">ID Card</label>
-        <input class="form-control" type="file" id="formFileMultiple" multiple />
+      <div className="mb-3">
+        <label for="formFileMultiple" className="form-label">ID Card</label>
+        <input className="form-control" type="file" id="formFileMultiple" multiple />
       </div>
 
     </>

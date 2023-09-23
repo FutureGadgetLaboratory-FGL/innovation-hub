@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const Nav = () => {
 	let [modal, showModal] = useState("hidden");
 	const onclickHandler = () => {
@@ -23,9 +24,8 @@ const Nav = () => {
 					<div className="relative w-[300px] h-[35px]">
 						<input
 							type="text"
-							class="input"
 							placeholder="search..."
-							className="text-[#8b7d77] rounded-lg border-0 absolute w-full h-full text-sm p-3 left-0 top-0"
+							className="input text-[#8b7d77] rounded-lg border-0 absolute w-full h-full text-sm p-3 left-0 top-0"
 						/>
 						<div className="bg-slate-700 absolute w-[60px] h-full z-[1] cursor-pointer  right-0 top-0">
 							<FontAwesomeIcon
@@ -37,7 +37,7 @@ const Nav = () => {
 				</div>
 			</div>
 			<button onClick={onclickHandler}>
-				<img src="./images/profile-icon.png" alt="profile" className="w-10" />
+				<img src="./images/profile.png" alt="profile" className="w-10" />
 			</button>
 			<div className={`absolute w-[100%] h-[100vh] top-0 left-0 z-999 ${modal}`} id="modal">
 				<div className={`absolute top-[60px] right-[80px] w-[160px] h-[200px] bg-slate-200 rounded p-2 `}>

@@ -72,7 +72,7 @@ const Signup = () => {
               <i className="bi bi-google hover:scale-y-105"></i>
               <i className="bi bi-github hover:scale-y-105"></i>
               <i className="bi bi-facebook hover:scale-y-105"></i>
-              <i class="bi bi-twitter-x hover:scale-y-105"></i>
+              <i className="bi bi-twitter-x hover:scale-y-105"></i>
             </div>
           </div>
 
