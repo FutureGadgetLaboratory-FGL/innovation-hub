@@ -1,8 +1,17 @@
 import Leaderboard from "../components/leaderboard/Leaderboard";
 import Sidebar from "../components/sidebar/Sidebar";
 import Nav from "../components/nav/Nav";
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from "react";
+import { getAllStudents } from "../redux/actions/studentActions";
 
 function StudentLeaderboard() {
+  // const dispatch = useDispatch();
+  // const students = useSelector((state) => state.student.students);
+
+  // useEffect(() => {
+  //   dispatch(getAllStudents());
+  // }, [dispatch]);
   const students = [
     {
       name: "Alice",

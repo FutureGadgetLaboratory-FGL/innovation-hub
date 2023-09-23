@@ -10,12 +10,11 @@ const studentSchema = mongoose.Schema({
         unique: true,
         trim: true,
         lowercase: true,
-        match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     },
     startYear: { type: Number, required: true },
     endYear: { type: Number, required: true },
-    idCardFront: { type: String, required: true },
-    idCardBack: { type: String, required: true },
+    idCardFront: { type: String, required: false },
+    idCardBack: { type: String, required: false },
     enrollment: { type: String, required: true },
     sihGems: { type: Number, default: 0 },
     popularity: { type: Number, default: 0 },
@@ -38,13 +37,12 @@ const spocSchema = mongoose.Schema({
     workEmail: {
         type: String,
         required: false,
-        unique: true,
+        unique: false,
         trim: true,
         lowercase: true,
-        match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     },
-    idCardFront: { type: String, required: true },
-    idCardBack: { type: String, required: true },
+    idCardFront: { type: String, required: false },
+    idCardBack: { type: String, required: false },
     enrollment: { type: String, required: true },
     status: {
         type: String,
@@ -69,10 +67,9 @@ const universityAdminSchema = mongoose.Schema({
         unique: true,
         trim: true,
         lowercase: true,
-        match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     },
-    idCardFront: { type: String, required: true },
-    idCardBack: { type: String, required: true },
+    idCardFront: { type: String, required: false },
+    idCardBack: { type: String, required: false },
     enrollment: { type: String, required: true },
     status: {
         type: String,
@@ -92,7 +89,7 @@ const superAdminSchema = mongoose.Schema({
 });
 
 const recruiterSchema = mongoose.Schema({
-    
+
 })
 
 export const SuperAdmin = userSchema.discriminator('SuperAdmin', superAdminSchema);

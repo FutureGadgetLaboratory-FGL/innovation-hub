@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProjects } from "../redux/actions/projectActions";
 function ProjectFeed() {
 	const user={
 		user:{
@@ -71,6 +72,14 @@ function ProjectFeed() {
 	const [currI,setCurrI] = useState(null);
 	
 	
+	// const dispatch = useDispatch();
+	// useEffect(() => {
+	// 	dispatch(getAllProjects());
+	// }, [dispatch]);
+	// const projectFeed = useSelector((state) => state.project.projects);
+
+
+
 	return (
 		<div className=" w-full h-full mt-5">
 			<h1 className="ml-5 mb-4  text-[20px] font-bold">Projects Feed</h1>

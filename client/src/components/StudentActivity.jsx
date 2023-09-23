@@ -1,5 +1,14 @@
-import {Link} from 'react-router-dom';
-function StudentActivity()  {
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getStudentsByUniversityId } from '../redux/actions/studentActions';
+function StudentActivity() {
+    // const dispatch = useDispatch();
+    // const user = useSelector(state => state.auth.user);
+    // useEffect(() => {
+    //     dispatch(getStudentsByUniversityId(user.university._id));
+    // }, [dispatch]);
+    // const students = useSelector(state => state.student.students);
     const students = [
         {
             name: "Alice",

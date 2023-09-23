@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { signin } from '../redux/actions/authActions';
 
 const Login = () => {
   let navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user.user);
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
+  useEffect(() => {
+    dispatch(signin(formData));
+  }, [dispatch]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(signin(formData));
+  };
   return (
     <>
       <div className='flex items-center justify-center bg-background'>
@@ -16,10 +34,10 @@ const Login = () => {
           <h4 className='font-normal text-2xl text-start mt-6'>Welcome to GitPro !</h4>
           <p className='mt-2 text-start text-accent-gray'>Please sign-in to your account and start the adventure</p>
 
-          <div className='mt-6'>
-            <input className='my-3 border-2 border-accent-dark rounded-md h-12 p-4 w-full lg:w-80' placeholder='E-mail' type='email' />
-            <input className='my-3 border-2 border-accent-dark rounded-md h-12 p-4 w-full lg:w-80' placeholder='Password' type='password' />
-          </div>
+          <form onSubmit={handleSubmit} className='mt-6'>
+            <input className='my-3 border-2 border-accent-dark rounded-md h-12 p-4 w-full lg:w-80' placeholder='E-mail' type='email' onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
+            <input className='my-3 border-2 border-accent-dark rounded-md h-12 p-4 w-full lg:w-80' placeholder='Password' type='password' onChange={(e) => setFormData({ ...formData, password: e.target.value })} />
+          </form>
 
           <div className='flex justify-around w-full lg:w-80'>
             <div>
