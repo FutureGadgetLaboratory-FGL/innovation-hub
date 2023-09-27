@@ -13,7 +13,7 @@ body {
 }
 
 .active {
-	@apply text-[white] bg-gradient-to-r from-accent-lpurple to-accent-dpurple;
+	@apply text-[white] bg-accent-dpurple;
 }
 
 code {
