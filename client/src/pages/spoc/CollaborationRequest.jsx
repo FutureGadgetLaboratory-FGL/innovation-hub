@@ -2,10 +2,10 @@ function CollaborationRequest() {
 	const studentCollabReq = [
 		{
 			sender: {
-				name: "User 1",
+				name: "Ashwani Kumar",
 				enrollment: "001100",
 				gender: "M",
-				profilePhoto: "https://picsum.photos/64",
+				profilePhoto: "https://picsum.photos/50",
 				email: "abc@gmail.com",
 				university: "Amity University",
 				course: "CSE",
@@ -21,10 +21,10 @@ function CollaborationRequest() {
 		},
 		{
 			sender: {
-				name: "User 1",
+				name: "Prashant Pal",
 				enrollment: "001100",
 				gender: "M",
-				profilePhoto: "https://picsum.photos/64",
+				profilePhoto: "https://picsum.photos/50",
 				email: "abc@gmail.com",
 				university: "Amity University",
 				course: "CSE",
@@ -41,59 +41,54 @@ function CollaborationRequest() {
 	];
 
 	return (
-		<div className="flex ">
-			<div className="w-[83%]">
-				<div className="w-full h-fit overflow-y-auto overflow-x-hidden flex flex-wrap justify-between p-2">
-					{studentCollabReq.map((item, index) => {
-						return (
-							<div key={index} className="w-1/2 p-2 border-2 min-h-full rounded-md shadow-md cursor-pointer">
-								<div className="flex justify-between w-full p-2">
-									<img className="border border-1 rounded-full" src={item.sender.profilePhoto} alt="N/A" />
-									<h1 className="text-2xl font-semibold m-2 ">{item.sender.name}</h1>
-									<h1 className="m-2 text-xl font-semibold">{item.sender.university}</h1>
+		<div className="w-full flex flex-wrap gap-3">
+			{studentCollabReq.map((item, index) => {
+				return (
+					<div key={index} className="w-[49%] p-3 rounded-xl shadow bg-white">
+						<div className="flex w-full gap-3">
+							<img className="border rounded-full w-[50px] h-[50px]" src={item.sender.profilePhoto} alt="N/A" />
+							<div>
+								<h1 className="text-lg font-semibold ">{item.sender.name}</h1>
+								<h1 className=" text-sm font-normal">{item.sender.university}</h1>
+							</div>
+						</div>
+						<hr className="mt-2"/>
+
+						<div className="w-full">
+							<div className="flex flex-wrap justify-between w-full">
+								<div className="flex flex-col w-1/2 justify-start">
+									<p className="m-2 font-semibold">Request Details:</p>
+									<img className="border w-1/2 mx-2 border-black" src={item.project.coverPhoto} alt="N/A" />
+									<div className="m-2">
+										<h2>{item.project.title}</h2>
+										<p>{item.project.description}</p>
+									</div>
+									<p className="inline-block font-semibold m-2">Student message:</p>
+									<p className="inline-block m-2 p-2 border border-black">{item.message}</p>
 								</div>
-
-								<div className="w-full">
-									<div className="flex flex-wrap justify-between w-full">
-										<div className="flex flex-col w-1/2 justify-start">
-											<p className="m-2 font-semibold">Request Details:</p>
-											<img
-												className="border w-1/2 mx-2 border-black"
-												src={item.project.coverPhoto}
-												alt="N/A"
-											/>
-											<div className="m-2">
-												<h2>{item.project.title}</h2>
-												<p>{item.project.description}</p>
-											</div>
-											<p className="inline-block font-semibold m-2">Student message:</p>
-											<p className="inline-block m-2 p-2 border border-black">{item.message}</p>
-										</div>
-										<div className="flex flex-col">
-											<ul className=" p-2">
-												<li className="p-2 m-1">Course: {item.sender.course}</li>
-												<li className="p-2 m-1">Enrollment Number: {item.sender.enrollment}</li>
-												<li className="p-2 m-1">Gender: {item.sender.gender}</li>
-												<li className="p-2 m-1">E-mail: {item.sender.email}</li>
-												<li className="m-1 p-2">Work E-mail: {item.sender.workEmail}</li>
-											</ul>
-										</div>
-									</div>
-
-									<div className="flex justify-center">
-										<button className="border border-black active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-accent-green hover:bg-lime-600 text-white rounded-md shadow-sm">
-											Accept
-										</button>
-										<button className="border border-black active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-accent-red hover:bg-red-600 text-white rounded-md shadow-sm">
-											Reject
-										</button>
-									</div>
+								<div className="flex flex-col">
+									<ul className=" p-2">
+										<li className="p-2 m-1">Course: {item.sender.course}</li>
+										<li className="p-2 m-1">Enrollment Number: {item.sender.enrollment}</li>
+										<li className="p-2 m-1">Gender: {item.sender.gender}</li>
+										<li className="p-2 m-1">E-mail: {item.sender.email}</li>
+										<li className="m-1 p-2">Work E-mail: {item.sender.workEmail}</li>
+									</ul>
 								</div>
 							</div>
-						);
-					})}
-				</div>
-			</div>
+
+							<div className="flex justify-center">
+								<button className="border border-black active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-accent-green hover:bg-lime-600 text-white rounded-md shadow-sm">
+									Accept
+								</button>
+								<button className="border border-black active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-accent-red hover:bg-red-600 text-white rounded-md shadow-sm">
+									Reject
+								</button>
+							</div>
+						</div>
+					</div>
+				);
+			})}
 		</div>
 	);
 }
