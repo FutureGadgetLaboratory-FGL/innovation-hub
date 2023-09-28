@@ -56,42 +56,62 @@ function UploadRequest() {
 				
             <div className="w-full p-2 border-2 min-h-full rounded-md shadow-md cursor-pointer">
                 <div className="flex justify-between w-full p-2">
-                    <img className="border border-1 rounded-full" src={studentUploadReq.sender.profilePhoto} alt="N/A" />
-                    <h1 className="text-2xl font-semibold m-2 ">{studentUploadReq.sender.name}</h1>
+                    <div className="flex justify-center items-center gap-1">
+                        <img className="border border-1 rounded-full" src={studentUploadReq.sender.profilePhoto} alt="N/A" />
+                        <h1 className="text-2xl font-semibold m-2 ">{studentUploadReq.sender.name}</h1>
+                    </div>
                     <h1 className="m-2 text-xl font-semibold">{studentUploadReq.sender.university}</h1>
                 </div>
 
                 <div className="w-full">
                     <div className="flex flex-wrap justify-between w-full">
-                        <div className="flex flex-col w-2/3 justify-start">
-                            <p className="m-2 font-semibold">Request Details:</p>
+                        <div className="flex flex-col w-full justify-start">
+                            <div className="flex gap-2">
+
+                               <div className="w-2/3">
+                                <h1 className="m-2 font-semibold">Request Details:</h1>
                                 <img
                                     className="border w-full mx-2 border-black"
                                     src={studentUploadReq.project.coverPhoto}
                                     alt="N/A"
-                                />
+                                    />
+                               </div>
+                               <div className="w-1/3">
+                               <h3 className="m-2 font-semibold">Student Details:</h3>
+                               <div className="flex flex-col h-fit border border-black m-2 rounded-sm">
+                            
+                            <ul className=" p-2">
+                                <li className="p-2 m-1">Course: {studentUploadReq.sender.course}</li>
+                                <li className="p-2 m-1">Enrollment Number: {studentUploadReq.sender.enrollment}</li>
+                                <li className="p-2 m-1">Gender: {studentUploadReq.sender.gender}</li>
+                                <li className="p-2 m-1">E-mail: {studentUploadReq.sender.email}</li>
+                                <li className="m-1 p-2">Work E-mail: {studentUploadReq.sender.workEmail}</li>
+                            </ul>
+                            </div>
+                        </div>
+                            </div>
                                 {
                                     studentUploadReq.project.tech===true?
                                     (
                                         <div className="m-2">
-                                            <h2 className="font-semibold">{studentUploadReq.project.title}</h2>
-                                            <p className="font-semibold">Description:</p>
-                                            <p>{studentUploadReq.project.description}</p>
-                                            <p className="font-semibold">Work Flow:</p>
-                                            <p>{studentUploadReq.project.workFlow}</p>
-                                            <p className="font-semibold">Tech Stack:</p>
-                                            <p>{studentUploadReq.project.techStack}</p>
-                                            <p className="font-semibold">Methodology:</p>
-                                            <p>{studentUploadReq.project.methodology}</p>
-                                            <p className="font-semibold">Install Instructions:</p>
-                                            <p>{studentUploadReq.project.installInstructions}</p>
-                                            <p className="font-semibold">Conclusion:</p>
-                                            <p>{studentUploadReq.project.conclusion}</p>
-                                            <p className="font-semibold">Collaboration Guidelines:</p>
-                                            <p>{studentUploadReq.project.collabGuidelines}</p>
+                                            <h1 className="text-3xl font-semibold text-center w-full">{studentUploadReq.project.title}</h1>
+                                            <p className="font-semibold text-2xl">Description:</p>
+                                            <p className="text-xl p-2">{studentUploadReq.project.description}</p>
+                                            <p className="font-semibold text-2xl">Work Flow:</p>
+                                            <p className="text-xl p-2">{studentUploadReq.project.workFlow}</p>
+                                            <p className="font-semibold text-2xl">Tech Stack:</p>
+                                            <p className="text-xl p-2">{studentUploadReq.project.techStack}</p>
+                                            <p className="font-semibold text-2xl">Methodology:</p>
+                                            <p className="text-xl p-2">{studentUploadReq.project.methodology}</p>
+                                            <p className="font-semibold text-2xl">Install Instructions:</p>
+                                            <p className="text-xl p-2">{studentUploadReq.project.installInstructions}</p>
+                                            <p className="font-semibold text-2xl">Conclusion:</p>
+                                            <p className="text-xl p-2">{studentUploadReq.project.conclusion}</p>
+                                            <p className="font-semibold text-2xl">Collaboration Guidelines:</p>
+                                            <p className="text-xl p-2">{studentUploadReq.project.collabGuidelines}</p>
 
                                             <div>
-                                                <h3 className="font-semibold">Attachments:</h3>
+                                                <h3 className="font-semibold text-2xl">Attachments:</h3>
                                                
                                                 <div className="flex flex-wrap gap-1 items-center justify-center">
 
@@ -153,16 +173,7 @@ function UploadRequest() {
                                     )
                                 }
                         </div>
-                        <div className="flex flex-col h-fit border border-black m-2 rounded-sm">
-                            <h3 className="m-2 font-semibold">Student Details:</h3>
-                            <ul className=" p-2">
-                                <li className="p-2 m-1">Course: {studentUploadReq.sender.course}</li>
-                                <li className="p-2 m-1">Enrollment Number: {studentUploadReq.sender.enrollment}</li>
-                                <li className="p-2 m-1">Gender: {studentUploadReq.sender.gender}</li>
-                                <li className="p-2 m-1">E-mail: {studentUploadReq.sender.email}</li>
-                                <li className="m-1 p-2">Work E-mail: {studentUploadReq.sender.workEmail}</li>
-                            </ul>
-                        </div>
+                       
                     </div>
 
                     {
