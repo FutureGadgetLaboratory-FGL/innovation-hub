@@ -69,7 +69,7 @@ function UploadRequest() {
                             <div className="flex gap-2">
 
                                <div className="w-2/3">
-                                <h1 className="m-2 font-semibold">Request Details:</h1>
+                                <h3 className="m-2 font-semibold">Request Details:</h3>
                                 <img
                                     className="border w-full mx-2 border-black"
                                     src={studentUploadReq.project.coverPhoto}
