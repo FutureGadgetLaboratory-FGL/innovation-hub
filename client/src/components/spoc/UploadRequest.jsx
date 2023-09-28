@@ -11,7 +11,7 @@ function UploadRequest() {
 
     const studentUploadReq = 
     {
-        status: "pending",
+        status: "approved",
         sender: {
             name: "User 1",
             enrollment: "001100",
@@ -19,16 +19,16 @@ function UploadRequest() {
             profilePhoto: "https://picsum.photos/64",
             email: "abc@gmail.com",
             university: "Amity University",
-            course: "CSE",
+            course: "Computer Science and Engineering",
             workEmail: "abc@outlook.com"
         },
         project: {
             tech: true,
             coverPhoto: "https://picsum.photos/1080/600",
             title: "Title 1",
-            description: "This is the description of the project",
+            description: "This is a detailed description of the project. It involves the development of a web application aimed at enhancing user experience and efficiency.",
             methodology: "Agile",
-            outcomes: "Improved user experience",
+            outcomes: "The project aims to achieve improved user experience and efficiency by implementing modern web technologies and practices.",
             report: "https://example.com/report.pdf",
             files: [
                 {
@@ -41,13 +41,22 @@ function UploadRequest() {
                 }
             ],
             workFlow: "Scrum",
-            techStack: "React, Node.js",
-            installInstructions: "Download and run the installer",
-            conclusion: "Project completed successfully",
-            collabGuidelines: "Follow coding standards",
-            readmefile: "https://example.com/readme.md"
+            techStack: "The project utilizes a technology stack including React for the front-end and Node.js for the back-end.",
+            installInstructions: "To install the application, download the installer from the following link: https://example.com/installer.exe. Run the installer and follow the on-screen instructions.",
+            conclusion: "The project was successfully completed within the specified time frame and achieved the desired outcomes.",
+            collabGuidelines: "Collaborators are required to adhere to coding standards and best practices. Regular code reviews are conducted to ensure code quality.",
+            readmefile: "For more information about the project, please refer to the README file: https://example.com/readme.md",
+            likes: [
+                {
+                    userId: "xyz"
+                },
+                {
+                    userId: "abc"
+                }
+            ]
         }
     }
+    
     
 
 
@@ -187,7 +196,26 @@ function UploadRequest() {
                             Reject
                             </button>
                             </div>
-                        ):(<div></div>)
+                        ):(
+                        <div className="flex items-center gap-1 mt-8 ">
+                            <button className="border p-2 hover:bg-red-200 rounded-bl-md w-1/4  flex justify-center text-2xl text-accent-red">
+                                <FontAwesomeIcon icon=" fa-heart" className="p-1"/>
+                                Like
+                            </button>
+                            <button className="border hover:bg-stone-200 p-2 w-1/4 text-2xl text-accent-gray">
+                                <FontAwesomeIcon icon=" fa-comment" className="mx-2" />
+                                Comment
+                            </button>
+                            <button className="border p-2 w-1/4 hover:bg-green-200 text-2xl text-accent-gray">
+                                <FontAwesomeIcon icon=" fa-solid fa-check" className="mx-2" />
+                                Review
+                            </button>
+                            <button className="border p-2 rounded-br-md hover:bg-blue-200 w-1/4 text-2xl text-sky-700">
+                                <FontAwesomeIcon icon=" fa-share" className="mx-2" />
+                                Share
+                            </button>
+                        </div>
+                        )
                     }
                 </div>
 					
