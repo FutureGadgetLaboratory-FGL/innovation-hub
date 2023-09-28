@@ -131,6 +131,7 @@ function ProjectFeed() {
 								<div className="flex items-center gap-4 mt-8 ">
 									<button className="bg-transparent flex justify-start text-lg text-accent-red">
 										<FontAwesomeIcon icon=" fa-heart" className="p-1" />
+
 										{item.likes.length}
 									</button>
 									<button className="bg-transparent text-lg text-accent-gray">

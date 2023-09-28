@@ -1,9 +1,10 @@
 import React from 'react';
+import UploadRequest from '../../components/spoc/UploadRequest';
 
 const VerifyProjectUploads = () => {
     return (
         <div>
-            <h1>Here SPOC will verify the projects uploaded by the students.</h1>
+           <UploadRequest/>
         </div>
     );
 }
