@@ -8,22 +8,28 @@ const Home = () => {
 				<h1 className="p-3 mb-5 text-8xl font-bold text-center">Welcome to Student Innovation Hub</h1>
 				<div className="flex gap-3 justify-center items-center flex-wrap">
 					<Link
-						to={"/student/login"}
+						to={"/student/signin"}
 						className="p-3 border-slate-700 rounded-lg bg-blue-500 text-white hover:bg-blue-600 active:scale-95"
 					>
 						I'm Student
 					</Link>
 					<Link
-						to={"/spoc/login"}
+						to={"/spoc/signin"}
 						className="p-3 border-slate-700 rounded-lg bg-blue-500 text-white hover:bg-blue-600 active:scale-95"
 					>
 						I'm SPOC
 					</Link>
 					<Link
-						to={"/register-institute"}
+						to={"/university-admin/signin"}
 						className="p-3 border-slate-700 rounded-lg bg-blue-500 text-white hover:bg-blue-600 active:scale-95"
 					>
-						Register Your Institute
+						I'm University Admin
+					</Link>
+					<Link
+						to={"/recruiter/signin"}
+						className="p-3 border-slate-700 rounded-lg bg-blue-500 text-white hover:bg-blue-600 active:scale-95"
+					>
+						I'm Recruiter
 					</Link>
 				</div>
 			</div>

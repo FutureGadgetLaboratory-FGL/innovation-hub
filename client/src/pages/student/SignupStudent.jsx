@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import SignupStu from '../components/SignupStu'
 import SignupSPOC from '../components/SignupSPOC';
 import SignupUAdmin from '../components/SignupUAdmin';
-const Signup = () => {
+const SignupStudent = () => {
   let navigate = useNavigate();
   const [selectedRole, setSelectedRole] = useState("1");
   const handleRoleChange = (e) => {
@@ -104,4 +104,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default SignupStudent;

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signin } from '../../redux/actions/authActions';
 
-const LoginStudent = () => {
+const SigninStudent = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector(state => state.user.user);
@@ -55,21 +55,10 @@ const LoginStudent = () => {
             <p>New on our platform?</p>
             <Link className='text-accent-indigo' to="/signup">Create an account</Link>
           </div>
-
-          <div className='block w-full'>
-            <p className='text-accent-gray text-center w-80'>or</p>
-            <div className='grid grid-cols-1 lg:grid-cols-4 text-xl mt-4'>
-              <i className="bi bi-google hover:scale-y-105"></i>
-              <i className="bi bi-github hover:scale-y-105"></i>
-              <i className="bi bi-facebook hover:scale-y-105"></i>
-              <i className="bi bi-twitter-x hover:scale-y-105"></i>
-            </div>
-          </div>
-
         </div>
       </div>
     </>
   )
 }
 
-export default LoginStudent;
+export default SigninStudent;
