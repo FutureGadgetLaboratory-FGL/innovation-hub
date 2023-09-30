@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
-const SigninSPOC = () => {
+const Signin = ({ role }) => {
     const navigate = useNavigate();
     return (
         <>
@@ -20,7 +20,7 @@ const SigninSPOC = () => {
                 <form className='mt-3 w-full flex flex-col items-center justify-center'>
                     <input className='my-3 border-1 border-accent-gray rounded-md h-12 p-4 w-full' placeholder='E-mail' type='email' />
                     <input className='my-3 border-1 border-accent-gray rounded-md h-12 p-4 w-full' placeholder='Password' type='password' />
-                    
+
                     <div className='flex justify-between w-full'>
                         <div>
                             <input type='checkbox' name="remember" />
@@ -36,11 +36,11 @@ const SigninSPOC = () => {
 
                 <div className='my-4 flex items-start justify-between w-full'>
                     <p>New on our platform?</p>
-                    <Link className='text-accent-indigo' to="/spoc/signup">Create an account</Link>
+                    <Link className='text-accent-indigo' to={`/${role}/signup`}>Create an account</Link>
                 </div>
             </div>
         </>
     )
 }
 
-export default SigninSPOC
+export default Signin

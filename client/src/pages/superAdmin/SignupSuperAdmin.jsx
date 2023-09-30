@@ -1,14 +1,14 @@
 import React from 'react';
-import Signin from '../../components/student/Signin';
+import Signup from '../../components/superAdmin/Signup';
 
-const SigninStudent = () => {
+const SignupSuperAdmin = () => {
   return (
     <>
       <div className='flex justify-center items-center w-100 h-screen bg-background'>
-        <Signin />
+        <Signup />
       </div>
     </>
-  )
+  );
 }
 
-export default SigninStudent;
+export default SignupSuperAdmin;

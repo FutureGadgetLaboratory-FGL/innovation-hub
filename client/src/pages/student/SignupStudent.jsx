@@ -1,8 +1,6 @@
 import { React, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import SignupStu from '../components/SignupStu'
-import SignupSPOC from '../components/SignupSPOC';
-import SignupUAdmin from '../components/SignupUAdmin';
+import Signup from '../../components/student/Signup';
 const SignupStudent = () => {
   let navigate = useNavigate();
   const [selectedRole, setSelectedRole] = useState("1");
@@ -11,7 +9,7 @@ const SignupStudent = () => {
   };
   return (
     <>
-      <div className='flex items-center justify-center bg-background'>
+      {/* <div className='flex items-center justify-center bg-background'>
         <div className='block w-full md:w-1/2 lg:w-1/3 p-11 border-1 border-dark bg-background-light'>
           <div className='flex justify-start'>
             <img className='w-16 h-16 hover:cursor-pointer' style={{ marginTop: "-9px" }} src='../images/965230-200.png' onClick={() => navigate("/")} alt="" />
@@ -79,7 +77,7 @@ const SignupStudent = () => {
         </div>
         {selectedRole === "1" && (
           <div className='block float-right mb-3 ml-10 bg-white p-3 rounded-lg border-1 border-black'>
-            <SignupStu />
+            <Signup />
           </div>
         )}
 
@@ -99,7 +97,7 @@ const SignupStudent = () => {
         <div className='block float-right mb-3 ml-10 bg-white p-3 rounded-lg border-1 border-black'>
           <SignupUAdmin />
         </div>
-      )}
+      )} */}
     </>
   )
 }

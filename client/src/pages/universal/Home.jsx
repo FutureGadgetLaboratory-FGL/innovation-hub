@@ -20,7 +20,7 @@ const Home = () => {
 						I'm SPOC
 					</Link>
 					<Link
-						to={"/university-admin/signin"}
+						to={"/uadmin/signin"}
 						className="p-3 border-slate-700 rounded-lg bg-blue-500 text-white hover:bg-blue-600 active:scale-95"
 					>
 						I'm University Admin

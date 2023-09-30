@@ -1,14 +1,14 @@
 import React from 'react';
-import Signin from '../../components/spoc/Signin';
+import SigninWindow from '../../components/universal/Signin';
 
-const SigninSpoc = () => {
+const Signin = ({ role }) => {
     return (
         <>
             <div className='flex justify-center items-center w-100 h-screen bg-background'>
-                <Signin />
+                <SigninWindow role={role} />
             </div>
         </>
     );
 }
 
-export default SigninSpoc;
+export default Signin;
