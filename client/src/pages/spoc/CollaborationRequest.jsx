@@ -2,10 +2,10 @@ function CollaborationRequest() {
 	const studentCollabReq = [
 		{
 			sender: {
-				name: "User 1",
+				name: "Ashwani Kumar",
 				enrollment: "001100",
 				gender: "M",
-				profilePhoto: "https://picsum.photos/64",
+				profilePhoto: "https://picsum.photos/50",
 				email: "abc@gmail.com",
 				university: "Amity University",
 				course: "CSE",
@@ -21,10 +21,10 @@ function CollaborationRequest() {
 		},
 		{
 			sender: {
-				name: "User 1",
+				name: "Prashant Pal",
 				enrollment: "001100",
 				gender: "M",
-				profilePhoto: "https://picsum.photos/64",
+				profilePhoto: "https://picsum.photos/50",
 				email: "abc@gmail.com",
 				university: "Amity University",
 				course: "CSE",
@@ -41,59 +41,55 @@ function CollaborationRequest() {
 	];
 
 	return (
-		<div className="flex ">
-			<div className="w-[83%]">
-				<div className="w-full h-fit overflow-y-auto overflow-x-hidden flex flex-wrap justify-between p-2">
-					{studentCollabReq.map((item, index) => {
-						return (
-							<div key={index} className="w-1/2 p-2 border-2 min-h-full rounded-md shadow-md cursor-pointer">
-								<div className="flex justify-between w-full p-2">
-									<img className="border border-1 rounded-full" src={item.sender.profilePhoto} alt="N/A" />
-									<h1 className="text-2xl font-semibold m-2 ">{item.sender.name}</h1>
-									<h1 className="m-2 text-xl font-semibold">{item.sender.university}</h1>
-								</div>
-
-								<div className="w-full">
-									<div className="flex flex-wrap justify-between w-full">
-										<div className="flex flex-col w-1/2 justify-start">
-											<p className="m-2 font-semibold">Request Details:</p>
-											<img
-												className="border w-1/2 mx-2 border-black"
-												src={item.project.coverPhoto}
-												alt="N/A"
-											/>
-											<div className="m-2">
-												<h2>{item.project.title}</h2>
-												<p>{item.project.description}</p>
-											</div>
-											<p className="inline-block font-semibold m-2">Student message:</p>
-											<p className="inline-block m-2 p-2 border border-black">{item.message}</p>
-										</div>
-										<div className="flex flex-col">
-											<ul className=" p-2">
-												<li className="p-2 m-1">Course: {item.sender.course}</li>
-												<li className="p-2 m-1">Enrollment Number: {item.sender.enrollment}</li>
-												<li className="p-2 m-1">Gender: {item.sender.gender}</li>
-												<li className="p-2 m-1">E-mail: {item.sender.email}</li>
-												<li className="m-1 p-2">Work E-mail: {item.sender.workEmail}</li>
-											</ul>
-										</div>
-									</div>
-
-									<div className="flex justify-center">
-										<button className="border border-black active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-accent-green hover:bg-lime-600 text-white rounded-md shadow-sm">
-											Accept
-										</button>
-										<button className="border border-black active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-accent-red hover:bg-red-600 text-white rounded-md shadow-sm">
-											Reject
-										</button>
-									</div>
-								</div>
+		<div className="w-full flex flex-wrap gap-3 p-2">
+			{studentCollabReq.map((item, index) => {
+				return (
+					<div key={index} className="w-[49%] p-3 rounded-xl shadow bg-white">
+						<p className="mb-2 text-lg font-bold">From: </p>
+						<div className="flex gap-3 pl-10 py-2 rounded-lg bg-slate-200 cursor-pointer">
+							<img
+								className="border rounded-full w-[50px] h-[50px]"
+								src={item.sender.profilePhoto}
+								alt="N/A"
+							/>
+							<div>
+								<h1 className="text-lg font-semibold ">{item.sender.name}</h1>
+								<h1 className=" text-sm font-normal">{item.sender.university}</h1>
 							</div>
-						);
-					})}
-				</div>
-			</div>
+						</div>
+						<p className="mb-2 my-2 text-lg font-bold">For Project: </p>
+						<div className="pl-3 py-3 bg-slate-100 rounded-lg">
+							<p className="font-semibold text-slate-500">Project ID:</p>
+							<p className="pl-2 mb-2">
+								<a>AMITY2378</a>
+							</p>
+							<p className="font-semibold text-slate-500">Title: </p>
+							<p className="pl-2 mb-2">Online Voting System</p>
+							<p className="font-semibold text-slate-500">Description: </p>
+							<p className="pl-2 mb-2">Asecureand efficient online voting system for democratic elections.</p>
+							<p className="font-semibold text-slate-500">Owner: </p>
+							<p className="pl-2 mb-2"><a>Ashutosh Verma</a></p>
+						</div>
+
+						<p className="mb-2 my-2 text-lg font-bold">Message:</p>
+						<p className="py-2 pl-3  mb-2 bg-slate-100 rounded-lg">
+							I have recently learned Blockchain technology, I want some hands-on experience by working on
+							some project. Therefore I want to collaborate
+						</p>
+
+						<div className="w-full">
+							<div className="flex justify-start">
+								<button className="  active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-green-500 hover:bg-green-600 text-white rounded-md shadow-sm">
+									Accept
+								</button>
+								<button className=" active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-slate-400 hover:bg-red-500 text-white rounded-md shadow-sm">
+									Reject
+								</button>
+							</div>
+						</div>
+					</div>
+				);
+			})}
 		</div>
 	);
 }
