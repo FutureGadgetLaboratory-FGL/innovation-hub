@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Signup from '../../components/student/Signup';
-const SignupStudent = () => {
+const SignupStudent = ({ role }) => {
   let navigate = useNavigate();
   const [selectedRole, setSelectedRole] = useState("1");
   const handleRoleChange = (e) => {

@@ -76,6 +76,30 @@ export const getById = async (req, res) => {
     }
 }
 
+export const getUniversitiesByFilter = async (req, res) => {
+    try {
+        const filter = req.body;
+        if (!filter) return res.status(400).json({
+            success: false,
+            message: "Bad Request. Filter not found."
+        });
+
+        const universities = await University.find({ ...filter });
+        return res.status(200).json({
+            success: true,
+            data: universities,
+            message: "Universities' details fetched successfully."
+        })
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong while fetching university details. Check err for more details.",
+            err
+        })
+    }
+}
+
 export const update = async (req, res) => {
     try {
         const id = req.params.id;

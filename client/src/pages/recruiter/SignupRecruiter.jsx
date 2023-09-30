@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SignupRecruiter = () => {
+const SignupRecruiter = ({ role }) => {
   return (
     <div>SignupRecruiter</div>
   )

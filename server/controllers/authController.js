@@ -129,7 +129,7 @@ export const signup = async (req, res) => {
                     })
                 }
                 break;
-            case "Spoc":
+            case "SPOC":
                 try {
                     user = await Spoc.create({ ...rest, password: hashedPassword, status: "pending", verifiedBy: null });
                 } catch (err) {

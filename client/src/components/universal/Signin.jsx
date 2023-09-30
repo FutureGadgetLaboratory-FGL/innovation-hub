@@ -1,8 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom'
+import { signin } from '../../redux/actions/authActions';
 
 const Signin = ({ role }) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const [signinData, setSigninData] = useState({
+        email: "",
+        password: "",
+    });
+
+    const handleSigninData = (e) => {
+        setSigninData({ ...signinData, [e.target.name]: e.target.value })
+    }
+
+    const handleSignin = (e) => {
+        e.preventDefault();
+        console.log(signinData);
+        dispatch(signin(signinData))
+            .then(() => window.location.reload())
+            .catch((error) => alert(error.message));
+    }
+
     return (
         <>
             <div className='flex flex-col justify-center mx-4 my-6 p-4 bg-white w-full sm:max-w-md shadow-md rounded-md '>
@@ -17,9 +38,9 @@ const Signin = ({ role }) => {
                 <p className='mt-2 text-start text-accent-gray'>Please sign-in to your account and start the adventure</p>
 
                 {/* Form */}
-                <form className='mt-3 w-full flex flex-col items-center justify-center'>
-                    <input className='my-3 border-1 border-accent-gray rounded-md h-12 p-4 w-full' placeholder='E-mail' type='email' />
-                    <input className='my-3 border-1 border-accent-gray rounded-md h-12 p-4 w-full' placeholder='Password' type='password' />
+                <form className='mt-3 w-full flex flex-col items-center justify-center' onSubmit={handleSignin}>
+                    <input className='my-3 border-1 border-accent-gray rounded-md h-12 p-4 w-full' placeholder='E-mail' name='email' value={signinData.email} type='email' onChange={handleSigninData} required />
+                    <input className='my-3 border-1 border-accent-gray rounded-md h-12 p-4 w-full' placeholder='Password' name='password' value={signinData.password} type='password' onChange={handleSigninData} required />
 
                     <div className='flex justify-between w-full'>
                         <div>
@@ -30,7 +51,7 @@ const Signin = ({ role }) => {
                     </div>
 
                     <div className='mt-2 w-full flex items-center justify-center text-black'>
-                        <button type='submit' className='my-3 text-center text-background bg-accent-indigo hover:bg-accent-indigo1 w-full lg:w-80 p-2 rounded-md' >SIGN IN</button>
+                        <button type='submit' className='my-3 text-center text-background bg-accent-indigo hover:bg-accent-indigo1 w-full p-2 rounded-md' >SIGN IN</button>
                     </div>
                 </form>
 
