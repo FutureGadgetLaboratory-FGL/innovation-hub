@@ -11,7 +11,7 @@ function UploadRequest() {
 
     const studentUploadReq = 
     {
-        status: "approved",
+        status: "verified",
         sender: {
             name: "User 1",
             enrollment: "001100",
@@ -78,7 +78,11 @@ function UploadRequest() {
                             <div className="flex gap-2">
 
                                <div className="w-2/3">
-                                <h3 className="m-2 font-semibold">Request Details:</h3>
+                                {
+                                    user.user.role==="SPOC" && studentUploadReq.status==="pending"?
+                                    (<h3 className="m-2 font-semibold">Request Details:</h3>):
+                                    (<h3 className="m-2 font-semibold">Project Details:</h3>)
+                                }
                                 <img
                                     className="border w-full mx-2 border-black"
                                     src={studentUploadReq.project.coverPhoto}
@@ -120,7 +124,10 @@ function UploadRequest() {
                                             <p className="text-xl p-2">{studentUploadReq.project.collabGuidelines}</p>
 
                                             <div>
-                                                <h3 className="font-semibold text-2xl">Attachments:</h3>
+                                                <div className="flex gap-1 items-center">
+                                                    <FontAwesomeIcon icon="fa-solid fa-paperclip"/>
+                                                    <h3 className="font-semibold text-2xl">Attachments:</h3>
+                                                </div>
                                                
                                                 <div className="flex flex-wrap gap-1 items-center justify-center">
 
