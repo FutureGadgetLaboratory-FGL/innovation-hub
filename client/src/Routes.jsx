@@ -13,12 +13,11 @@ import MainStudentPage from "./pages/student/MainStudentPage";
 import DashboardSpoc from "./pages/spoc/DashboardSpoc";
 import VerifyStudent from "./pages/spoc/VerifyStudent";
 import MainSpocPage from "./pages/universal/RootPage";
-import ProfileSpoc from "./pages/spoc/ProfileSpoc";
-import AssignAdmin from "./pages/spoc/AssignAdmin";
 import Error from "./pages/universal/Error";
 import Home from "./pages/universal/Home";
 import UniveAndSpocRequests from "./pages/super-admin/UnivAndSpocRequests";
 import Profile from "./pages/universal/Profile";
+import UploadRequest from "./components/spoc/UploadRequest";
 
 const router = createBrowserRouter([
 	{ path: "/", element: <Home />, errorElement: <Error />, },
@@ -32,6 +31,7 @@ const router = createBrowserRouter([
 		children: [
 			{ path: "dashboard", element: <DashboardSpoc /> },
 			{ path: "upload-requests", element: <VerifyProjectUploads /> },
+			{ path: "request", element: <UploadRequest /> },
 			{ path: "collaboration-request", element: <CollaborationRequest /> },
 			{ path: "verify-student", element: <VerifyStudent /> },
 			{ path: "assign-admin", element: <AssignAdmin /> },
