@@ -25,7 +25,7 @@ const studentSchema = mongoose.Schema({
     },
     verifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Spoc',
+        ref: 'SPOC',
         required: function () {
             return this.status === 'verified';
         },
@@ -78,7 +78,7 @@ const universityAdminSchema = mongoose.Schema({
     },
     verifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Spoc',
+        ref: 'SPOC',
         required: function () {
             return this.status === 'verified';
         },
@@ -93,7 +93,7 @@ const recruiterSchema = mongoose.Schema({
 })
 
 export const SuperAdmin = userSchema.discriminator('SuperAdmin', superAdminSchema);
-export const Spoc = userSchema.discriminator('Spoc', spocSchema);
+export const SPOC = userSchema.discriminator('SPOC', spocSchema);
 export const UniversityAdmin = userSchema.discriminator('UniversityAdmin', universityAdminSchema);
 export const Student = userSchema.discriminator('Student', studentSchema);
 export const Recruiter = userSchema.discriminator('Recruiter', recruiterSchema);
