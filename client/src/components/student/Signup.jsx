@@ -1,45 +1,34 @@
-import React from 'react'
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import SignupForm from './SignupForm';
 
-const SignupStu = () => {
+const Signup = ({ role }) => {
+  const navigate = useNavigate();
   return (
     <>
-      <div className="mb-3">
-        <label for="text" className="form-label">University</label>
-        <input className="form-control" type="text" id="text" />
-      </div>
-      <div className="mb-3">
-        <label for="text" className="form-label">Enrollment Number</label>
-        <input className="form-control" type="text" id="text" />
-      </div>
-      <div className="mb-3">
-        <label for="text" className="form-label">Choose Course</label>
-        <select className="form-select" aria-label="Default select example">
-          <option selected>Course</option>
-          <option value="1">Computer Science</option>
-          <option value="2">Electrical Engineering</option>
-          <option value="3">Mechanical Engineering</option>
-          <option value="4">Other</option>
-        </select>
-      </div>
+      <div className='flex flex-col justify-start mx-4 my-6 p-4 max-h-[70%] bg-white w-full sm:max-w-2xl shadow-md rounded-md overflow-auto'>
 
-      <div className="mb-3">
-        <label for="email" className="form-label">Work Email</label>
-        <input className="form-control" type="email" id="email" required />
-      </div>
-      <div className="mb-3">
-        <label for="duration" className="form-label">Duration</label>
-        <input className="mb-3 form-control form-control-sm" placeholder="Start Year" id="duration" type="number" />
-        <input className="form-control form-control-sm" placeholder="End Year" id="duration" type="number" />
-      </div>
-      <div className="mb-3">
-        <label for="formFileMultiple" className="form-label">ID Card</label>
-        <input className="form-control" type="file" id="formFileMultiple" multiple />
-      </div>
+        {/* Organization Name */}
+        <div className='flex items-center gap-2 justify-start w-full sm:items-start text-accent-indigo'>
+          <img className='w-16 h-16 hover:cursor-pointer' src='../images/965230-200.png' onClick={() => navigate("/")} alt="" />
+          <h3 className='mt-3 text-3xl font-medium'>Student Innovation Hub</h3>
+        </div>
 
+        <h4 className='mt-6 text-2xl font-normal'>Welcome to SIH!</h4>
+        <p className='mt-2 text-start text-accent-gray'>Please register your account and start the adventure</p>
+
+        {/* Form */}
+        <SignupForm />
+
+        <p className='mt-3 text-accent-gray'>or</p>
+
+        <div className='flex items-start justify-between w-full my-4'>
+          <p>Already have an account?</p>
+          <Link className='text-accent-indigo' to={`/${role}/signin`}>Signin</Link>
+        </div>
+      </div>
     </>
-
-
   )
 }
 
-export default SignupStu
+export default Signup

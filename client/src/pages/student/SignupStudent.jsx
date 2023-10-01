@@ -1,14 +1,19 @@
-import { React, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { React, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Signup from '../../components/student/Signup';
+import { useSelector } from 'react-redux';
 const SignupStudent = ({ role }) => {
-  let navigate = useNavigate();
-  const [selectedRole, setSelectedRole] = useState("1");
-  const handleRoleChange = (e) => {
-    setSelectedRole(e.target.value);
-  };
+  const navigate = useNavigate();
+  const user = useSelector(state => state.user.user);
+  useEffect(() => {
+    if (user?._id) navigate('/student/dashboard');
+  }, [navigate, role, user])
   return (
     <>
+      <div className='flex items-center justify-center h-screen py-6 overflow-auto w-100 bg-background'>
+        <Signup role={role} />
+      </div>
+
       {/* <div className='flex items-center justify-center bg-background'>
         <div className='block w-full md:w-1/2 lg:w-1/3 p-11 border-1 border-dark bg-background-light'>
           <div className='flex justify-start'>

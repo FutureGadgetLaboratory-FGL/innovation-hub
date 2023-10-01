@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Navigate } from "react-router-dom";
 
 import Signin from "./pages/universal/Signin";
 import SignupStudent from "./pages/student/SignupStudent";
@@ -18,14 +17,12 @@ import ProfileSpoc from "./pages/spoc/ProfileSpoc";
 import Error from "./pages/universal/Error";
 import Home from "./pages/universal/Home";
 
-
-const user = JSON.parse(localStorage.getItem("user"));
 const router = createBrowserRouter([
 	{ path: "/", element: <Home />, errorElement: <Error />, },
 
 	// -------------Routes for SPOC-----------------
-	{ path: "/spoc/signin", element: user ? <Navigate to="/spoc/dashboard" /> : <Signin role="spoc" /> },
-	{ path: "/spoc/signup", element: user ? <Navigate to="/spoc/dashboard" /> : <SignupSPOC role="spoc" /> },
+	{ path: "/spoc/signin", element: <Signin role="spoc" /> },
+	{ path: "/spoc/signup", element: <SignupSPOC role="spoc" /> },
 	{
 		path: "/spoc/",
 		element: <MainSpocPage />,

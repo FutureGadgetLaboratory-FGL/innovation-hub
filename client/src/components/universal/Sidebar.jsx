@@ -2,7 +2,11 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 
-const Sidebar = ({user}) => {
+const Sidebar = ({ user }) => {
+	const handleLogout = (e) => {
+		localStorage.removeItem("user");
+		localStorage.removeItem("token");
+	}
 	return (
 		<aside className="w-[17%] h-screen bg-[#f4f5fa] border-r pr-1 sticky top-0">
 			<div className="text-[#7445cb] text-[1.2rem] h-[60px] font-semibold  flex flex-col justify-center items-start border-b mb-3 p-[20px]">
@@ -104,6 +108,7 @@ const Sidebar = ({user}) => {
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
+						onClick={handleLogout}
 					>
 						<li>
 							<FontAwesomeIcon icon="sign-out-alt" className="pr-3" />
@@ -206,6 +211,7 @@ const Sidebar = ({user}) => {
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
+						onClick={handleLogout}
 					>
 						<li>
 							<FontAwesomeIcon icon="sign-out-alt" className="pr-3" />
