@@ -14,8 +14,11 @@ import DashboardSpoc from "./pages/spoc/DashboardSpoc";
 import VerifyStudent from "./pages/spoc/VerifyStudent";
 import MainSpocPage from "./pages/universal/RootPage";
 import ProfileSpoc from "./pages/spoc/ProfileSpoc";
+import AssignAdmin from "./pages/spoc/AssignAdmin";
 import Error from "./pages/universal/Error";
 import Home from "./pages/universal/Home";
+import UniveAndSpocRequests from "./pages/super-admin/UnivAndSpocRequests";
+import Profile from "./pages/universal/Profile";
 
 const router = createBrowserRouter([
 	{ path: "/", element: <Home />, errorElement: <Error />, },
@@ -32,7 +35,7 @@ const router = createBrowserRouter([
 			{ path: "collaboration-request", element: <CollaborationRequest /> },
 			{ path: "verify-student", element: <VerifyStudent /> },
 			{ path: "assign-admin", element: <AssignAdmin /> },
-			{ path: "profile", element: <ProfileSpoc /> },
+			{ path: "profile", element: <Profile /> },
 			{ path: "settings", element: <></> },
 		],
 	},
@@ -53,6 +56,12 @@ const router = createBrowserRouter([
 	// -------------Routes for Super Admin-----------
 	{ path: "/superadmin/signin", element: <Signin role="recruiter" /> },
 	{ path: "/superadmin/signup", element: <SignupSuperAdmin role="recruiter" /> },
+
+	{ path: "/verify-spoc-and-univ", element: <UniveAndSpocRequests /> }
+// 	{path: "/super-admin/page", element:</>,
+// 	children: [
+// 		{path: "/verify-spoc-and-univ", element:<UniveAndSpocRequests/>},
+// 	],
 ]);
 
 export default router;

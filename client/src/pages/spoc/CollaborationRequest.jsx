@@ -58,8 +58,30 @@ function CollaborationRequest() {
 							</div>
 						</div>
 						<p className="mb-2 my-2 text-lg font-bold">For Project: </p>
-						<div className="pl-3 py-3 bg-slate-100 rounded-lg">
-							<p className="font-semibold text-slate-500">Project ID:</p>
+						<div className="p-3 bg-slate-50 rounded-lg">
+							<table className="w-full">
+								<tbody>
+									<tr>
+										<td className="p-1 align-top w-1/3 font-semibold text-slate-500">Project ID: </td>
+										<td className="p-1 align-top">AMITY2378</td>
+									</tr>
+									<tr class="active-row">
+										<td className="p-1 align-top w-1/3 font-semibold text-slate-500">Title: </td>
+										<td className="p-1 align-top">Online Voting System</td>
+									</tr>
+									<tr class="active-row">
+										<td className="p-1 align-top w-1/3 font-semibold text-slate-500">Description: </td>
+										<td className="p-1 align-top">
+											Asecureand efficient online voting system for democratic elections.
+										</td>
+									</tr>
+									<tr class="active-row">
+										<td className="p-1 align-top w-1/3 font-semibold text-slate-500">Owner: </td>
+										<td className="p-1 align-top">Ashutosh Verma</td>
+									</tr>
+								</tbody>
+							</table>
+							{/* <p className="font-semibold text-slate-500">Project ID:</p>
 							<p className="pl-2 mb-2">
 								<a>AMITY2378</a>
 							</p>
@@ -68,11 +90,13 @@ function CollaborationRequest() {
 							<p className="font-semibold text-slate-500">Description: </p>
 							<p className="pl-2 mb-2">Asecureand efficient online voting system for democratic elections.</p>
 							<p className="font-semibold text-slate-500">Owner: </p>
-							<p className="pl-2 mb-2"><a>Ashutosh Verma</a></p>
+							<p className="pl-2 mb-2">
+								<a>Ashutosh Verma</a>
+							</p> */}
 						</div>
 
 						<p className="mb-2 my-2 text-lg font-bold">Message:</p>
-						<p className="py-2 pl-3  mb-2 bg-slate-100 rounded-lg">
+						<p className="p-3  mb-2 bg-slate-50 rounded-lg">
 							I have recently learned Blockchain technology, I want some hands-on experience by working on
 							some project. Therefore I want to collaborate
 						</p>
