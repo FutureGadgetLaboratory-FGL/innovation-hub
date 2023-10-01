@@ -1,7 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+
+
+// font-family: 'Merriweather', serif;
 module.exports = {
 	content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
 	theme: {
+		fontFamily: {
+			nav: ["Signika Negative", 'sans - serif'],
+		},
 		extend: {
 			colors: {
 				background: {

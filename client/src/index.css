@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&family=Signika+Negative:wght@500&display=swap');
 
 @layer utilities {
     @variants responsive {

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllProjects } from "../redux/actions/projectActions";
+// import { useDispatch, useSelector } from "react-redux";
+// import { getAllProjects } from "../redux/actions/projectActions";
 function ProjectFeed() {
 	const user = {
 		user: {
