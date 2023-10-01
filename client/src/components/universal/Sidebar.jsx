@@ -104,7 +104,7 @@ const Sidebar = ({ user }) => {
 						<div className="flex flex-col justify-center items-center">
 							<p className="text-white mb-2 mt-1">Ashutosh Verma</p>
 							<p className="text-white cursor-pointer">
-								<NavLink to={"/"} className="hover:text-slate-300">
+								<NavLink to={"/spoc/page/profile"} className="hover:text-slate-300">
 									Profile
 								</NavLink>
 							</p>
@@ -183,7 +183,7 @@ const Sidebar = ({ user }) => {
 						</li>
 					</NavLink>
 					<NavLink
-						to={"/studetn/page/settings"}
+						to={"/studetnt/page/settings"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
