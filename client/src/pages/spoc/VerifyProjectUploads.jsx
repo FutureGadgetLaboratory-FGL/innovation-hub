@@ -195,6 +195,8 @@ const VerifyProjectUploads = () => {
 
 
 
+
+
     return (
         <div className='w-full'>
            <table className='border w-full'>
@@ -210,13 +212,13 @@ const VerifyProjectUploads = () => {
             <tbody>
                 {studentUploadReq.map((item,index)=>{
                     return(
-                        <tr key={index} className={index%2===0?('cursor-pointer'):('cursor-pointer bg-orange-100')}>
-                            <td className='border text-center w-[5%]'>{index+1}</td>
-                            <td className='border text-center w-[30%]'>{item.sender.name}</td>
-                            <td className='border text-center w-[20%]'>{item.sender.enrollment}</td>
-                            <td className='border-r-0 border-l border-b border-t text-center w-[40%]'>{item.project.title}</td>
+                            <tr key={index} className={index%2===0?('cursor-pointer'):('cursor-pointer bg-orange-100')}>
+                                <td className='border text-center w-[5%]'>{index+1}</td>
+                                <td className='border text-center w-[30%]'>{item.sender.name}</td>
+                                <td className='border text-center w-[20%]'>{item.sender.enrollment}</td>
+                                <td className='border-r-0 border-l border-b border-t text-center w-[40%]'>{item.project.title}</td>
                             <td className='border-b text-center w-[5%]'><FontAwesomeIcon icon="fa-solid fa-chevron-right" className='hover:translate-x-2 w-full'/></td>
-                        </tr>
+                            </tr>
                     )
                 })}
             </tbody>
