@@ -136,7 +136,7 @@ const Sidebar = ({ user }) => {
 					</NavLink>
 
 					<NavLink
-						to={"/studetn/upload-project"}
+						to={"/student/upload-project"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -145,7 +145,7 @@ const Sidebar = ({ user }) => {
 						<li>Upload Project</li>
 					</NavLink>
 					<NavLink
-						to={"/studetn/browse-projects"}
+						to={"/student/browse-projects"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -154,7 +154,7 @@ const Sidebar = ({ user }) => {
 						<li>Browse Projects</li>
 					</NavLink>
 					<NavLink
-						to={"/studetn/collaborations"}
+						to={"/student/collaborations"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -163,7 +163,7 @@ const Sidebar = ({ user }) => {
 						<li>Collaboration</li>
 					</NavLink>
 					<NavLink
-						to={"/studetn/contests"}
+						to={"/student/contests"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -172,22 +172,10 @@ const Sidebar = ({ user }) => {
 						<li>Contests</li>
 					</NavLink>
 
-					<hr className="w-[100%] mt-5 mb-3"></hr>
+					
 
 					<NavLink
-						to={"/studetn/profile"}
-						className={
-							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
-						}
-						end
-					>
-						<li>
-							<FontAwesomeIcon icon="fa-solid fa-user" className="pr-3" />
-							Profile
-						</li>
-					</NavLink>
-					<NavLink
-						to={"/studetnt/settings"}
+						to={"/student/settings"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -210,18 +198,24 @@ const Sidebar = ({ user }) => {
 							Contact Us
 						</li>
 					</NavLink>
-					<NavLink
-						to={"/"}
-						className={
-							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
-						}
-						onClick={handleLogout}
-					>
-						<li>
-							<FontAwesomeIcon icon="sign-out-alt" className="pr-3" />
-							Log Out
-						</li>
-					</NavLink>
+					<hr className="w-[100%] mt-3 mb-5"></hr>
+
+					<div className="flex flex-col p-3  justify-center items-center mx-7 rounded-xl bg-violet-600">
+						<img className="w-2/3" src="/images/profile.png" alt="" />
+						<div className="flex flex-col justify-center items-center">
+							<p className="text-white mb-2 mt-1">Ashutosh Verma</p>
+							<p className="text-white cursor-pointer">
+								<NavLink to={"/spoc/profile"} className="hover:text-slate-300">
+									Profile
+								</NavLink>
+							</p>
+							<p className="text-white cursor-pointer">
+								<NavLink to={"/"} className="hover:text-slate-300" onClick={handleLogout}>
+									Logout
+								</NavLink>
+							</p>
+						</div>
+					</div>
 				</ul>
 			)}
 		</aside>

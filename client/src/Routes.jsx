@@ -20,6 +20,11 @@ import Profile from "./pages/universal/Profile";
 import UploadRequest from "./components/spoc/UploadRequest";
 import SigninSpoc from "./pages/spoc/SigninSpoc";
 import DashboardStudent from "./pages/student/DashboardStudent";
+import Uploads from "./pages/student/Uploads";
+import ProjectFeed from "./components/universal/ProjectFeed";
+import UploadProject from "./components/student/UploadProject";
+import CollabHome from "./pages/student/CollabHome";
+import CompetitionsHome from "./pages/student/CompetitionsHome";
 
 const router = createBrowserRouter([
 	{ path: "/", element: <Home />, errorElement: <Error />, },
@@ -49,7 +54,11 @@ const router = createBrowserRouter([
 		path: "/student/", 
 		element: <MainStudentPage />, 
 		children: [
-		{ path: "dashboard", element: <DashboardStudent></DashboardStudent> },
+		{ path: "dashboard", element: <DashboardStudent/> },
+		{ path: "upload-project", element: <UploadProject/> },
+		{ path: "browse-projects", element: <ProjectFeed/>},
+		{ path: "collaborations", element: <CollabHome/>},
+		{ path: "contests", element: <CompetitionsHome/>}
 		], 
 	},
 

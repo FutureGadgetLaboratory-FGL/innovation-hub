@@ -1,5 +1,4 @@
-import Nav from "../components/nav/Nav";
-import Sidebar from "../components/sidebar/Sidebar";
+
 
 function Uploads() {
 	const projectFeed = [
@@ -74,10 +73,7 @@ function Uploads() {
 	];
 
 	return (
-		<div className="flex ">
-			<Sidebar />
-			<div className="w-[83%]">
-				<Nav />
+		
 				<div className="w-full h-full overflow-y-auto">
 					<h1 className="font-semibold text-3xl w-full text-center m-2 mb-4">My Uploads</h1>
 					<div className="flex flex-wrap">
@@ -101,8 +97,7 @@ function Uploads() {
 						})}
 					</div>
 				</div>
-			</div>
-		</div>
+			
 	);
 }
 
