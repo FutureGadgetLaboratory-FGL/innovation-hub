@@ -17,8 +17,8 @@ const Nav = () => {
 
 	return (
 		// <nav className="w-[100%] h-[60px] bg-background flex justify-between pl-9 rounded-lg pr-10  items-center">
-		<nav className="w-[100%] h-[70px] bg-background border-b shadow-[0_2px_30px_-18px_rgba(0,0,0,0.3)] fixed top-0 z-50">
-			<p className="text-center text-3xl pt-3 font-bold text-violet-700 font-nav drop-shadow-lg">STUDENT INNOVATION HUB</p>
+		<nav className="w-[100%] h-[70px] bg-violet-600 border-b shadow-[0_2px_30px_-18px_rgba(0,0,0,0.3)] fixed top-0 z-50">
+			<p className="text-center text-3xl pt-3 font-bold text-white font-nav drop-shadow-lg">STUDENT INNOVATION HUB</p>
 			{/* <div className="search-bar border ">
 				<div className="w-[300px] mx-auto ">
 					<div className="relative w-[300px] h-[35px]">

@@ -220,28 +220,33 @@ const VerifyProjectUploads = () => {
 
 	return (
 		<div className="w-full">
-			<p className="mb-3 text-2xl font-semibold text-slate-700">Upload Requests</p>
+			<p className="text-2xl font-semibold pl-5 mb-4 text-slate-600">Verify Student's Projects for Upload</p>
 			<div className="p-2 px-4">
-				<table className="overflow-hidden border shadow-md  w-full rounded-xl ">
-					<thead className="bg-slate-300">
+				<table className=" w-full  ">
+					<thead className="bg-violet-500">
 						<tr>
-							<th className="p-2 text-left text-lg font-semibold border w-[5%]">S.No.</th>
-							<th className="p-2 text-left text-lg font-semibold border w-[30%]">Student Name</th>
-							<th className="p-2 text-left text-lg font-semibold border  w-[20%]">Enrollment No.</th>
-							<th className="p-2 text-left text-lg font-semibold border w-[40%]">Project Title</th>
-							<th className="p-2 text-left text-lg font-semibold border w-[5%]"></th>
+							<th className="p-2 text-left text-lg font-semibold text-white border w-[5%]">S.No.</th>
+							<th className="p-2 text-left text-lg font-semibold text-white border w-[30%]">Student Name</th>
+							<th className="p-2 text-left text-lg font-semibold text-white border  w-[20%]">
+								Enrollment No.
+							</th>
+							<th className="p-2 text-left text-lg font-semibold text-white border w-[40%]">Project Title</th>
+							<th className="p-2 text-left text-lg font-semibold text-white border w-[5%]">View</th>
 						</tr>
 					</thead>
 					<tbody>
 						{studentUploadReq.map((item, index) => {
 							return (
-								<tr key={index} className={index % 2 === 0 ? "cursor-pointer" : "cursor-pointer bg-purple-100"}>
-									<td className="border text-left p-2 w-[5%]">{index + 1}</td>
-									<td className="border text-left p-2 w-[30%]">{item.sender.name}</td>
-									<td className="border text-left p-2 w-[20%]">{item.sender.enrollment}</td>
-									<td className="border text-left p-2 w-[40%]">
-										{item.project.title}
-									</td>
+								<tr
+									key={index}
+									className={
+										index % 2 === 0 ? "cursor-pointer border-b-2" : "cursor-pointer bg-violet-100 border-b-2"
+									}
+								>
+									<td className=" text-center p-2 w-[5%]">{index + 1}</td>
+									<td className=" text-left p-2 w-[30%]">{item.sender.name}</td>
+									<td className=" text-left p-2 w-[20%]">{item.sender.enrollment}</td>
+									<td className=" text-left p-2 w-[40%]">{item.project.title}</td>
 									<td className="border-b text-center w-[5%]">
 										<FontAwesomeIcon
 											icon="fa-solid fa-chevron-right"
