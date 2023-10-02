@@ -15,12 +15,13 @@ api.interceptors.request.use(
 );
 
 // user actions
-export const signin = (user) => api.post('/user/signin', user);
-export const signup = (user) => api.post('/user/signup', user);
+export const signin = (user) => api.post('/auth/signin', user);
+export const signup = (user) => api.post('/auth/signup', user);
 
 // university actions
 export const getAllUniversities = () => api.get('/university');
 export const getUniversityById = (id) => api.get(`/university/get/${id}`);
+export const getUniversitiesByFilter = (filter) => api.post(`/university/filter`, filter);
 export const registerUniversity = (university) => api.post('/university/register', university);
 export const updateUniversity = (id, university) => api.put(`/university/update/${id}`, university);
 export const updateUniversityStatus = (id, university) => api.put(`/university/update/status/${id}`, university);
@@ -30,6 +31,7 @@ export const deleteUniversity = (id) => api.delete(`/university/delete/${id}`);
 export const getAllStudents = () => api.get('/student');
 export const getStudentById = (id) => api.get(`/student/get/${id}`);
 export const getStudentsByUniversityId = (id) => api.get(`/student/university/${id}`);
+export const getStudentsByFilter = (filter) => api.post('/student/filter', filter);
 export const registerStudent = (student) => api.post('/student/register', student);
 export const updateStudent = (id, student) => api.put(`/student/update/${id}`, student);
 export const updateStudentStatus = (id, student) => api.put(`/student/update/status/${id}`, student);
@@ -72,4 +74,11 @@ export const commentProject = (id, comment) => api.put(`/project/comment/${id}`,
 export const shareProject = (id, share) => api.put(`/project/share/${id}`, share);
 
 // cloudinary actions
-export const uploadFile = (file) => api.post('/upload/cloud', file);
+export const uploadImage = async (image) => {
+    const formData = new FormData();
+    formData.append('file', image);
+    formData.append('upload_preset', 'student-innovation-hub');
+    formData.append('cloud_name', 'dlv1wdngt');
+    const { data } = await axios.post('https://api.cloudinary.com/v1_1/dlv1wdngt/image/upload', formData);
+    return data;
+}

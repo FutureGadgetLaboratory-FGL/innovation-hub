@@ -4,8 +4,10 @@ import * as api from '../api/index.js';
 
 export const signin = createAsyncThunk('signin', async (user, { rejectWithValue }) => {
     try {
-        const response = await api.signin(user);
-        return response;
+        console.log("Making signin request with data: ", user);
+        const { data } = await api.signin(user);
+        console.log("Got response: ", data);
+        return data;
     } catch (error) {
         return rejectWithValue(error.response.data);
     }
@@ -13,8 +15,8 @@ export const signin = createAsyncThunk('signin', async (user, { rejectWithValue 
 
 export const signup = createAsyncThunk('signup', async (user, { rejectWithValue }) => {
     try {
-        const response = await api.signup(user);
-        return response;
+        const { data } = await api.signup(user);
+        return data;
     } catch (error) {
         return rejectWithValue(error.response.data);
     }

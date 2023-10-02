@@ -1,69 +1,80 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getStudentsByFilter } from "../../redux/actions/studentActions";
 
 const VerifyStudent=()=> {
-	const studentReq = [
-		{
-			name: "Naman",
-			email: "xyz",
-			gender: "M",
-			profilePhoto: "xyz",
-			university: "Amity",
-			course: "CSE",
-			workEmail: "abc@gmail.com",
-			startYear: "2020",
-			endYear: "2024",
-			idCardFront: "https://picsum.photos/100/200",
-			idCardBack: "https://picsum.photos/100/200",
-			enrollment: "001100",
-		},
-		{
-			name: "Rahul",
-			email: "xyz",
-			gender: "M",
-			profilePhoto: "xyz",
-			university: "Amity",
-			course: "CSE",
-			workEmail: "abc@gmail.com",
-			startYear: "2020",
-			endYear: "2024",
-			idCardFront: "https://picsum.photos/100/200",
-			idCardBack: "https://picsum.photos/100/200",
-			enrollment: "001100",
-		},
-		{
-			name: "Ashish",
-			email: "xyz",
-			gender: "M",
-			profilePhoto: "xyz",
-			university: "Amity",
-			course: "CSE",
-			workEmail: "abc@gmail.com",
-			startYear: "2020",
-			endYear: "2024",
-			idCardFront: "https://picsum.photos/100/200",
-			idCardBack: "https://picsum.photos/100/200",
-			enrollment: "001100",
-		},
-		{
-			name: "Ashutosh",
-			email: "xyz",
-			gender: "M",
-			profilePhoto: "xyz",
-			university: "Amity",
-			course: "CSE",
-			workEmail: "abc@gmail.com",
-			startYear: "2020",
-			endYear: "2024",
-			idCardFront: "https://picsum.photos/100/200",
-			idCardBack: "https://picsum.photos/100/200",
-			enrollment: "001100",
-		},
-	];
+	// const studentReq = [
+	// 	{
+	// 		name: "Naman",
+	// 		email: "xyz",
+	// 		gender: "M",
+	// 		profilePhoto: "xyz",
+	// 		university: "Amity",
+	// 		course: "CSE",
+	// 		workEmail: "abc@gmail.com",
+	// 		startYear: "2020",
+	// 		endYear: "2024",
+	// 		idCardFront: "https://picsum.photos/100/200",
+	// 		idCardBack: "https://picsum.photos/100/200",
+	// 		enrollment: "001100",
+	// 	},
+	// 	{
+	// 		name: "Rahul",
+	// 		email: "xyz",
+	// 		gender: "M",
+	// 		profilePhoto: "xyz",
+	// 		university: "Amity",
+	// 		course: "CSE",
+	// 		workEmail: "abc@gmail.com",
+	// 		startYear: "2020",
+	// 		endYear: "2024",
+	// 		idCardFront: "https://picsum.photos/100/200",
+	// 		idCardBack: "https://picsum.photos/100/200",
+	// 		enrollment: "001100",
+	// 	},
+	// 	{
+	// 		name: "Ashish",
+	// 		email: "xyz",
+	// 		gender: "M",
+	// 		profilePhoto: "xyz",
+	// 		university: "Amity",
+	// 		course: "CSE",
+	// 		workEmail: "abc@gmail.com",
+	// 		startYear: "2020",
+	// 		endYear: "2024",
+	// 		idCardFront: "https://picsum.photos/100/200",
+	// 		idCardBack: "https://picsum.photos/100/200",
+	// 		enrollment: "001100",
+	// 	},
+	// 	{
+	// 		name: "Ashutosh",
+	// 		email: "xyz",
+	// 		gender: "M",
+	// 		profilePhoto: "xyz",
+	// 		university: "Amity",
+	// 		course: "CSE",
+	// 		workEmail: "abc@gmail.com",
+	// 		startYear: "2020",
+	// 		endYear: "2024",
+	// 		idCardFront: "https://picsum.photos/100/200",
+	// 		idCardBack: "https://picsum.photos/100/200",
+	// 		enrollment: "001100",
+	// 	},
+	// ];
+
+	const user = useSelector(state => state.user.user);
+	const students = useSelector(state => state.student.students);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getStudentsByFilter({ university: user?.university, status: "pending" }))
+	}, [dispatch])
 
 	return (
 		<div className="flex ">
 			<div className="w-[83%]">
 				<div className="w-full h-fit overflow-y-auto overflow-x-hidden flex flex-wrap justify-between p-2">
-					{studentReq.map((item, index) => {
+					{students.map((item, index) => {
 						return (
 							<div
 								key={index}

@@ -1,9 +1,10 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
-import { SuperAdmin, Spoc, UniversityAdmin, Student, Recruiter } from '../models/Roles.js';
+import { SuperAdmin, SPOC, UniversityAdmin, Student, Recruiter } from '../models/Roles.js';
 
 export const signin = async (req, res) => {
+    console.log("Signin request recieved")
     const { email, password } = req.body;
     if (!email || !password) {
         return res.status(400).json({
@@ -17,6 +18,7 @@ export const signin = async (req, res) => {
             success: false,
             message: "No user exists with that email ID"
         });
+        console.log(existingUser);
 
         const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
         if (!isPasswordCorrect) return res.status(403).json({
@@ -24,35 +26,11 @@ export const signin = async (req, res) => {
             message: "Invalid credentials"
         });
 
-        let user = null;
-        switch (existingUser.role) {
-            case "SuperAdmin":
-                user = await SuperAdmin.findOne({ email });
-                break;
-            case "Spoc":
-                user = await Spoc.findOne({ email });
-                break;
-            case "UniversityAdmin":
-                user = await UniversityAdmin.findOne({ email });
-                break;
-            case "Student":
-                user = await Student.findOne({ email });
-                break;
-            case "Recruiter":
-                user = await Recruiter.findOne({ email });
-                break;
-            default:
-                return res.status(500).json({
-                    success: false,
-                    message: "Something went wrong. Profile role cannot be fetched."
-                });
-        }
-
-        const token = jwt.sign({ id: user._id, role: user.role }, "sih", { expiresIn: '1000h' });
+        const token = jwt.sign({ id: existingUser._id, role: existingUser.role }, "sih", { expiresIn: '1000h' });
 
         return res.status(200).json({
             success: true,
-            data: user,
+            data: existingUser,
             token,
             message: "Logged in successfully",
         });
@@ -129,9 +107,9 @@ export const signup = async (req, res) => {
                     })
                 }
                 break;
-            case "Spoc":
+            case "SPOC":
                 try {
-                    user = await Spoc.create({ ...rest, password: hashedPassword, status: "pending", verifiedBy: null });
+                    user = await SPOC.create({ ...rest, password: hashedPassword, status: "pending", verifiedBy: null });
                 } catch (err) {
                     return res.status(400).json({
                         success: false,

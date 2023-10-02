@@ -3,6 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 
 const Sidebar = ({ user }) => {
+	const handleLogout = (e) => {
+		localStorage.removeItem("user");
+		localStorage.removeItem("token");
+	}
 	return (
 		<aside className="w-[17%] h-[100vh] bg-[#f4f5fa] border-r pr-1 pt-[90px] sticky top-0">
 			{/* <div className="text-[#7445cb] text-[1.2rem] h-[60px] font-semibold  flex flex-col justify-center items-start border-b mb-3 p-[20px]">
@@ -12,7 +16,7 @@ const Sidebar = ({ user }) => {
 			{user === "spoc" ? (
 				<ul className="flex flex-col items-start">
 					<NavLink
-						to={"/spoc/page/dashboard"}
+						to={"/spoc/dashboard"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -25,7 +29,7 @@ const Sidebar = ({ user }) => {
 					</NavLink>
 
 					<NavLink
-						to={"/spoc/page/upload-requests"}
+						to={"/spoc/upload-requests"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -37,7 +41,7 @@ const Sidebar = ({ user }) => {
 						</li>
 					</NavLink>
 					<NavLink
-						to={"/spoc/page/collaboration-requtest"}
+						to={"/spoc/collaboration-request"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -49,7 +53,7 @@ const Sidebar = ({ user }) => {
 						</li>
 					</NavLink>
 					<NavLink
-						to={"/spoc/page/verify-student"}
+						to={"/spoc/verify-student"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -61,7 +65,7 @@ const Sidebar = ({ user }) => {
 						</li>
 					</NavLink>
 					<NavLink
-						to={"/spoc/page/assign-admin"}
+						to={"/spoc/assign-admin"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -74,7 +78,7 @@ const Sidebar = ({ user }) => {
 					</NavLink>
 
 					<NavLink
-						to={"/spoc/page/settings"}
+						to={"/spoc/settings"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -104,12 +108,12 @@ const Sidebar = ({ user }) => {
 						<div className="flex flex-col justify-center items-center">
 							<p className="text-white mb-2 mt-1">Ashutosh Verma</p>
 							<p className="text-white cursor-pointer">
-								<NavLink to={"/"} className="hover:text-slate-300">
+								<NavLink to={"/spoc/profile"} className="hover:text-slate-300">
 									Profile
 								</NavLink>
 							</p>
 							<p className="text-white cursor-pointer">
-								<NavLink to={"/"} className="hover:text-slate-300">
+								<NavLink to={"/"} className="hover:text-slate-300" onClick={handleLogout}>
 									Logout
 								</NavLink>
 							</p>
@@ -119,7 +123,7 @@ const Sidebar = ({ user }) => {
 			) : (
 				<ul className="flex flex-col items-start">
 					<NavLink
-						to={"/student/page/dashboard"}
+						to={"/student/dashboard"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -132,7 +136,7 @@ const Sidebar = ({ user }) => {
 					</NavLink>
 
 					<NavLink
-						to={"/studetn/page/upload-project"}
+						to={"/studetn/upload-project"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -141,7 +145,7 @@ const Sidebar = ({ user }) => {
 						<li>Upload Project</li>
 					</NavLink>
 					<NavLink
-						to={"/studetn/page/browse-projects"}
+						to={"/studetn/browse-projects"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -150,7 +154,7 @@ const Sidebar = ({ user }) => {
 						<li>Browse Projects</li>
 					</NavLink>
 					<NavLink
-						to={"/studetn/page/collaborations"}
+						to={"/studetn/collaborations"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -159,7 +163,7 @@ const Sidebar = ({ user }) => {
 						<li>Collaboration</li>
 					</NavLink>
 					<NavLink
-						to={"/studetn/page/contests"}
+						to={"/studetn/contests"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -171,7 +175,7 @@ const Sidebar = ({ user }) => {
 					<hr className="w-[100%] mt-5 mb-3"></hr>
 
 					<NavLink
-						to={"/studetn/page/profile"}
+						to={"/studetn/profile"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -183,7 +187,7 @@ const Sidebar = ({ user }) => {
 						</li>
 					</NavLink>
 					<NavLink
-						to={"/studetn/page/settings"}
+						to={"/studetnt/settings"}
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
@@ -211,6 +215,7 @@ const Sidebar = ({ user }) => {
 						className={
 							"ease-in duration-100 text-[#534f5a] text-[1rem] font-normal w-full mb-[8px] pl-5 p-[7px] hover:cursor-pointer hover:bg-[#cccdd1] rounded-[0_50px_50px_0] "
 						}
+						onClick={handleLogout}
 					>
 						<li>
 							<FontAwesomeIcon icon="sign-out-alt" className="pr-3" />

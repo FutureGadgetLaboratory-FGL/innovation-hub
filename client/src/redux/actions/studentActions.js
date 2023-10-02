@@ -38,6 +38,18 @@ export const getStudentsByUniversityId = createAsyncThunk(
     }
 );
 
+export const getStudentsByFilter = createAsyncThunk(
+    "student/getStudentsByFilter",
+    async (filter, { rejectWithValue }) => {
+        try {
+            const { data } = await api.getStudentsByFilter(filter);
+            return data;
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
 export const registerStudent = createAsyncThunk(
     "student/registerStudent",
     async (student, { rejectWithValue }) => {

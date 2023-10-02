@@ -26,6 +26,18 @@ export const getUniversityById = createAsyncThunk(
     }
 );
 
+export const getUniversitiesByFilter = createAsyncThunk(
+    "university/getUniversitiesByFilter",
+    async (filter, { rejectWithValue }) => {
+        try {
+            const { data } = await api.getUniversitiesByFilter(filter);
+            return data;
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
 export const registerUniversity = createAsyncThunk(
     "university/registerUniversity",
     async (university, { rejectWithValue }) => {
