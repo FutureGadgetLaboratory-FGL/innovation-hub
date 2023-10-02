@@ -31,6 +31,7 @@ export const deleteUniversity = (id) => api.delete(`/university/delete/${id}`);
 export const getAllStudents = () => api.get('/student');
 export const getStudentById = (id) => api.get(`/student/get/${id}`);
 export const getStudentsByUniversityId = (id) => api.get(`/student/university/${id}`);
+export const getStudentsByFilter = (filter) => api.post('/student/filter', filter);
 export const registerStudent = (student) => api.post('/student/register', student);
 export const updateStudent = (id, student) => api.put(`/student/update/${id}`, student);
 export const updateStudentStatus = (id, student) => api.put(`/student/update/status/${id}`, student);
