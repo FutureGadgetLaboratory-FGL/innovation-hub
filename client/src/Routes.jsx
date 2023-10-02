@@ -13,6 +13,8 @@ import MainStudentPage from "./pages/student/MainStudentPage";
 import DashboardSpoc from "./pages/spoc/DashboardSpoc";
 import VerifyStudent from "./pages/spoc/VerifyStudent";
 import MainSpocPage from "./pages/universal/RootPage";
+import AssignAdmin from "./pages/spoc/AssignAdmin";
+import LoginSpoc from "./pages/spoc/LoginSpoc";
 import Error from "./pages/universal/Error";
 import Home from "./pages/universal/Home";
 import UniveAndSpocRequests from "./pages/super-admin/UnivAndSpocRequests";
@@ -35,6 +37,7 @@ const router = createBrowserRouter([
 			{ path: "collaboration-request", element: <CollaborationRequest /> },
 			{ path: "verify-student", element: <VerifyStudent /> },
 			{ path: "assign-admin", element: <AssignAdmin /> },
+			{ path: "profile", element: <Profile /> },
 			{ path: "profile", element: <Profile /> },
 			{ path: "settings", element: <></> },
 		],
