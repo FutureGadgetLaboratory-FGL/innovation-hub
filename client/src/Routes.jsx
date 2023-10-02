@@ -19,6 +19,7 @@ import UniveAndSpocRequests from "./pages/super-admin/UnivAndSpocRequests";
 import Profile from "./pages/universal/Profile";
 import UploadRequest from "./components/spoc/UploadRequest";
 import SigninSpoc from "./pages/spoc/SigninSpoc";
+import DashboardStudent from "./pages/student/DashboardStudent";
 
 const router = createBrowserRouter([
 	{ path: "/", element: <Home />, errorElement: <Error />, },
@@ -44,7 +45,13 @@ const router = createBrowserRouter([
 	// -------------Routes for Student---------------
 	{ path: "/student/signin", element: <Signin role="student" /> },
 	{ path: "/student/signup", element: <SignupStudent role="student" /> },
-	{ path: "/student/page", element: <MainStudentPage />, children: [{ path: "", element: <></> }] },
+	{
+		path: "/student/", 
+		element: <MainStudentPage />, 
+		children: [
+		{ path: "dashboard", element: <DashboardStudent></DashboardStudent> },
+		], 
+	},
 
 	// -------------Routes for UAdmin----------------
 	{ path: "/uadmin/signin", element: <Signin role="uAdmin" /> },
