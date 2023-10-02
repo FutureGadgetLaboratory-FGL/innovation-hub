@@ -15,7 +15,7 @@ import VerifyStudent from "./pages/spoc/VerifyStudent";
 import MainSpocPage from "./pages/universal/RootPage";
 import Error from "./pages/universal/Error";
 import Home from "./pages/universal/Home";
-import UniveAndSpocRequests from "./pages/super-admin/UnivAndSpocRequests";
+import UniveAndSpocRequests from "./pages/superAdmin/UnivAndSpocRequests";
 import Profile from "./pages/universal/Profile";
 import UploadRequest from "./components/spoc/UploadRequest";
 import SigninSpoc from "./pages/spoc/SigninSpoc";
@@ -25,6 +25,8 @@ import ProjectFeed from "./components/universal/ProjectFeed";
 import UploadProject from "./components/student/UploadProject";
 import CollabHome from "./pages/student/CollabHome";
 import CompetitionsHome from "./pages/student/CompetitionsHome";
+import MainSuperAdminPage from "./pages/superAdmin/MainSuperAdminPage";
+import DashboardSuperAdmin from "./pages/superAdmin/DashboardSuperAdmin";
 
 const router = createBrowserRouter([
 	{ path: "/", element: <Home />, errorElement: <Error />, },
@@ -67,18 +69,20 @@ const router = createBrowserRouter([
 	{ path: "/uadmin/signup", element: <SignupUAdmin role="uAdmin" /> },
 
 	// -------------Routes for Recruiter-------------
-	{ path: "/recruiter/signin", element: <Signin role="superAdmin" /> },
-	{ path: "/recruiter/signup", element: <SignupRecruiter role="superAdmin" /> },
+	{ path: "/recruiter/signin", element: <Signin role="recruiter" /> },
+	{ path: "/recruiter/signup", element: <SignupRecruiter role="recruiter" /> },
 
 	// -------------Routes for Super Admin-----------
-	{ path: "/superadmin/signin", element: <Signin role="recruiter" /> },
-	{ path: "/superadmin/signup", element: <SignupSuperAdmin role="recruiter" /> },
+	{ path: "/superadmin/signin", element: <Signin role="superAdmin" /> },
+	{ path: "/superadmin/signup", element: <SignupSuperAdmin role="superAdmin" /> },
 
-	{ path: "/verify-spoc-and-univ", element: <UniveAndSpocRequests /> }
-// 	{path: "/super-admin/page", element:</>,
-// 	children: [
-// 		{path: "/verify-spoc-and-univ", element:<UniveAndSpocRequests/>},
-// 	],
+	// { path: "/verify-spoc-and-univ", element: <UniveAndSpocRequests /> }
+	{path: "/superadmin/", element:<MainSuperAdminPage/>,
+	children: [
+		{path: "dashboard", element:<DashboardSuperAdmin/>},
+		{path: "verify-spoc-and-univ", element:<UniveAndSpocRequests/>},
+	],
+},
 ]);
 
 export default router;
