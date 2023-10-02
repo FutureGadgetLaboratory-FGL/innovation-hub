@@ -74,7 +74,7 @@ const VerifyStudent=()=> {
 		<>
 			<p className="text-2xl font-semibold pl-5 mb-4 text-slate-600">Verify Students</p>
 			<div className="w-full flex flex-wrap gap-5 pl-4 ">
-				{studentReq.map((item, index) => {
+				{students.map((item, index) => {
 					return (
 						<div key={index} className=" rounded-xl shadow p-4 w-[45%] flex flex-col gap-2">
 							<div className="flex justify-start gap-4 w-full p-2 items-center rounded-md bg-violet-500">

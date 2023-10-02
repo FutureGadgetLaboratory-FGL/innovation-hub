@@ -1,5 +1,5 @@
 import React from 'react';
-import Signin from '../../components/spoc/Signin';
+import Signin from '../../components/universal/Signin';
 
 const SigninSpoc = () => {
     return (
