@@ -1,70 +1,22 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getStudentsByFilter } from "../../redux/actions/studentActions";
+import { getStudentsByFilter, updateStudentStatus } from "../../redux/actions/studentActions";
 
-const VerifyStudent=()=> {
-	// const studentReq = [
-	// 	{
-	// 		name: "Naman",
-	// 		email: "xyz",
-	// 		gender: "M",
-	// 		profilePhoto: "xyz",
-	// 		university: "Amity",
-	// 		course: "CSE",
-	// 		workEmail: "abc@gmail.com",
-	// 		startYear: "2020",
-	// 		endYear: "2024",
-	// 		idCardFront: "https://picsum.photos/100/200",
-	// 		idCardBack: "https://picsum.photos/100/200",
-	// 		enrollment: "001100",
-	// 	},
-	// 	{
-	// 		name: "Rahul",
-	// 		email: "xyz",
-	// 		gender: "M",
-	// 		profilePhoto: "xyz",
-	// 		university: "Amity",
-	// 		course: "CSE",
-	// 		workEmail: "abc@gmail.com",
-	// 		startYear: "2020",
-	// 		endYear: "2024",
-	// 		idCardFront: "https://picsum.photos/100/200",
-	// 		idCardBack: "https://picsum.photos/100/200",
-	// 		enrollment: "001100",
-	// 	},
-	// 	{
-	// 		name: "Ashish",
-	// 		email: "xyz",
-	// 		gender: "M",
-	// 		profilePhoto: "xyz",
-	// 		university: "Amity",
-	// 		course: "CSE",
-	// 		workEmail: "abc@gmail.com",
-	// 		startYear: "2020",
-	// 		endYear: "2024",
-	// 		idCardFront: "https://picsum.photos/100/200",
-	// 		idCardBack: "https://picsum.photos/100/200",
-	// 		enrollment: "001100",
-	// 	},
-	// 	{
-	// 		name: "Ashutosh",
-	// 		email: "xyz",
-	// 		gender: "M",
-	// 		profilePhoto: "xyz",
-	// 		university: "Amity",
-	// 		course: "CSE",
-	// 		workEmail: "abc@gmail.com",
-	// 		startYear: "2020",
-	// 		endYear: "2024",
-	// 		idCardFront: "https://picsum.photos/100/200",
-	// 		idCardBack: "https://picsum.photos/100/200",
-	// 		enrollment: "001100",
-	// 	},
-	// ];
+const VerifyStudent = () => {
 
 	const user = useSelector(state => state.user.user);
 	const students = useSelector(state => state.student.students);
 	const dispatch = useDispatch();
+
+	const verifyStudent = (student) => {
+		dispatch(updateStudentStatus({ id: student._id, status: "verified", verifiedBy: user._id }))
+			.then(dispatch(getStudentsByFilter({ university: user?.university, status: "pending" })))
+	};
+
+	const rejectStudent = (student) => {
+		dispatch(updateStudentStatus({ id: student._id, status: "rejected", verifiedBy: user._id }))
+			.then(dispatch(getStudentsByFilter({ university: user?.university, status: "pending" })))
+	}
 
 	useEffect(() => {
 		dispatch(getStudentsByFilter({ university: user?.university, status: "pending" }))
@@ -119,10 +71,10 @@ const VerifyStudent=()=> {
 							</div>
 
 							<div className="flex justify-start mt-3">
-								<button className="  active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-green-500 hover:bg-green-600 text-white rounded-md shadow-sm">
+								<button className="  active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-green-500 hover:bg-green-600 text-white rounded-md shadow-sm" onClick={() => verifyStudent(item)}>
 									Accept
 								</button>
-								<button className=" active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-slate-400 hover:bg-red-500 text-white rounded-md shadow-sm">
+								<button className=" active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-slate-400 hover:bg-red-500 text-white rounded-md shadow-sm" onClick={() => rejectStudent(item)}>
 									Reject
 								</button>
 							</div>

@@ -26,7 +26,7 @@ export const getProjectById = async (req, res) => {
             message: "Project Id not recived from client side."
         });
 
-        const project = await Project.findById(id);
+        const project = await Project.findById(id).populate('owner').populate('verifiedBy').exec();
         if (!project) return res.status(404).json({
             success: false,
             message: "No project found with that id."
@@ -55,7 +55,7 @@ export const getProjectByUniversityId = async (req, res) => {
             message: "University Id not recived from client side."
         });
 
-        const projects = await Project.find({ university });
+        const projects = await Project.find({ university }).populate('owner').exec();
         if (!projects) return res.status(404).json({
             success: false,
             message: "No project found for university with that id."
@@ -187,8 +187,8 @@ export const updateProjectStatus = async (req, res) => {
             success: false,
             message: "Bad Request. Required fields not found."
         });
-
-        const project = await Project.findByIdAndUpdate(id, { status, verifiedBy, verifiedByType }, { new: true });
+        
+        const project = await Project.findByIdAndUpdate(id, { status, verifiedBy, verifiedByType }, { new: true }).populate('owner').populate('verifiedBy').exec();
         if (!project) return res.status(404).json({
             success: false,
             message: "No project found with that id."

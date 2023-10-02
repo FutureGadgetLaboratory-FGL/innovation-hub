@@ -34,7 +34,7 @@ export const getStudentsByUniversityId = (id) => api.get(`/student/university/${
 export const getStudentsByFilter = (filter) => api.post('/student/filter', filter);
 export const registerStudent = (student) => api.post('/student/register', student);
 export const updateStudent = (id, student) => api.put(`/student/update/${id}`, student);
-export const updateStudentStatus = (id, student) => api.put(`/student/update/status/${id}`, student);
+export const updateStudentStatus = (id, status, verifiedBy) => api.put(`/student/update/status/${id}`, { status, verifiedBy });
 export const deleteStudent = (id) => api.delete(`/student/delete/${id}`);
 
 // university admin actions
@@ -65,7 +65,7 @@ export const getProjectById = (id) => api.get(`/project/get/${id}`);
 export const getProjectsByStudentId = (id) => api.get(`/project/student/${id}`);
 export const getProjectsByUniversityId = (id) => api.get(`/project/university/${id}`);
 export const updateProject = (id, project) => api.put(`/project/update/${id}`, project);
-export const updateProjectStatus = (id, project) => api.put(`/project/update/status/${id}`, project);
+export const updateProjectStatus = (id, status, verifiedBy, verifiedByType) => api.put(`/project/update/status/${id}`, { status, verifiedBy, verifiedByType });
 export const deleteProject = (id) => api.delete(`/project/delete/${id}`);
 export const likeProject = (id) => api.put(`/project/like/${id}`);
 export const unlikeProject = (id) => api.put(`/project/unlike/${id}`);
@@ -82,3 +82,18 @@ export const uploadImage = async (image) => {
     const { data } = await axios.post('https://api.cloudinary.com/v1_1/dlv1wdngt/image/upload', formData);
     return data;
 }
+export const uploadFile = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'student-innovation-hub'); 
+    formData.append('cloud_name', 'dlv1wdngt');
+    formData.append('resource_type', 'raw');
+
+    try {
+        const response = await axios.post('https://api.cloudinary.com/v1_1/dlv1wdngt/raw/upload', formData);
+        return response.data;
+    } catch (error) {
+        console.error('Error uploading file to Cloudinary:', error);
+        throw error;
+    }
+};

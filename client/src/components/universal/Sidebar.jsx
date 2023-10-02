@@ -1,19 +1,18 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import ProfileCard from "./ProfileCard";
 
-const Sidebar = ({ user }) => {
-  const handleLogout = (e) => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-  };
+const Sidebar = () => {
+  const user = useSelector(state => state.user.user);
   return (
     <aside className="w-[17%] h-[100vh] bg-[#f4f5fa] border-r pr-1 pt-[90px] sticky top-0">
       {/* <div className="text-[#7445cb] text-[1.2rem] h-[60px] font-semibold  flex flex-col justify-center items-start border-b mb-3 p-[20px]">
 				<h2>STUDENT</h2>
 				<h2>INNOVATION HUB</h2>
 			</div> */}
-      {user === "spoc" ? (
+      {user.role === "SPOC" ? (
         <ul className="flex flex-col items-start">
           <NavLink
             to={"/spoc/dashboard"}
@@ -106,28 +105,9 @@ const Sidebar = ({ user }) => {
           </NavLink>
           <hr className="w-[100%] mt-3 mb-5"></hr>
 
-          <div className="flex flex-col p-3  justify-center items-center mx-7 rounded-xl bg-violet-600">
-            <img className="w-2/3" src="/images/profile.png" alt="" />
-            <div className="flex flex-col justify-center items-center">
-              <p className="text-white mb-2 mt-1">Ashutosh Verma</p>
-              <p className="text-white cursor-pointer">
-                <NavLink to={"/spoc/profile"} className="hover:text-slate-300">
-                  Profile
-                </NavLink>
-              </p>
-              <p className="text-white cursor-pointer">
-                <NavLink
-                  to={"/"}
-                  className="hover:text-slate-300"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </NavLink>
-              </p>
-            </div>
-          </div>
+          <ProfileCard />
         </ul>
-      ) : user === "student" ? (
+      ) : user.role === "Student" ? (
         <ul className="flex flex-col items-start">
           <NavLink
             to={"/student/dashboard"}
@@ -205,28 +185,9 @@ const Sidebar = ({ user }) => {
           </NavLink>
           <hr className="w-[100%] mt-3 mb-5"></hr>
 
-          <div className="flex flex-col p-3  justify-center items-center mx-7 rounded-xl bg-violet-600">
-            <img className="w-2/3" src="/images/profile.png" alt="" />
-            <div className="flex flex-col justify-center items-center">
-              <p className="text-white mb-2 mt-1">Ashutosh Verma</p>
-              <p className="text-white cursor-pointer">
-                <NavLink to={"/spoc/profile"} className="hover:text-slate-300">
-                  Profile
-                </NavLink>
-              </p>
-              <p className="text-white cursor-pointer">
-                <NavLink
-                  to={"/"}
-                  className="hover:text-slate-300"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </NavLink>
-              </p>
-            </div>
-          </div>
+          <ProfileCard />
         </ul>
-      ) : user === "superAdmin" ? (
+      ) : user.role === "SuperAdmin" ? (
         <ul className="flex flex-col items-start">
           <NavLink
             to={"/superadmin/dashboard"}
@@ -304,28 +265,9 @@ const Sidebar = ({ user }) => {
           </NavLink>
           <hr className="w-[100%] mt-3 mb-5"></hr>
 
-          <div className="flex flex-col p-3  justify-center items-center mx-7 rounded-xl bg-violet-600">
-            <img className="w-2/3" src="/images/profile.png" alt="" />
-            <div className="flex flex-col justify-center items-center">
-              <p className="text-white mb-2 mt-1">Ashutosh Verma</p>
-              <p className="text-white cursor-pointer">
-                <NavLink to={"/spoc/profile"} className="hover:text-slate-300">
-                  Profile
-                </NavLink>
-              </p>
-              <p className="text-white cursor-pointer">
-                <NavLink
-                  to={"/"}
-                  className="hover:text-slate-300"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </NavLink>
-              </p>
-            </div>
-          </div>
+          <ProfileCard />
         </ul>
-      ) : user === "uAdmin" ? (
+      ) : user.role === "UniversityAdmin" ? (
         <ul className="flex flex-col items-start">
           <NavLink
             to={"/uadmin/dashboard"}
@@ -403,26 +345,7 @@ const Sidebar = ({ user }) => {
           </NavLink>
           <hr className="w-[100%] mt-3 mb-5"></hr>
 
-          <div className="flex flex-col p-3  justify-center items-center mx-7 rounded-xl bg-violet-600">
-            <img className="w-2/3" src="/images/profile.png" alt="" />
-            <div className="flex flex-col justify-center items-center">
-              <p className="text-white mb-2 mt-1">Ashutosh Verma</p>
-              <p className="text-white cursor-pointer">
-                <NavLink to={"/spoc/profile"} className="hover:text-slate-300">
-                  Profile
-                </NavLink>
-              </p>
-              <p className="text-white cursor-pointer">
-                <NavLink
-                  to={"/"}
-                  className="hover:text-slate-300"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </NavLink>
-              </p>
-            </div>
-          </div>
+          <ProfileCard />
         </ul>
       ) : (
         <ul className="flex flex-col items-start">
@@ -502,26 +425,7 @@ const Sidebar = ({ user }) => {
           </NavLink>
           <hr className="w-[100%] mt-3 mb-5"></hr>
 
-          <div className="flex flex-col p-3  justify-center items-center mx-7 rounded-xl bg-violet-600">
-            <img className="w-2/3" src="/images/profile.png" alt="" />
-            <div className="flex flex-col justify-center items-center">
-              <p className="text-white mb-2 mt-1">Ashutosh Verma</p>
-              <p className="text-white cursor-pointer">
-                <NavLink to={"/spoc/profile"} className="hover:text-slate-300">
-                  Profile
-                </NavLink>
-              </p>
-              <p className="text-white cursor-pointer">
-                <NavLink
-                  to={"/"}
-                  className="hover:text-slate-300"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </NavLink>
-              </p>
-            </div>
-          </div>
+          <ProfileCard />
         </ul>
       )}
     </aside>

@@ -76,9 +76,9 @@ export const updateProject = createAsyncThunk(
 
 export const updateProjectStatus = createAsyncThunk(
     "project/updateProjectStatus",
-    async ({ id, project }, { rejectWithValue }) => {
+    async ({ id, status, verifiedBy, verifiedByType }, { rejectWithValue }) => {
         try {
-            const { data } = await api.updateProjectStatus(id, project);
+            const { data } = await api.updateProjectStatus(id, status, verifiedBy, verifiedByType);
             return data;
         } catch (error) {
             return rejectWithValue(error.response.data);

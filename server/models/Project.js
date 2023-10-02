@@ -41,16 +41,12 @@ const projectSchema = mongoose.Schema({
     methodology: { type: String, default: "" },
     outcome: { type: String, default: "" },
     report: {
-        data: Buffer,
-        contentType: String,
-        filename: String,
+        type: String, required: false,
     },
     coverPhoto: { type: String, required: false },
     files: [
         {
-            data: Buffer,
-            contentType: String,
-            filename: String,
+            type: String,
         },
     ],
     university: {
@@ -86,6 +82,9 @@ const projectSchema = mongoose.Schema({
     verifiedByType: {
         type: String,
         enum: ["Spoc", "UniversityAdmin"],
+        required: function () {
+            return this.status === "verified";
+        },
     },
     likes: [likeSchema], 
     reviews: [reviewSchema], 

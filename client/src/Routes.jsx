@@ -18,7 +18,6 @@ import Home from "./pages/universal/Home";
 import UniveAndSpocRequests from "./pages/superAdmin/UnivAndSpocRequests";
 import Profile from "./pages/universal/Profile";
 import UploadRequest from "./components/spoc/UploadRequest";
-import SigninSpoc from "./pages/spoc/SigninSpoc";
 import DashboardStudent from "./pages/student/DashboardStudent";
 import Uploads from "./pages/student/Uploads";
 import ProjectFeed from "./components/universal/ProjectFeed";
@@ -32,7 +31,7 @@ const router = createBrowserRouter([
 	{ path: "/", element: <Home />, errorElement: <Error />, },
 
 	// -------------Routes for SPOC-----------------
-	{ path: "/spoc/signin", element: <SigninSpoc role="spoc" /> },
+	{ path: "/spoc/signin", element: <Signin role="spoc" /> },
 	{ path: "/spoc/signup", element: <SignupSPOC role="spoc" /> },
 	{
 		path: "/spoc/",
@@ -40,6 +39,7 @@ const router = createBrowserRouter([
 		children: [
 			{ path: "dashboard", element: <DashboardSpoc /> },
 			{ path: "upload-requests", element: <VerifyProjectUploads /> },
+			{ path: "upload-requests/:projectId", element: <UploadRequest /> },
 			{ path: "request", element: <UploadRequest /> },
 			{ path: "collaboration-request", element: <CollaborationRequest /> },
 			{ path: "verify-student", element: <VerifyStudent /> },
