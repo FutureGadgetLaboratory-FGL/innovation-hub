@@ -10,14 +10,14 @@ import ProjectFeed from "../../components/universal/ProjectFeed";
 
 function DashboardSpoc() {
 	return (
-		<div className="flex flex-col">
+		<div className="flex flex-col gap-3">
 			<div className="flex gap-3">
 				<EnrolledStudents />
 				<TotalProjects />
 				<OngoingCollaborations />
 				<UniversityScore />
 			</div>
-			<div className="flex mt-3 ">
+			<div className="flex ">
 				<div className="w-1/2 flex flex-col gap-1">
 					<ViewAllUploads />
 					<StudentLeaderboardCard />

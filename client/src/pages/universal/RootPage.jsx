@@ -17,7 +17,7 @@ const RootPage = () => {
 			<Nav user={user} />
 			<div className="flex">
 				<Sidebar user={user} />
-				<div className="w-4/5">
+				<div className="w-4/5 ">
 					<div className="m-3 mb-4 pt-[80px]">
 						<Outlet />
 					</div>
