@@ -17,7 +17,6 @@ export const studentSlice = createSlice({
         builder
             .addCase(getStudentsByUniversityId.fulfilled, (state, action) => {
                 if (action.payload.success) {
-                    localStorage.setItem('students', JSON.stringify(action.payload.data));
                     state.students = action.payload.data;
                     state.err = null;
                 } else if (action.payload.err) {
@@ -36,7 +35,6 @@ export const studentSlice = createSlice({
             })
             .addCase(getAllStudents.fulfilled, (state, action) => {
                 if (action.payload.success) {
-                    localStorage.setItem('students', JSON.stringify(action.payload.data));
                     state.students = action.payload.data;
                     state.err = null;
                 } else if (action.payload.err) {
@@ -55,7 +53,6 @@ export const studentSlice = createSlice({
             })
             .addCase(getStudentsByFilter.fulfilled, (state, action) => {
                 if (action.payload.success) {
-                    localStorage.setItem('students', JSON.stringify(action.payload.data));
                     state.students = action.payload.data;
                     state.err = null;
                 } else if (action.payload.err) {

@@ -45,6 +45,7 @@ const VerifyProjectUploads = () => {
 							</thead>
 							<tbody>
 								{studentUploadReq.map((item, index) => {
+									if (item.status === "pending")
 									return (
 										<tr
 											key={index}
