@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
-import { getCollaborationsByUniversityId, acceptCollaboration, rejectCollaboration } from "../../redux/actions/collaborationActions";
+import { getPendingCollaborationsByUniversityId, acceptCollaboration, rejectCollaboration } from "../../redux/actions/collaborationActions";
 
 function CollaborationRequest() {
 	const dispatch = useDispatch();
@@ -10,8 +10,9 @@ function CollaborationRequest() {
 	const loadingCollaborations = useSelector((state) => state.collaboration.loading);
 	const errCollaborations = useSelector((state) => state.collaboration.err);
 
+
 	useEffect(() => {
-		dispatch(getCollaborationsByUniversityId(user.university));
+		dispatch(getPendingCollaborationsByUniversityId(user.university));
 	}, [dispatch, user])
 
 	const acceptCollaborationRequest = (collaboration) => {
@@ -33,13 +34,13 @@ function CollaborationRequest() {
 				}
 				{
 					errCollaborations && <div className="flex justify-center items-center">
-						Error Occured &nbsp;
+						Error Occured. &nbsp;
 						<FontAwesomeIcon icon="exclamation-circle" className="text-4xl text-red-500" />
 					</div>
 				}
 				{
 					studentCollabReq.length === 0 && !loadingCollaborations && !errCollaborations && <div className="flex justify-center items-center">
-						No Collaboration Requests
+						No Pending Collaboration Requests
 					</div>
 				}
 				{
@@ -52,7 +53,7 @@ function CollaborationRequest() {
 										<img className="rounded-full w-[50px] h-[50px]" src={item.sender.profilePhoto} alt="N/A" />
 										<div>
 											<h1 className="text-lg font-semibold  text-white">{item.sender.name}</h1>
-											<h1 className=" text-sm font-normal text-white">{item.sender.university}</h1>
+											<h1 className=" text-sm font-normal text-white">{item.sender.university.name}</h1>
 										</div>
 									</div>
 									<p className="mb-2 my-2 text-lg font-bold">For Project: </p>

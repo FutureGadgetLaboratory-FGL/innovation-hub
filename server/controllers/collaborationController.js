@@ -1,10 +1,11 @@
 import Collaboration from "../models/Collaboration.js";
 import Project from "../models/Project.js";
+import University from "../models/University.js";
 import { Student } from "../models/Roles.js";
 
 export const getCollaborations = async (req, res) => {
     try {
-        const collaborations = await Collaboration.find();
+        const collaborations = await Collaboration.find().populate('sender').exec();
         res.status(200).json(collaborations);
     } catch (err) {
         res.status(404).json({
@@ -23,7 +24,7 @@ export const getCollaborationById = async (req, res) => {
             message: "Collaboration id is required"
         });
 
-        const collaboration = await Collaboration.findById(req.params.id);
+        const collaboration = await Collaboration.findById(req.params.id).populate('sender').exec();
         if (!collaboration) return res.status(404).json({
             success: false,
             message: "Collaboration not found"
@@ -47,7 +48,7 @@ export const getCollaborationsByStudentId = async (req, res) => {
             message: "Student id is required"
         });
 
-        const requests = await Collaboration.find().populate('project');
+        const requests = await Collaboration.find().populate('sender').exec();
         const collaborations = requests.filter(request => request.sender._id == studentId);
 
         res.status(200).json({
@@ -72,9 +73,13 @@ export const getCollaborationsByUniversityId = async (req, res) => {
             message: "University id is required"
         });
 
-        const allCollaborations = await Collaboration.find().populate('project');
-        const requests = allCollaborations.filter(request => request.project.university._id == universityId);
-        
+        const allCollaborations = await Collaboration.find().populate('sender').exec();
+        const requests = allCollaborations.filter(request => request.sender.university == universityId);
+
+        for (let i = 0; i < requests.length; i++) {
+            requests[i].sender.university = await University.findById(requests[i].sender.university);
+        }
+
         res.status(200).json({
             success: true,
             message: "Collaborations found successfully",
