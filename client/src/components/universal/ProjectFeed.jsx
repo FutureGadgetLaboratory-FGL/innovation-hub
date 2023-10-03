@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProjects } from "../../redux/actions/projectActions";
+import { createCollaboration } from "../../redux/actions/collaborationActions";
 function ProjectFeed() {
   const user = useSelector((state) => state.user.user);
   const projectFeed = useSelector((state) => state.project.projects);
@@ -9,17 +10,23 @@ function ProjectFeed() {
   const errProjects = useSelector((state) => state.project.err);
 
   const [currI, setCurrI] = useState(null);
+  const [collaborationText, setCollaborationText] = useState("");
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProjects());
   }, [dispatch]);
 
+  const sendCollaborationRequest = (project) => {
+    dispatch(createCollaboration({ sender: user._id, project: project._id, message: collaborationText }))
+      .then(setCurrI(null));
+  };
+
   return (
     <div className=" w-full h-full mt-5">
       <h1 className="ml-5 mb-4  text-[20px] font-bold">Projects Feed</h1>
       <hr className="w-1/3 ml-5 mb-3" />
-      <div className="flex flex-col gap-3 justify-center items-start">
+      <div className="flex flex-col gap-3 justify-center items-start w-full">
         {loadingProjects ? (
           <>
             <div className="flex justify-center items-center">
@@ -44,29 +51,27 @@ function ProjectFeed() {
             return (
               <div
                 key={index}
-                className="bg-white mr-4 mb-2 rounded-xl shadow-[rgba(0,0,0,0.1)_0px_15px_20px_0px,rgba(0,0,0,0.04)_0px_10px_10px_-5px] ml-4 p-3 flex gap-5 "
+                className="bg-white w-full mr-4 mb-2 rounded-xl shadow-[rgba(0,0,0,0.1)_0px_15px_20px_0px,rgba(0,0,0,0.04)_0px_10px_10px_-5px] ml-4 p-3 flex gap-5 "
               >
                 <div className="w-1/2 flex overflow-y-auto">
                   <img
-                    className={`${
-                      index === currI ? "w-0" : "w-full"
-                    } h-full transition ease-in-out delay-500 duration-1000`}
-                    src={item.coverPhoto}
+                    className={`${index === currI ? "w-0" : "w-full"} h-96 transition ease-in-out delay-500 duration-1000`}
+                    src={item.coverPhoto? item.coverPhoto : '../images/project-cover-photo-default.jpeg'}
                     alt="img"
                   />
                   <div
-                    className={`h-full ${
-                      index === currI ? "w-full" : "w-0"
-                    } flex flex-col justify-evenly overflow-hidden transition ease-in-out delay-100 duration-1000`}
+                    className={`h-full ${index === currI ? "w-full" : "w-0"
+                      } flex flex-col justify-evenly overflow-hidden transition ease-in-out delay-100 duration-1000`}
                   >
                     <h1 className="w-full font-semibold p-2">
                       Send Collaboration Request to your SPOC
                     </h1>
                     <textarea
+                      onClick={(e) => setCollaborationText(e.target.value)}
                       className="border border-black justify-start w-full h-1/2 p-2 whitespace-normal break-words resize-none"
                       placeholder="Tell us why you want to collaborate?"
                     />
-                    <button className="active:scale-95 mt-3 w-fit mb-1 px-4 py-2 font-semibold text-[12px] bg-accent-green hover:bg-lime-600 text-white rounded-md">
+                    <button onClick={() => sendCollaborationRequest(item)} className="active:scale-95 mt-3 w-fit mb-1 px-4 py-2 font-semibold text-[12px] bg-accent-green hover:bg-lime-600 text-white rounded-md">
                       Submit
                     </button>
                   </div>
@@ -76,19 +81,19 @@ function ProjectFeed() {
                   <div className="profile">
                     <div className="flex justify-start items-center gap-3">
                       <img
-                        className="rounded-full"
-                        src={item.owner.profilePhoto}
-                        alt="pfp not available!"
+                        className="rounded-full h-12 w-12"
+                        src={item.owner.profilePhoto ? item.owner.profilePhoto : '../images/profile.png' }
+                        alt=""
                       />
                       <div className="flex flex-col gap-0">
-                        <h2 className="text-[12px] font-normal">
+                        <h2 className="text-sm font-bold">
                           {item.owner.name}
                         </h2>
-                        <p className="text-[12px] font-normal">
+                        <p className="text-xs font-normal">
                           {item.owner.branch}
                         </p>
                         <h3 className="text-[12px] font-normal">
-                          {item.owner.university}
+                          {item.university.name}
                         </h3>
                       </div>
                     </div>

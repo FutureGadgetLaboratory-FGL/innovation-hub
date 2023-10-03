@@ -66,6 +66,7 @@ const VerifyProjectUploads = () => {
 											</td>
 										</tr>
 									);
+									return null;
 								})}
 							</tbody>
 						</table>

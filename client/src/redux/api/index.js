@@ -73,6 +73,16 @@ export const reviewProject = (id, review) => api.put(`/project/review/${id}`, re
 export const commentProject = (id, comment) => api.put(`/project/comment/${id}`, comment);
 export const shareProject = (id, share) => api.put(`/project/share/${id}`, share);
 
+// collaboration actions
+export const createCollaboration = (collaboration) => api.post('/collaboration/create', collaboration);
+export const getAllCollaborations = () => api.get('/collaboration/all');
+export const getCollaborationById = (id) => api.get(`/collaboration/get/${id}`);
+export const getCollaborationsByStudentId = (id) => api.get(`/collaboration/student/${id}`);
+export const getCollaborationsByUniversityId = (id) => api.get(`/collaboration/university/${id}`);
+export const acceptCollaboration = (id) => api.put(`/collaboration/accept/${id}`);
+export const rejectCollaboration = (id) => api.put(`/collaboration/reject/${id}`);
+
+
 // cloudinary actions
 export const uploadImage = async (image) => {
     const formData = new FormData();

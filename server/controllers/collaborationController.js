@@ -64,12 +64,38 @@ export const getCollaborationsByStudentId = async (req, res) => {
     }
 }
 
+export const getCollaborationsByUniversityId = async (req, res) => {
+    try {
+        const universityId = req.params.id;
+        if (!universityId) return res.status(400).json({
+            success: false,
+            message: "University id is required"
+        });
+
+        const allCollaborations = await Collaboration.find().populate('project');
+        const requests = allCollaborations.filter(request => request.project.university._id == universityId);
+        
+        res.status(200).json({
+            success: true,
+            message: "Collaborations found successfully",
+            data: requests
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(404).json({
+            success: false,
+            message: "Something went wrong. See error message for more details.",
+            err
+        });
+    }
+}
+
 export const createCollaboration = async (req, res) => {
     try {
         const { sender, project, message } = req.body;
         if (!sender || !project || !message) return res.status(400).json({
             success: false,
-            message: "sender, project, message, status fields are required"
+            message: "sender, project and message fields are required"
         });
 
         const student = await Student.findById(sender);
@@ -133,3 +159,30 @@ export const acceptCollaboration = async (req, res) => {
     }
 }
 
+export const rejectCollaboration = async (req, res) => {
+    try {
+        const id = req.params.id;
+        if (!id) return res.status(400).json({
+            success: false,
+            message: "Collaboration id is required"
+        });
+
+        const collaboration = await Collaboration.findByIdAndUpdate(id, { status: "Rejected" }, { new: true });
+        if (!collaboration) return res.status(404).json({
+            success: false,
+            message: "Collaboration with that id not found"
+        });
+
+        res.status(200).json({
+            success: true,
+            message: "Collaboration rejected successfully",
+            data: collaboration
+        });
+    } catch (err) {
+        res.status(404).json({
+            success: false,
+            message: "Something went wrong. See error message for more details.",
+            err
+        });
+    }
+}
