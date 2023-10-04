@@ -76,13 +76,6 @@ const universityAdminSchema = mongoose.Schema({
         enum: ['pending', 'verified', 'rejected'],
         required: true,
     },
-    verifiedBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'SPOC',
-        required: function () {
-            return this.status === 'verified';
-        },
-    },
 });
 
 const superAdminSchema = mongoose.Schema({

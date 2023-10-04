@@ -75,3 +75,15 @@ export const deleteSpoc = createAsyncThunk(
         }
     }
 );
+
+export const assignUAdmin = createAsyncThunk(
+    "spoc/assignUAdmin",
+    async ( universityAdmin, { rejectWithValue }) => {
+        try {
+            const { data } = await api.signup(universityAdmin);
+            return data;
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);

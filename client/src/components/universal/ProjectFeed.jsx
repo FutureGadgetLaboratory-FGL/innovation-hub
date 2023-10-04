@@ -55,9 +55,9 @@ function ProjectFeed() {
               >
                 <div className="w-1/2 flex overflow-y-auto">
                   <img
-                    className={`${index === currI ? "w-0" : "w-full"} h-96 transition ease-in-out delay-500 duration-1000`}
+                    className={`${index === currI ? "w-0" : "w-full"} h-54 object-contain transition ease-in-out delay-500 duration-1000`}
                     src={item.coverPhoto? item.coverPhoto : '../images/project-cover-photo-default.jpeg'}
-                    alt="img"
+                    alt=""
                   />
                   <div
                     className={`h-full ${index === currI ? "w-full" : "w-0"

@@ -40,9 +40,9 @@ export const deleteStudent = (id) => api.delete(`/student/delete/${id}`);
 // university admin actions
 export const getAllUniversityAdmins = () => api.get('/universityAdmin');
 export const getUniversityAdminById = (id) => api.get(`/universityAdmin/get/${id}`);
-export const getUniversityAdminByUniversityId = (id) => api.get(`/universityAdmin/university/${id}`);
+export const getUniversityAdminsByUniversityId = (id) => api.get(`/universityAdmin/university/${id}`);
 export const updateUniversityAdmin = (id, universityAdmin) => api.put(`/universityAdmin/update/${id}`, universityAdmin);
-export const updateUniversityAdminStatus = (id, universityAdmin) => api.put(`/universityAdmin/update/status/${id}`, universityAdmin);
+export const updateUniversityAdminStatus = (id, status) => api.put(`/universityAdmin/update/status/${id}`, { status });
 export const deleteUniversityAdmin = (id) => api.delete(`/universityAdmin/delete/${id}`);
 
 // spoc actions
