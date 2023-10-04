@@ -13,10 +13,11 @@ export const userSlice = createSlice({
     reducers: {
         logout: (state) => {
             localStorage.removeItem('user');
+            localStorage.removeItem('token');
             state.user = null;
             state.loading = false;
             state.err = null;
-            window.location.reload();
+            window.location.href = '/';
         }
     },
     extraReducers: (builder) => {

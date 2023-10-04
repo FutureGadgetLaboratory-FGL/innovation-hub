@@ -4,7 +4,6 @@ import User from '../models/User.js';
 import { SuperAdmin, SPOC, UniversityAdmin, Student, Recruiter } from '../models/Roles.js';
 
 export const signin = async (req, res) => {
-    console.log("Signin request recieved")
     const { email, password } = req.body;
     if (!email || !password) {
         return res.status(400).json({
@@ -18,7 +17,6 @@ export const signin = async (req, res) => {
             success: false,
             message: "No user exists with that email ID"
         });
-        console.log(existingUser);
 
         const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
         if (!isPasswordCorrect) return res.status(403).json({
@@ -49,15 +47,12 @@ export const signup = async (req, res) => {
     try {
         const { email, password, role } = req.body;
 
-        console.log("Signup request recieved")
-        console.log(role);
         if (!role) {
             return res.status(400).json({
                 success: false,
                 message: "Bad request. \"role\" field not found"
             });
         } 
-        console.log(role);
         // if (role === "SuperAdmin") return res.status(403).json({
         //     success: false,
         //     message: "Super Admins can't be added through api calls."
@@ -73,7 +68,6 @@ export const signup = async (req, res) => {
             success: false,
             message: "Passwords do not match"
         });
-        console.log("password confirmed");
 
         let user = null;
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -103,7 +97,6 @@ export const signup = async (req, res) => {
                 break;
             case "UniversityAdmin":
                 try {
-                    console.log("UniversityAdmin")
                     user = await UniversityAdmin.create({ ...rest, password: hashedPassword, status: "pending" });
                 } catch (err) {
                     return res.status(400).json({

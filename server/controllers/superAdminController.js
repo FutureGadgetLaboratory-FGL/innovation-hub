@@ -67,6 +67,11 @@ export const setPassword = async (req, res) => {
             message: "Password successfully added."
         })
     } catch (err) {
-        
+        console.log(err);
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong. Check err for details.",
+            err
+        })
     }
 }

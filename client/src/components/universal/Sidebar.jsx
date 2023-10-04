@@ -7,7 +7,7 @@ import ProfileCard from "./ProfileCard";
 const Sidebar = () => {
   const user = useSelector(state => state.user.user);
   return (
-    <aside className="w-[17%] h-[100vh] bg-[#f4f5fa] border-r pr-1 pt-[90px] sticky top-0">
+    <aside className="w-1/5 h-[100vh] overflow-y-auto no-scrollbar bg-[#f4f5fa] border-r pr-1 pt-[90px] sticky top-0">
       {/* <div className="text-[#7445cb] text-[1.2rem] h-[60px] font-semibold  flex flex-col justify-center items-start border-b mb-3 p-[20px]">
 				<h2>STUDENT</h2>
 				<h2>INNOVATION HUB</h2>
@@ -47,10 +47,7 @@ const Sidebar = () => {
             end
           >
             <li>
-              <FontAwesomeIcon
-                icon="fa-solid fa-people-group"
-                className="pr-3"
-              />
+              <FontAwesomeIcon icon="fa-solid fa-people-group" className="pr-3" />
               Collaboration Requests
             </li>
           </NavLink>
@@ -117,7 +114,7 @@ const Sidebar = () => {
             end
           >
             <li>
-              <i className="fa-solid fa-house"></i>
+              <FontAwesomeIcon icon="fa-solid fa-house" className="pr-3" />
               Dashboard
             </li>
           </NavLink>
@@ -129,7 +126,10 @@ const Sidebar = () => {
             }
             end
           >
-            <li>Upload Project</li>
+            <li>
+              <FontAwesomeIcon icon="fa-solid fa-upload" className="pr-3" />
+              Upload Project
+            </li>
           </NavLink>
           <NavLink
             to={"/student/browse-projects"}
@@ -138,7 +138,10 @@ const Sidebar = () => {
             }
             end
           >
-            <li>Browse Projects</li>
+            <li>
+              <FontAwesomeIcon icon="fa-solid fa-globe" className="pr-3" />
+              Browse Projects
+            </li>
           </NavLink>
           <NavLink
             to={"/student/collaborations"}
@@ -147,7 +150,10 @@ const Sidebar = () => {
             }
             end
           >
-            <li>Collaboration</li>
+            <li>
+              <FontAwesomeIcon icon="fa-solid fa-people-group" className="pr-3" />
+              Collaboration
+            </li>
           </NavLink>
           <NavLink
             to={"/student/contests"}
@@ -156,7 +162,10 @@ const Sidebar = () => {
             }
             end
           >
-            <li>Contests</li>
+              <li>
+                <FontAwesomeIcon icon="fa-solid fa-trophy" className="pr-3" />
+                Contests
+              </li>
           </NavLink>
 
           <NavLink
