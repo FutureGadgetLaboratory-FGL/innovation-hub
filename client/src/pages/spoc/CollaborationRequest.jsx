@@ -62,21 +62,21 @@ function CollaborationRequest() {
 											<tbody>
 												<tr>
 													<td className="p-1 align-top w-1/3 font-semibold text-slate-500">Project ID: </td>
-													<td className="p-1 align-top">AMITY2378</td>
+													<td className="p-1 align-top">{item.project._id}</td>
 												</tr>
 												<tr class="active-row">
 													<td className="p-1 align-top w-1/3 font-semibold text-slate-500">Title: </td>
-													<td className="p-1 align-top">Online Voting System</td>
+													<td className="p-1 align-top">{item.project.title}</td>
 												</tr>
 												<tr class="active-row">
 													<td className="p-1 align-top w-1/3 font-semibold text-slate-500">Description: </td>
 													<td className="p-1 align-top">
-														Asecureand efficient online voting system for democratic elections.
+														{item.project.description}
 													</td>
 												</tr>
 												<tr class="active-row">
 													<td className="p-1 align-top w-1/3 font-semibold text-slate-500">Owner: </td>
-													<td className="p-1 align-top">Ashutosh Verma</td>
+													<td className="p-1 align-top">{item?.owner?.name}</td>
 												</tr>
 											</tbody>
 										</table>
@@ -84,8 +84,7 @@ function CollaborationRequest() {
 
 									<p className="mb-2 my-2 text-lg font-bold">Message:</p>
 									<p className="p-3  mb-2 bg-violet-100 rounded-lg">
-										I have recently learned Blockchain technology, I want some hands-on experience by working on
-										some project. Therefore I want to collaborate
+										{item.message}
 									</p>
 
 									<div className="w-full">

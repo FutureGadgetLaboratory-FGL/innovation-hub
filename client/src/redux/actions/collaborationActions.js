@@ -43,14 +43,18 @@ export const getPendingCollaborationsByUniversityId = createAsyncThunk(
     async (id, { rejectWithValue }) => {
         try {
             const { data } = await api.getCollaborationsByUniversityId(id);
-            data.filter(collaboration => collaboration.status === "pending");
-            return data;
+            let pendingCollaborations = data.data.filter(collaboration => collaboration.status === "pending");
+            let pendingCollaborationsData = {
+                success: data.success,
+                message: data.message,
+                data: pendingCollaborations
+            };
+            return pendingCollaborationsData;
         } catch (error) {
             return rejectWithValue(error.response.data);
         }
     }
 );
-
 
 export const getCollaborationsByStudentId = createAsyncThunk(
     "collaboration/getCollaborationsByStudentId",

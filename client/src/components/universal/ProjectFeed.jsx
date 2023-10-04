@@ -18,7 +18,8 @@ function ProjectFeed() {
   }, [dispatch]);
 
   const sendCollaborationRequest = (project) => {
-    dispatch(createCollaboration({ sender: user._id, project: project._id, message: collaborationText }))
+
+    dispatch(createCollaboration({ sender: user._id, project: project._id, message: collaborationText, owner: project.owner }))
       .then(setCurrI(null));
   };
 
@@ -67,7 +68,8 @@ function ProjectFeed() {
                       Send Collaboration Request to your SPOC
                     </h1>
                     <textarea
-                      onClick={(e) => setCollaborationText(e.target.value)}
+                      value={collaborationText}
+                      onChange={(e) => setCollaborationText(e.target.value)}
                       className="border border-black justify-start w-full h-1/2 p-2 whitespace-normal break-words resize-none"
                       placeholder="Tell us why you want to collaborate?"
                     />

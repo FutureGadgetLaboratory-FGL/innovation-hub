@@ -134,7 +134,7 @@ function UploadRequest() {
                                                         return (
                                                             <tr key={index} className="flex w-full justify-between items-center">
                                                                 <td className="p-2 w-1/2 border">File {index + 1}</td>
-                                                                <td className="p-2 w-1/2 border cursor-pointer"><a href={item.link}><FontAwesomeIcon icon="fa-solid fa-download" /></a></td>
+                                                                <td className="p-2 w-1/2 border cursor-pointer"><a href={item}><FontAwesomeIcon icon="fa-solid fa-download" /></a></td>
                                                             </tr>
                                                         )
                                                     })
@@ -157,9 +157,22 @@ function UploadRequest() {
                                 }
                                 {
                                     studentUploadReq.status === "verified" && (
-                                        <button className="w-1/2 m-2 px-4 py-2 font-semibold text-sm hover:bg-accent-green bg-white text-accent-green border-2 border-accent-green rounded-md shadow-sm" >
-                                            Accept
-                                        </button>
+                                        <div className="w-full flex justify-center items-center">
+                                            <button className="w-1/2 m-2 px-4 py-2 font-semibold text-sm hover:bg-accent-green hover:text-white text-accent-green border-2 border-accent-green rounded-md shadow-sm" >
+                                                <FontAwesomeIcon icon="fa-check" className="mx-2" />
+                                                Accepted
+                                            </button>
+                                        </div>
+                                    )
+                                }
+                                {
+                                    studentUploadReq.status === "rejected" && (
+                                        <div className="w-full flex justify-center items-center">
+                                            <button className="w-1/2 m-2 px-4 py-2 font-semibold text-sm hover:bg-accent-red hover:text-white text-accent-red border-2 border-accent-red rounded-md shadow-sm" >
+                                                <FontAwesomeIcon icon="fa-x" className="mx-2" />
+                                                Rejected
+                                            </button>
+                                        </div>
                                     )
                                 }
                             </div>
