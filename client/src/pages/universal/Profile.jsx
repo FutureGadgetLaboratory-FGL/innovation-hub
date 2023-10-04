@@ -1,24 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 function Profile(){
 
 
-    const user = {
-		user: {
-			_id: "abcd",
-			role: "Student",
-            profilePhoto:"https://picsum.photos/100",
-            bannerPhoto:"https://picsum.photos/1080/200",
-            name:"Naman Chawla",
-            branch:"B.Tech CSE",
-            university:"Amity University",
-            email:"abc@gmail.com",
-            workEmail:"abc@outlook.com",
-            enrollment:"001100",
-            connections:["www.github.com/nam710","www.linkedin.com/nam710"]
-		},
-	};
+    const user = useSelector((state) => state.user.user);
 	const myProjects = [
 		{
 			owner: {
@@ -91,16 +78,16 @@ function Profile(){
         <div className="w-full min-h-screen border rounded-md shadow-sm">
            
             <div className="relative flex flex-col w-full h-[350px]">
-                <img className="absolute rounded-t-md w-full min-h-[224px]" src={user.user.bannerPhoto} onLoad={handleImageLoad}
+                <img className="absolute rounded-t-md w-full min-h-[224px]" src={user.bannerPhoto} onLoad={handleImageLoad}
                  alt="not available" />
-                <img src={user.user.profilePhoto} className={`outline outline-8 outline-white absolute z-20 mx-2 top-[65%] hover:outline-blue-100 -translate-y-1/2 w-[200px] h-[200px] rounded-full border border-black`}/>
+                <img src={user.profilePhoto} className={`outline outline-8 outline-white absolute z-20 mx-2 top-[65%] hover:outline-blue-100 -translate-y-1/2 w-[200px] h-[200px] rounded-full border border-black`}/>
                 <div className="flex absolute right-0 m-3 p-2 top-[65%] rounded-full text-2xl hover:bg-blue-100">
                     <FontAwesomeIcon icon="fa-pencil"/>
                 </div>
                 <div className="absolute flex flex-col justify-center top-[65%] left-[220px] mx-2 my-1 p-2">
-                    <h1 className="font-semibold  text-2xl">{user.user.name}
-                    <span className="mx-3 px-2 py-1 text-sm font-normal rounded-xl bg-green-300">{user.user.role}</span></h1>
-                    <h1 className=" text-lg">{user.user.university}</h1>
+                    <h1 className="font-semibold  text-2xl">{user.name}
+                    <span className="mx-3 px-2 py-1 text-sm font-normal rounded-xl bg-green-300">{user.role}</span></h1>
+                    <h1 className=" text-lg">{user.university}</h1>
                 </div>
             </div>
 

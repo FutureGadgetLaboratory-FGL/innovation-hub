@@ -48,6 +48,29 @@ export const getStudentById = async (req, res) => {
     }
 }
 
+export const getStudentsByFilter = async (req, res) => {
+    try {
+        const filter = req.body;
+        if (!filter) return res.status(400).json({
+            success: false,
+            message: "Bad request. Filter not found in request body."
+        });
+
+        const students = await Student.find({ ...filter });
+        return res.status(200).json({
+            success: true,
+            data: students,
+            message: "Students fetched successfully"
+        });
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: "Server error. See err for more details.",
+            err
+        });
+    }
+}
+
 export const updateStudent = async (req, res) => {
     try {
         const id = req.params.id;

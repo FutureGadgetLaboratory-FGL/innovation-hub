@@ -7,8 +7,8 @@ const Signin = ({ role }) => {
     const navigate = useNavigate();
     const user = useSelector(state => state.user.user);
     useEffect(() => {
-        if (user?._id) navigate(`/${role}/dashboard`);
-    }, [navigate, role, user])
+        if (user?._id) navigate(`/${user.role}/dashboard`);
+    }, [navigate, user])
     return (
         <>
             <div className='flex justify-center items-center w-100 h-screen bg-background'>

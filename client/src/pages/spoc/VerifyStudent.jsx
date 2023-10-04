@@ -1,118 +1,95 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getStudentsByFilter, updateStudentStatus } from "../../redux/actions/studentActions";
 
-const VerifyStudent=()=> {
-	const studentReq = [
-		{
-			name: "Naman",
-			email: "xyz",
-			gender: "M",
-			profilePhoto: "xyz",
-			university: "Amity",
-			course: "CSE",
-			workEmail: "abc@gmail.com",
-			startYear: "2020",
-			endYear: "2024",
-			idCardFront: "https://picsum.photos/100/200",
-			idCardBack: "https://picsum.photos/100/200",
-			enrollment: "001100",
-		},
-		{
-			name: "Rahul",
-			email: "xyz",
-			gender: "M",
-			profilePhoto: "xyz",
-			university: "Amity",
-			course: "CSE",
-			workEmail: "abc@gmail.com",
-			startYear: "2020",
-			endYear: "2024",
-			idCardFront: "https://picsum.photos/100/200",
-			idCardBack: "https://picsum.photos/100/200",
-			enrollment: "001100",
-		},
-		{
-			name: "Ashish",
-			email: "xyz",
-			gender: "M",
-			profilePhoto: "xyz",
-			university: "Amity",
-			course: "CSE",
-			workEmail: "abc@gmail.com",
-			startYear: "2020",
-			endYear: "2024",
-			idCardFront: "https://picsum.photos/100/200",
-			idCardBack: "https://picsum.photos/100/200",
-			enrollment: "001100",
-		},
-		{
-			name: "Ashutosh",
-			email: "xyz",
-			gender: "M",
-			profilePhoto: "xyz",
-			university: "Amity",
-			course: "CSE",
-			workEmail: "abc@gmail.com",
-			startYear: "2020",
-			endYear: "2024",
-			idCardFront: "https://picsum.photos/100/200",
-			idCardBack: "https://picsum.photos/100/200",
-			enrollment: "001100",
-		},
-	];
+const VerifyStudent = () => {
+
+	const user = useSelector(state => state.user.user);
+	const students = useSelector(state => state.student.students);
+	const dispatch = useDispatch();
+
+	const verifyStudent = (student) => {
+		dispatch(updateStudentStatus({ id: student._id, status: "verified", verifiedBy: user._id }))
+			.then(dispatch(getStudentsByFilter({ university: user?.university, status: "pending" })))
+	};
+
+	const rejectStudent = (student) => {
+		dispatch(updateStudentStatus({ id: student._id, status: "rejected", verifiedBy: user._id }))
+			.then(dispatch(getStudentsByFilter({ university: user?.university, status: "pending" })))
+	}
+
+	useEffect(() => {
+		dispatch(getStudentsByFilter({ university: user?.university, status: "pending" }))
+	}, [dispatch, user?.university])
 
 	return (
-		<div className="flex ">
-			<div className="w-[83%]">
-				<div className="w-full h-fit overflow-y-auto overflow-x-hidden flex flex-wrap justify-between p-2">
-					{studentReq.map((item, index) => {
-						return (
-							<div
-								key={index}
-								className="w-1/2 p-2 border-2 min-h-full rounded-md shadow-md transition-transform ease-in-out duration-1000 cursor-pointer"
-							>
-								<div className="flex justify-between w-full p-2">
-									<img className="border border-1 rounded-full" src={item.profilePhoto} alt="N/A" />
-									<h1 className="text-2xl font-semibold m-2 ">{item.name}</h1>
-									<h1 className="m-2 text-xl font-semibold">{item.university}</h1>
-								</div>
-
-								<div className="w-full">
-									<div className="flex flex-wrap justify-between w-full">
-										<ul className=" p-2">
-											<li className="p-2 m-1">Course: {item.course}</li>
-											<li className="p-2 m-1">Enrollment Number: {item.enrollment}</li>
-											<li className="p-2 m-1">Gender: {item.gender}</li>
-											<li className="p-2 m-1">E-mail: {item.email}</li>
-											<li className="m-1 p-2">Work E-mail: {item.workEmail}</li>
-										</ul>
-										<div className="flex flex-col">
-											<p className="font-semibold">Id Card Images:</p>
-											<div className="flex justify-start">
-												<img className="border mx-2 border-black" src={item.idCardFront} alt="N/A" />
-												<img className="border mx-2 border-black" src={item.idCardBack} alt="N/A" />
-											</div>
-										</div>
-									</div>
-
-									<div className="flex w-1/2">
-										<span className="mx-4">Start Year: {item.startYear}</span>
-										<span className="mx-4">End Year: {item.endYear}</span>
-									</div>
-
-									<div className="flex justify-center">
-										<button className="border border-black active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-accent-green hover:bg-lime-600 text-white rounded-md shadow-sm">
-											Verify
-										</button>
-										<button className="border border-black active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-accent-red hover:bg-red-600 text-white rounded-md shadow-sm">
-											Reject
-										</button>
-									</div>
+		<>
+			<p className="text-2xl font-semibold pl-5 mb-4 text-slate-600">Verify Students</p>
+			<div className="w-full flex flex-wrap gap-5 pl-4 ">
+				{students.map((item, index) => {
+					return (
+						<div key={index} className=" rounded-xl shadow p-4 w-[45%] flex flex-col gap-2">
+							<div className="flex justify-start gap-4 w-full p-2 items-center rounded-md bg-violet-500">
+								<img className="w-[10%] rounded-full" src={item.profilePhoto ? item.profilePhoto : "../images/profile.png"} alt="" />
+								<div>
+									<h1 className="text-lg font-semibold text-white ">{item.name}</h1>
+									<h1 className="text-sm text-white">{item.university}</h1>
 								</div>
 							</div>
-						);
-					})}
-				</div>
+
+							<div className="w-full">
+								<div className="p-3 bg-violet-100 rounded-lg">
+									<table className="w-full">
+										<tbody>
+											<tr>
+												<td className="p-1 align-top w-1/3 font-semibold text-slate-500">Enrollment: </td>
+												<td className="p-1 align-top">{item.enrollment}</td>
+											</tr>
+											<tr>
+												<td className="p-1 align-top w-1/3 font-semibold text-slate-500">Course: </td>
+												<td className="p-1 align-top">{item.course}</td>
+											</tr>
+											<tr>
+												<td className="p-1 align-top w-1/3 font-semibold text-slate-500">Batch: </td>
+												<td className="p-1 align-top">
+													{item.startYear}-{item.endYear}
+												</td>
+											</tr>
+											<tr>
+												<td className="p-1 align-top w-1/3 font-semibold text-slate-500">Email: </td>
+												<td className="p-1 align-top">{item.email}</td>
+											</tr>
+											<tr>
+												<td className="p-1 align-top w-1/3 font-semibold text-slate-500">Gender: </td>
+												<td className="p-1 align-top">{item.gender}</td>
+											</tr>
+											<tr>
+												<td className="p-1 align-top w-1/3 font-semibold text-slate-500">ID card: </td>
+												<td className="p-1 align-top text-blue-400 hover:text-blue-500">
+													<a href={item.idCardFront}>View ID Card Front</a>
+												</td>
+												<td className="p-1 align-top text-blue-400 hover:text-blue-500">
+													<a href={item.idCardBack}>View ID Card Back</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+							<div className="flex justify-start mt-3">
+								<button className="  active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-green-500 hover:bg-green-600 text-white rounded-md shadow-sm" onClick={() => verifyStudent(item)}>
+									Accept
+								</button>
+								<button className=" active:scale-95 w-fit m-2 px-4 py-2 font-semibold text-sm bg-slate-400 hover:bg-red-500 text-white rounded-md shadow-sm" onClick={() => rejectStudent(item)}>
+									Reject
+								</button>
+							</div>
+						</div>
+					);
+				})}
 			</div>
-		</div>
+		</>
 	);
-}
+};
 export default VerifyStudent;

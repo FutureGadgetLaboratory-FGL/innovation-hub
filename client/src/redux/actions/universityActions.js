@@ -64,9 +64,9 @@ export const updateUniversity = createAsyncThunk(
 
 export const updateUniversityStatus = createAsyncThunk(
     "university/updateUniversityStatus",
-    async ({ id, university }, { rejectWithValue }) => {
+    async ({ id, status, verifiedBy }, { rejectWithValue }) => {
         try {
-            const { data } = await api.updateUniversityStatus(id, university);
+            const { data } = await api.updateUniversityStatus(id, status, verifiedBy);
             return data;
         } catch (error) {
             return rejectWithValue(error.response.data);

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getAllStudents, getStudentsByUniversityId } from '../actions/studentActions.js';
+import { getAllStudents, getStudentsByFilter, getStudentsByUniversityId } from '../actions/studentActions.js';
 
 const storedStudents = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
 export const studentSlice = createSlice({
@@ -17,7 +17,6 @@ export const studentSlice = createSlice({
         builder
             .addCase(getStudentsByUniversityId.fulfilled, (state, action) => {
                 if (action.payload.success) {
-                    localStorage.setItem('students', JSON.stringify(action.payload.data));
                     state.students = action.payload.data;
                     state.err = null;
                 } else if (action.payload.err) {
@@ -36,7 +35,6 @@ export const studentSlice = createSlice({
             })
             .addCase(getAllStudents.fulfilled, (state, action) => {
                 if (action.payload.success) {
-                    localStorage.setItem('students', JSON.stringify(action.payload.data));
                     state.students = action.payload.data;
                     state.err = null;
                 } else if (action.payload.err) {
@@ -50,6 +48,24 @@ export const studentSlice = createSlice({
                 state.err = null;
             })
             .addCase(getAllStudents.rejected, (state, action) => {
+                state.loading = false;
+                state.err = action.payload;
+            })
+            .addCase(getStudentsByFilter.fulfilled, (state, action) => {
+                if (action.payload.success) {
+                    state.students = action.payload.data;
+                    state.err = null;
+                } else if (action.payload.err) {
+                    state.err = action.payload.err;
+                }
+                state.loading = false;
+                console.log(action.payload.message);
+            })
+            .addCase(getStudentsByFilter.pending, (state) => {
+                state.loading = true;
+                state.err = null;
+            })
+            .addCase(getStudentsByFilter.rejected, (state, action) => {
                 state.loading = false;
                 state.err = action.payload;
             })

@@ -96,7 +96,7 @@ export const updateUniversityAdmin = async (req, res) => {
             });
         }
 
-        const { status, verifiedBy, ...rest } = req.body;
+        const { status, ...rest } = req.body;
         if (!id) return res.status(400).json({
             success: false,
             message: "Id not recived from client side."
@@ -137,13 +137,13 @@ export const updateStatus = async (req, res) => {
             message: "Id not recived from client side."
         });
 
-        const { status, verifiedBy } = req.body;
-        if (!status || !verifiedBy) return res.status(400).json({
+        const { status } = req.body;
+        if (!status) return res.status(400).json({
             success: false,
             message: "Bad Request. Required fields not found."
         });
         
-        const universityAdmin = await UniversityAdmin.findByIdAndUpdate(id, { status, verifiedBy }, { new: true });
+        const universityAdmin = await UniversityAdmin.findByIdAndUpdate(id, { status }, { new: true });
         if (!universityAdmin) return res.status(404).json({
             success: false,
             message: "No UniversityAdmin found with that id."

@@ -3,7 +3,8 @@ import User from "../models/User.js";
 
 export const getAllSpocs = async (req, res) => {
     try {
-        const spocs = await SPOC.find();
+        const spocs = await SPOC.find().populate('university').exec();
+        console.log(spocs)
         return res.status(200).json({
             success: true,
             data: spocs,

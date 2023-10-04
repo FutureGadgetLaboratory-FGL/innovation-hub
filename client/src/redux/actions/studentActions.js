@@ -38,6 +38,18 @@ export const getStudentsByUniversityId = createAsyncThunk(
     }
 );
 
+export const getStudentsByFilter = createAsyncThunk(
+    "student/getStudentsByFilter",
+    async (filter, { rejectWithValue }) => {
+        try {
+            const { data } = await api.getStudentsByFilter(filter);
+            return data;
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
 export const registerStudent = createAsyncThunk(
     "student/registerStudent",
     async (student, { rejectWithValue }) => {
@@ -64,9 +76,9 @@ export const updateStudent = createAsyncThunk(
 
 export const updateStudentStatus = createAsyncThunk(
     "student/updateStudentStatus",
-    async ({ id, student }, { rejectWithValue }) => {
+    async ({ id, status, verifiedBy }, { rejectWithValue }) => {
         try {
-            const { data } = await api.updateStudentStatus(id, student);
+            const { data } = await api.updateStudentStatus(id, status, verifiedBy);
             return data;
         } catch (error) {
             return rejectWithValue(error.response.data);

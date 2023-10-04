@@ -38,18 +38,6 @@ export const getUniversityAdminsByUniversityId = createAsyncThunk(
     }
 );
 
-export const registerUniversityAdmin = createAsyncThunk(
-    "universityAdmin/registerUniversityAdmin",
-    async (universityAdmin, { rejectWithValue }) => {
-        try {
-            const { data } = await api.registerUniversityAdmin(universityAdmin);
-            return data;
-        } catch (error) {
-            return rejectWithValue(error.response.data);
-        }
-    }
-);
-
 export const updateUniversityAdmin = createAsyncThunk(
     "universityAdmin/updateUniversityAdmin",
     async ({ id, universityAdmin }, { rejectWithValue }) => {
@@ -64,9 +52,9 @@ export const updateUniversityAdmin = createAsyncThunk(
 
 export const updateUniversityAdminStatus = createAsyncThunk(
     "universityAdmin/updateUniversityAdminStatus",
-    async ({ id, universityAdmin }, { rejectWithValue }) => {
+    async ({ id, status }, { rejectWithValue }) => {
         try {
-            const { data } = await api.updateUniversityAdminStatus(id, universityAdmin);
+            const { data } = await api.updateUniversityAdminStatus(id, status);
             return data;
         } catch (error) {
             return rejectWithValue(error.response.data);

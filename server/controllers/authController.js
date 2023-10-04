@@ -46,14 +46,18 @@ export const signin = async (req, res) => {
 
 export const signup = async (req, res) => {
     
-    const { email, password, role } = req.body;
     try {
+        const { email, password, role } = req.body;
+
+        console.log("Signup request recieved")
+        console.log(role);
         if (!role) {
             return res.status(400).json({
                 success: false,
                 message: "Bad request. \"role\" field not found"
             });
         } 
+        console.log(role);
         // if (role === "SuperAdmin") return res.status(403).json({
         //     success: false,
         //     message: "Super Admins can't be added through api calls."
@@ -69,6 +73,7 @@ export const signup = async (req, res) => {
             success: false,
             message: "Passwords do not match"
         });
+        console.log("password confirmed");
 
         let user = null;
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -98,7 +103,8 @@ export const signup = async (req, res) => {
                 break;
             case "UniversityAdmin":
                 try {
-                    user = await UniversityAdmin.create({ ...rest, password: hashedPassword, status: "pending", verifiedBy: null });
+                    console.log("UniversityAdmin")
+                    user = await UniversityAdmin.create({ ...rest, password: hashedPassword, status: "pending" });
                 } catch (err) {
                     return res.status(400).json({
                         success: false,

@@ -7,6 +7,7 @@ const Signin = ({ role }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const [loading, setLoading] = useState(false);
     const [signinData, setSigninData] = useState({
         email: "",
         password: "",
@@ -18,9 +19,13 @@ const Signin = ({ role }) => {
 
     const handleSignin = (e) => {
         e.preventDefault();
+        setLoading(true);
         console.log(signinData);
         dispatch(signin(signinData))
-            .then(() => window.location.reload())
+            .then(() => {
+                setLoading(false);
+                window.location.reload();
+            })
             .catch((error) => alert(error.message));
     }
 
