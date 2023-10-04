@@ -8,7 +8,8 @@ const VerifyProjectUploads = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const user = useSelector(state => state.user.user);
-	const studentUploadReq = useSelector(state => state.project.projects);
+	const projects = useSelector(state => state.project.projects);
+	const studentUploadReq = projects.filter(project => project.status === "pending");
 	const loadingProjects = useSelector(state => state.project.loading);
 	const errProjects = useSelector(state => state.project.err);
 
@@ -45,7 +46,6 @@ const VerifyProjectUploads = () => {
 							</thead>
 							<tbody>
 								{studentUploadReq.map((item, index) => {
-									if (item.status === "pending")
 									return (
 										<tr
 											key={index}

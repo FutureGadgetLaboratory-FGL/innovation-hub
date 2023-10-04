@@ -30,7 +30,7 @@ const VerifyStudent = () => {
 					return (
 						<div key={index} className=" rounded-xl shadow p-4 w-[45%] flex flex-col gap-2">
 							<div className="flex justify-start gap-4 w-full p-2 items-center rounded-md bg-violet-500">
-								<img className="w-[10%] rounded-full" src={item.profilePhoto} alt="N/A" />
+								<img className="w-[10%] rounded-full" src={item.profilePhoto ? item.profilePhoto : "../images/profile.png"} alt="" />
 								<div>
 									<h1 className="text-lg font-semibold text-white ">{item.name}</h1>
 									<h1 className="text-sm text-white">{item.university}</h1>
@@ -60,9 +60,16 @@ const VerifyStudent = () => {
 												<td className="p-1 align-top">{item.email}</td>
 											</tr>
 											<tr>
+												<td className="p-1 align-top w-1/3 font-semibold text-slate-500">Gender: </td>
+												<td className="p-1 align-top">{item.gender}</td>
+											</tr>
+											<tr>
 												<td className="p-1 align-top w-1/3 font-semibold text-slate-500">ID card: </td>
 												<td className="p-1 align-top text-blue-400 hover:text-blue-500">
-													<a href="">View</a>
+													<a href={item.idCardFront}>View ID Card Front</a>
+												</td>
+												<td className="p-1 align-top text-blue-400 hover:text-blue-500">
+													<a href={item.idCardBack}>View ID Card Back</a>
 												</td>
 											</tr>
 										</tbody>

@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadImage, uploadFile } from "../../redux/api";
 import { createProject } from "../../redux/actions/projectActions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Loading from "../universal/Loading";
 
 const UploadProject = () => {
 	const dispatch = useDispatch();
@@ -11,6 +13,8 @@ const UploadProject = () => {
 	const [report, setReport] = React.useState(null);
 	const [coverPhoto, setCoverPhoto] = React.useState(null);
 	const [files, setFiles] = React.useState([]);
+	const [uploaded, setUploaded] = React.useState(false);
+	const [loading, setLoading] = React.useState(false);
 
 	const user = useSelector((state) => state.user.user);
 
@@ -24,6 +28,8 @@ const UploadProject = () => {
 
 	const submitNonTechProject = async (e) => {
 		e.preventDefault();
+		if (uploaded) return;
+		setLoading(true);
 		let reportUrl = null, coverPhotoUrl = null;
 		if (report) {
 			reportUrl = dispatch(await uploadFile(report)).url;
@@ -45,12 +51,19 @@ const UploadProject = () => {
 		};
 		dispatch(createProject(project))
 			.then(() => {
+				setLoading(false);
 				console.log("Project successfully created.");
+				setUploaded(true);
 			})
 	}
 
 	return (
 		<>
+			{
+				loading && (
+					<Loading z={loading ? 100 : -1} />
+				)
+			}
 			{
 				user.role === "Student" ?
 					(
@@ -152,12 +165,22 @@ const UploadProject = () => {
 						</select>
 					</div> */}
 										<div class="mb-4 flex justify-center">
-											<button
-												type="submit"
-												class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-											>
-												Submit
-											</button>
+											{
+												uploaded ? (
+													<button onClick={() => { }} className="flex justify-center gap-1 rounded p-2 border-2 shadow border-accent-green text-accent-green hover:bg-accent-green hover:text-white">
+														<FontAwesomeIcon icon=" fa-check" className="p-1" />
+														Uploaded
+													</button>
+												) : (
+													<button
+														type="submit"
+														class="bg-accent-green hover:bg-lime-400 text-white font-bold py-2 px-4 rounded"
+													>
+														Submit
+													</button>
+												)
+											}
+
 										</div>
 									</form>
 								) : (

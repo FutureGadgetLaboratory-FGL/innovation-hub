@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProjectById, updateProjectStatus } from "../../redux/actions/projectActions";
+import Loading from "../universal/Loading";
 
 function UploadRequest() {
     const { projectId } = useParams();
@@ -11,27 +12,29 @@ function UploadRequest() {
     const studentUploadReq = useSelector((state) => state.project.selectedProject);
     const loadingProject = useSelector((state) => state.project.loading);
     const errProject = useSelector((state) => state.project.err);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         dispatch(getProjectById(projectId));
     }, [dispatch, projectId]);
 
     const verifyProject = async (e) => {
-        // e.preventDefault();''
+        e.preventDefault();
+        setLoading(true);
         dispatch(updateProjectStatus({ id: studentUploadReq._id, status: "verified", verifiedBy: user._id, verifiedByType: user.role }))
-            .then(() => dispatch(getProjectById(projectId)));
+            .then(() => dispatch(getProjectById(projectId)).then(() => setLoading(false)));
     };
 
-    const rejectProject = async () => {
+    const rejectProject = async (e) => {
+        e.preventDefault();
+        setLoading(true);
         dispatch(updateProjectStatus({ id: studentUploadReq._id, status: "rejected", verifiedBy: user._id, verifiedByType: user.role }))
-            .then(() => dispatch(getProjectById(projectId)));
-    }
+            .then(() => dispatch(getProjectById(projectId)).then(() => setLoading(false)));
+    };
 
     return (
         <div className="w-full">
-
-            <div className="w-full p-2 border-2 min-h-full rounded-md shadow-md cursor-pointer">
-
+            <div className="w-full border-2 bg-white rounded-md shadow-md">
                 {
                     loadingProject ? <div className="flex justify-center items-center">
                         <FontAwesomeIcon icon="spinner" className="text-4xl text-blue-500 animate-spin" />
@@ -40,14 +43,128 @@ function UploadRequest() {
                         <FontAwesomeIcon icon="exclamation-circle" className="text-4xl text-red-500" />
                     </div> : studentUploadReq && (
                         <>
-                            <div className="flex justify-between w-full p-2">
-                                <div className="flex justify-center items-center gap-1">
-                                    <img className="border border-1 rounded-full" src={studentUploadReq.owner.profilePhoto} alt="N/A" />
-                                    <h1 className="text-2xl font-semibold m-2 ">{studentUploadReq.owner.name}</h1>
+                            <div className="flex justify-between items-center w-full rounded-t-md bg-accent-indigo text-white text-center p-2">
+                                <h1 className="text-3xl text-center w-full font-semibold">{studentUploadReq.title}</h1>
+                            </div>
+                            <div className="flex w-full">
+                                <img src={studentUploadReq.coverPhoto ? studentUploadReq.coverPhoto : "/images/project-cover-photo-default.jpeg"} alt="" className="w-2/3 h-96 object-cover" />
+                                <div className="w-1/2 p-2 flex flex-col">
+                                    <div className="flex items-center w-full gap-2">
+                                        <img className="rounded-full w-20" src={studentUploadReq.owner.profilePhoto} alt="" />
+                                        <div>
+                                            <h2 className="text-xl font-bold">{studentUploadReq.owner.name}</h2>
+                                            <p className="text-sm">{studentUploadReq.owner.email}</p>
+                                            <p className="text-sm">{studentUploadReq.owner.university.name}</p>
+                                        </div>
+                                    </div>
+                                    <p className="align-center text-center w-full p-1 mt-2 border-x border-t font-semibold bg-gray-200">Full Details</p>
+                                    <table className="w-full h-fit p-2 rounded-md">
+                                        <tr>
+                                            <td className="align-center h-4 w-1/3 p-1 border font-semibold text-slate-500">Name: </td>
+                                            <td className="align-center h-4 p-1 border">{studentUploadReq.owner.name}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="align-center h-4 w-1/3 p-1 border font-semibold text-slate-500">Enrollment: </td>
+                                            <td className="align-center h-4 p-1 border">{studentUploadReq.owner.enrollment}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="align-center h-4 w-1/3 p-1 border font-semibold text-slate-500">Email: </td>
+                                            <td className="align-center h-4 p-1 border">{studentUploadReq.owner.email}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="align-center h-4 w-1/3 p-1 border font-semibold text-slate-500">Gender: </td>
+                                            <td className="align-center h-4 p-1 border">{studentUploadReq.owner.gender}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="align-center h-4 w-1/3 p-1 border font-semibold text-slate-500">Work Email: </td>
+                                            <td className="align-center h-4 p-1 border">{studentUploadReq.owner.workEmail}</td>
+                                        </tr>
+                                    </table>
                                 </div>
-                                <h1 className="m-2 text-xl font-semibold">{studentUploadReq.owner.university}</h1>
+                            </div>
+                            <div>
+                                <h2 className="text-2xl font-bold text-center w-full p-2 mt-2 border-x border-t bg-gray-200 text-accent-indigo">PROJECT DETAILS</h2>
+                                <div className="p-2 w-full">
+                                    <h3 className="text-2xl font-bold w-1/3 mt-2 border-b-4">Description:</h3>
+                                    <p className="text-base p-2">{studentUploadReq.description}</p>
+                                    {
+                                        studentUploadReq.methodology && (
+                                            <>
+                                                <h3 className="text-2xl font-bold w-1/3 mt-2 border-b-4">Methodology:</h3>
+                                                <p className="text-base p-2">{studentUploadReq.methodology}</p>
+                                            </>
+                                        )
+                                    }
+                                    {
+                                        studentUploadReq.outcomes && (
+                                            <>
+                                                <h3 className="text-2xl font-bold w-1/3 mt-2 border-b-4">Outcomes:</h3>
+                                                <p className="text-base p-2">{studentUploadReq.outcomes}</p>
+                                            </>
+                                        )
+                                    }
+                                    {
+                                        studentUploadReq.report && (
+                                            <>
+                                                <h3 className="text-2xl font-bold w-1/3 mt-2 border-b-4">Report:</h3>
+                                                <a href={studentUploadReq.report}><FontAwesomeIcon icon="fa-solid fa-download" /></a>
+                                            </>
+                                        )
+                                    }
+                                    {
+                                        studentUploadReq.conclusion && (
+                                            <>
+                                                <h3 className="text-2xl font-bold w-1/3 mt-2 border-b-4">Conclusion:</h3>
+                                                <p className="text-base p-2">{studentUploadReq.conclusion}</p>
+                                            </>
+                                        )
+                                    }
+                                    <h3 className="text-2xl font-bold w-1/3 mt-2 border-b-4">Files:</h3>
+                                    <div className="w-full overflow-hidden rounded-xl border mt-2">
+                                        <table className="w-full">
+                                            <thead>
+                                                <tr className="flex w-full justify-between items-center">
+                                                    <th className="p-2 w-1/2 text-semibold border bg-gray-200">File Name</th>
+                                                    <th className="p-2 w-1/2 text-semibold border bg-gray-200">Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tdata>
+                                                {
+                                                    studentUploadReq.files.map((item, index) => {
+                                                        return (
+                                                            <tr key={index} className="flex w-full justify-between items-center">
+                                                                <td className="p-2 w-1/2 border">File {index + 1}</td>
+                                                                <td className="p-2 w-1/2 border cursor-pointer"><a href={item.link}><FontAwesomeIcon icon="fa-solid fa-download" /></a></td>
+                                                            </tr>
+                                                        )
+                                                    })
+                                                }
+                                            </tdata>
+                                        </table>
+                                    </div>
+                                </div>
+                                {
+                                    studentUploadReq.status === "pending" && (
+                                        <div className="flex justify-center mt-3 w-full ">
+                                            <button className="  active:scale-95 w-1/2 m-2 px-4 py-2 font-semibold text-sm bg-green-500 hover:bg-green-600 text-white rounded-md shadow-sm" onClick={(e) => verifyProject(e)}>
+                                                Accept
+                                            </button>
+                                            <button className=" active:scale-95 w-1/2 m-2 px-4 py-2 font-semibold text-sm bg-slate-400 hover:bg-red-500 text-white rounded-md shadow-sm" onClick={(e) => rejectProject(e)}>
+                                                Reject
+                                            </button>
+                                        </div>
+                                    )
+                                }
+                                {
+                                    studentUploadReq.status === "verified" && (
+                                        <button className="w-1/2 m-2 px-4 py-2 font-semibold text-sm hover:bg-accent-green bg-white text-accent-green border-2 border-accent-green rounded-md shadow-sm" >
+                                            Accept
+                                        </button>
+                                    )
+                                }
                             </div>
 
+                            {/* 
                             <div className="w-full">
                                 <div className="flex flex-wrap justify-between w-full">
                                     <div className="flex flex-col w-full justify-start">
@@ -218,11 +335,13 @@ function UploadRequest() {
                                         </button>
                                     </div>
                                 )}
-                            </div>
+                            </div> */}
                         </>
                     )
                 }
-
+                {
+                    loading && <Loading />
+                }
             </div>
         </div>
 
