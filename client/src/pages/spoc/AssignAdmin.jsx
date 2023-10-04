@@ -125,7 +125,7 @@ const AssignAdmin = () => {
             })
           }
         </div>
-        <div className="flex flex-col h-full mr-1 p-2 bg-white border rounded-md shadow-md">
+        <div className="flex flex-col h-full mr-1 p-2 px-5 bg-white border rounded-md shadow-md">
           <h1 className="text-xl font-semibold w-full text-center my-2">Assign New University Admin</h1>
           <form className='flex flex-col items-center justify-center w-full' onSubmit={handleUAdminSignup}>
             <input className='w-full h-12 p-2 my-3 rounded-md border-1 border-accent-gray' placeholder='Name' name='name' value={uAdminData.name} type='text' onChange={handleUAdminData} required />
