@@ -7,6 +7,8 @@ export const getAllSpocs = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const { data } = await api.getAllSpocs();
+
+            console.log(data);
             return data;
         } catch (error) {
             return rejectWithValue(error.response.data);
@@ -52,9 +54,9 @@ export const updateSpoc = createAsyncThunk(
 
 export const updateSpocStatus = createAsyncThunk(
     "spoc/updateSpocStatus",
-    async ({ id, spoc }, { rejectWithValue }) => {
+    async ({ id, status, verifiedBy }, { rejectWithValue }) => {
         try {
-            const { data } = await api.updateSpocStatus(id, spoc);
+            const { data } = await api.updateSpocStatus(id, status, verifiedBy);
             return data;
         } catch (error) {
             return rejectWithValue(error.response.data);

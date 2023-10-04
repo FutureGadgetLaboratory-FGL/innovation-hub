@@ -20,7 +20,7 @@ const VerifyStudent = () => {
 
 	useEffect(() => {
 		dispatch(getStudentsByFilter({ university: user?.university, status: "pending" }))
-	}, [dispatch])
+	}, [dispatch, user?.university])
 
 	return (
 		<>

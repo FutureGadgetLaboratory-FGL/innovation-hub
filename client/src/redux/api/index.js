@@ -11,7 +11,7 @@ api.interceptors.request.use(
             config.headers['Authorization'] = `Bearer ${token}`;
         }
         return config;
-    }   
+    }
 );
 
 // user actions
@@ -24,7 +24,7 @@ export const getUniversityById = (id) => api.get(`/university/get/${id}`);
 export const getUniversitiesByFilter = (filter) => api.post(`/university/filter`, filter);
 export const registerUniversity = (university) => api.post('/university/register', university);
 export const updateUniversity = (id, university) => api.put(`/university/update/${id}`, university);
-export const updateUniversityStatus = (id, university) => api.put(`/university/update/status/${id}`, university);
+export const updateUniversityStatus = (id, status, verifiedBy) => api.put(`/university/update/status/${id}`, { status, verifiedBy });
 export const deleteUniversity = (id) => api.delete(`/university/delete/${id}`);
 
 // student actions
@@ -50,7 +50,7 @@ export const getAllSpocs = () => api.get('/spoc');
 export const getSpocById = (id) => api.get(`/spoc/get/${id}`);
 export const getSpocsByUniversityId = (id) => api.get(`/spoc/university/${id}`);
 export const updateSpoc = (id, spoc) => api.put(`/spoc/update/${id}`, spoc);
-export const updateSpocStatus = (id, spoc) => api.put(`/spoc/update/status/${id}`, spoc);
+export const updateSpocStatus = (id, status, verifiedBy) => api.put(`/spoc/update/status/${id}`, { status, verifiedBy });
 export const deleteSpoc = (id) => api.delete(`/spoc/delete/${id}`);
 
 // super admin actions
@@ -95,7 +95,7 @@ export const uploadImage = async (image) => {
 export const uploadFile = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('upload_preset', 'student-innovation-hub'); 
+    formData.append('upload_preset', 'student-innovation-hub');
     formData.append('cloud_name', 'dlv1wdngt');
     formData.append('resource_type', 'raw');
 
