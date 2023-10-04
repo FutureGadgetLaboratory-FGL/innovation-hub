@@ -89,7 +89,6 @@ export const updateUniversityAdmin = async (req, res) => {
         const { email } = req.body;
         if (email) {
             const user = await User.findOne({ email });
-            console.log(user);
             if (user) return res.status(400).json({
                 success: false,
                 message: "User with that email already exists."

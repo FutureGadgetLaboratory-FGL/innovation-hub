@@ -1,13 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom';
+import { logout } from '../../redux/slices/userSlice';
 
 const ProfileCard = () => {
+    const dispatch = useDispatch();
     const user = useSelector(state => state.user.user);
 
-    const handleLogout = (e) => {
-        localStorage.removeItem("user");
-        localStorage.removeItem("token");
+    const handleLogout = () => {
+        dispatch(logout());
     };
     return (
         <>

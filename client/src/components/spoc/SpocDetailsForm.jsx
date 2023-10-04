@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getUniversitiesByFilter } from '../../redux/actions/universityActions';
 import { signup } from '../../redux/actions/authActions';
 import { uploadImage } from '../../redux/api';
+import Loading from '../universal/Loading';
 
 const SpocDetailsForm = ({ setNext }) => {
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const SpocDetailsForm = ({ setNext }) => {
         idCardBack: "",
         enrollment: "",
     });
+    const [loading, setLoading] = useState(false);
     const [profilePhoto, setProfilePhoto] = useState(null);
     const [idCardFront, setIdCardFront] = useState(null);
     const [idCardBack, setIdCardBack] = useState(null);
@@ -38,6 +40,7 @@ const SpocDetailsForm = ({ setNext }) => {
 
     const handleSpocSignup = async (e) => {
         e.preventDefault();
+        setLoading(true);
         if (spocData.password !== spocData.confirmPassword) {
             alert("Passwords do not match");
             return;
@@ -48,7 +51,10 @@ const SpocDetailsForm = ({ setNext }) => {
         const spoc = { ...spocData, profilePhoto: profilePhotoUrl, idCardFront: idCardFrontUrl, idCardBack: idCardBackUrl };
         console.log(spoc);
         dispatch(signup(spoc))
-            .then(() => window.location.reload())
+            .then(() => {
+                setLoading(false);
+                window.location.reload()
+            })
             .catch((error) => alert(error.message));
     }
     return (
@@ -101,6 +107,7 @@ const SpocDetailsForm = ({ setNext }) => {
                 <p>University does not appear in dropdown?</p>
                 <p className='cursor-pointer text-accent-indigo' onClick={() => setNext(false)}>Register your University first</p>
             </div>
+            {loading && <Loading />}
         </>
     )
 }

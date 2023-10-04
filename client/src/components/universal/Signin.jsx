@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom'
 import { signin } from '../../redux/actions/authActions';
+import Loading from './Loading';
 
 const Signin = ({ role }) => {
     const navigate = useNavigate();
@@ -64,7 +65,11 @@ const Signin = ({ role }) => {
                     <p>New on our platform?</p>
                     <Link className='text-accent-indigo' to={`/${role}/signup`}>Create an account</Link>
                 </div>
+                
             </div>
+            {
+                loading && <Loading />
+            }
         </>
     )
 }

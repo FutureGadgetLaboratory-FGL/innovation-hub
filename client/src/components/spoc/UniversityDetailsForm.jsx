@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { registerUniversity } from '../../redux/actions/universityActions';
+import Loading from '../universal/Loading';
 
 const UniversityDetailsForm = ({ setNext }) => {
     const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const UniversityDetailsForm = ({ setNext }) => {
         state: "",
         pincode: "",
     });
+    const [loading, setLoading] = useState(false);
 
     const handleUniversityData = (e) => {
         setUniversityData({ ...universityData, [e.target.name]: e.target.value })
@@ -19,8 +21,12 @@ const UniversityDetailsForm = ({ setNext }) => {
 
     const handleUniversityRegister = (e) => {
         e.preventDefault();
+        setLoading(true);
         dispatch(registerUniversity(universityData))
-            .then(() => setNext(true));
+            .then(() => {
+                setLoading(false);
+                setNext(true);
+            });
     }
     return (
         <>
@@ -43,7 +49,9 @@ const UniversityDetailsForm = ({ setNext }) => {
                 <p>Already registered your University?</p>
                 <p className='cursor-pointer text-accent-indigo' onClick={() => setNext(true)}>Proceed to signup</p>
             </div>
-
+            {
+                loading && <Loading />
+            }
         </>
     )
 }
