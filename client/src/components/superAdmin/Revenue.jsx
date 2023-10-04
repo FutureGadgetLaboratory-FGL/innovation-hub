@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Revenue(){
     return (
-        <div className="border border-black rounded-md m-1 px-3 bg-zinc-200">
+        <div className="border border-black rounded-md m-1 px-3 bg-zinc-200 w-1/2">
             <div className="flex flex-col">
                 <h1 className="font-semibold text-xl m-2 p-2">Total Revenue</h1>
                 <div className="flex">

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getUniversitiesByFilter } from '../../redux/actions/universityActions';
 import { signup } from '../../redux/actions/authActions';
 import { uploadImage } from '../../redux/api';
+import Loading from '../universal/Loading';
 
 const SignupForm = () => {
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const SignupForm = () => {
         idCardBack: "",
         enrollment: "",
     });
+    const [loading, setLoading] = useState(false);
     const [profilePhoto, setProfilePhoto] = useState(null);
     const [idCardFront, setIdCardFront] = useState(null);
     const [idCardBack, setIdCardBack] = useState(null);
@@ -38,6 +40,7 @@ const SignupForm = () => {
 
     const handleUAdminSignup = async (e) => {
         e.preventDefault();
+        setLoading(true);
         if (uAdminData.password !== uAdminData.confirmPassword) {
             alert("Passwords do not match");
             return;
@@ -48,7 +51,10 @@ const SignupForm = () => {
         const uAdmin = { ...uAdminData, profilePhoto: profilePhotoUrl, idCardFront: idCardFrontUrl, idCardBack: idCardBackUrl };
         console.log(uAdmin);
         dispatch(signup(uAdmin))
-            .then(() => window.location.reload())
+            .then(() => {
+                setLoading(false);
+                window.location.reload();
+            })
             .catch((error) => alert(error.message));
     }
     return (
@@ -97,6 +103,9 @@ const SignupForm = () => {
                     <button type='submit' className='w-full p-2 my-3 text-center rounded-md text-background bg-accent-indigo hover:bg-accent-indigo1'>SIGN UP</button>
                 </div>
             </form>
+            {
+                loading && <Loading />
+            }
         </>
     )
 }

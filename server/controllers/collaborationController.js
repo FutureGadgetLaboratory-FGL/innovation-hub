@@ -80,7 +80,6 @@ export const getCollaborationsByUniversityId = async (req, res) => {
             requests[i].sender.university = await University.findById(requests[i].sender.university);
         }
 
-        console.log(requests[0].sender.university);
         res.status(200).json({
             success: true,
             message: "Collaborations found successfully",
