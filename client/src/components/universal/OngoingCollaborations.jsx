@@ -12,7 +12,7 @@ const OngoingCollaborations = () => {
 	}, [dispatch, user]);
 
 	return (
-		<div className=" rounded-lg w-fit p-4 m-2 flex flex-col grow bg-violet-300 ">
+		<div className=" rounded-lg w-fit p-4 flex flex-col grow bg-violet-300 ">
 			<p className="text-7xl text-white mb-1">{collaborations.length}</p>
 			<p className="text-2xl text-white">Ongoing Collaborations</p>
 		</div>

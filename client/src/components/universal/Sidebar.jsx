@@ -13,7 +13,7 @@ const Sidebar = () => {
 				<h2>INNOVATION HUB</h2>
 			</div> */}
       {user.role === "SPOC" ? (
-        <ul className="flex flex-col items-start">
+        <ul className="flex flex-col w-full items-start">
           <NavLink
             to={"/spoc/dashboard"}
             className={
