@@ -14,30 +14,29 @@ function DashboardSpoc() {
 	const user = useSelector((state) => state.user.user);
 	return (
 		<div className="flex flex-col gap-3">
-			{
-				user.status === "pending" ? (
-					<Navigate to="/pre-verification" />
-				) : (
-					<>
-						<div className="flex gap-3">
-							<EnrolledStudents />
-							<TotalProjects />
-							<OngoingCollaborations />
-							<UniversityScore />
+			{user.status === "pending" ? (
+				<Navigate to="/pre-verification" />
+			) : (
+				<>
+					<div className="flex gap-3">
+						<EnrolledStudents />
+						<TotalProjects />
+						<OngoingCollaborations />
+						<UniversityScore />
+					</div>
+					<div className="flex mt-3 pl-3">
+						<div className="w-1/2 flex flex-col gap-1">
+							<ViewAllUploads />
+							<StudentLeaderboardCard />
 						</div>
-						<div className="flex ">
-							<div className="w-1/2 flex flex-col gap-1">
-								<ViewAllUploads />
-								<StudentLeaderboardCard />
-							</div>
+						<div className="w-1/2 flex  gap-1">
 							<PopularityStats />
 							<ViewAllCollaborations />
 						</div>
-						<ProjectFeed />
-					</>
-				)
-			}
-
+					</div>
+					<ProjectFeed />
+				</>
+			)}
 		</div>
 	);
 }
