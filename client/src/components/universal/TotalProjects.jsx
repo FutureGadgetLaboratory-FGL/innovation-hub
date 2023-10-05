@@ -11,7 +11,7 @@ const TotalProjects = () => {
 		dispatch(getProjectsByUniversityId(user.university));
 	}, [dispatch, user]);
     return (
-			<div className=" rounded-lg w-fit p-4 m-2 flex flex-col grow bg-violet-300 ">
+			<div className=" rounded-lg w-fit p-4 flex flex-col grow bg-violet-300 ">
 				<p className="text-7xl text-white mb-1">{projects.length}</p>
 				<p className="text-2xl text-white">Total Verified Projects</p>
 			</div>

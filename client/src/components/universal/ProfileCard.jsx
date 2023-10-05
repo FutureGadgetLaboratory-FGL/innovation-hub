@@ -12,26 +12,28 @@ const ProfileCard = () => {
 	};
 	return (
 		<>
-			<div className="flex flex-col p-3 justify-center items-center mx-7 rounded-xl bg-violet-600">
-				<div className="w-20 h-20 rounded-full overflow-hidden">
-					<img
-						className="object-cover "
-						src={`${user.profilePhoto ? user.profilePhoto : "../images/profile.png"}`}
-						alt=""
-					/>
-				</div>
-				<div className="flex flex-col justify-center items-center">
-					<p className="text-white mb-2 mt-1">{user.name}</p>
-					<p className="text-white cursor-pointer">
-						<NavLink to={`/${user.role}/profile`} className="hover:text-slate-300">
-							Profile
-						</NavLink>
-					</p>
-					<p className="text-white cursor-pointer">
-						<NavLink to={"/"} className="hover:text-slate-300" onClick={handleLogout}>
-							Logout
-						</NavLink>
-					</p>
+			<div className="w-full mx-auto px-3">
+				<div className="flex flex-col w-full p-3 justify-center items-center rounded-xl bg-violet-600">
+					<div className="w-20 h-20 rounded-full overflow-hidden">
+						<img
+							className="object-cover "
+							src={`${user.profilePhoto ? user.profilePhoto : "../images/profile.png"}`}
+							alt=""
+						/>
+					</div>
+					<div className="flex flex-col justify-center items-center">
+						<p className="text-white mb-2 mt-1">{user.name}</p>
+						<p className="text-white cursor-pointer">
+							<NavLink to={`/${user.role}/profile`} className="hover:text-slate-300">
+								Profile
+							</NavLink>
+						</p>
+						<p className="text-white cursor-pointer">
+							<NavLink to={"/"} className="hover:text-slate-300" onClick={handleLogout}>
+								Logout
+							</NavLink>
+						</p>
+					</div>
 				</div>
 			</div>
 		</>

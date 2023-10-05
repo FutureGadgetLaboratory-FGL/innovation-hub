@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 function Competitions() {
 
     return(
-        <div className=" shadow-md bg-gradient-to-r p-2 m-1 from-accent-lpurple to-accent-dpurple rounded-md border border-black ">
+        <div className="flex-col grow shadow-md bg-gradient-to-r p-2 from-accent-lpurple to-accent-dpurple rounded-md border border-black ">
             <h1 className="font-semibold text-white m-2">
                 Competitions
             </h1>

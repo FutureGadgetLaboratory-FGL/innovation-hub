@@ -20,8 +20,8 @@ function DashboardStudent() {
                 <UniversityScore />
 
             </div>
-            <div className="w-full flex">
-                <div className="flex flex-col w-full gap-2">
+            <div className="w-full gap-4 flex">
+                <div className="flex flex-col w-full gap-4 justify-between">
                     <StudentLeaderboardCard />
                     <Competitions />
                     <CollaboratedProjects />
