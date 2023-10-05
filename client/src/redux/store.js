@@ -18,4 +18,5 @@ export const store = configureStore({
         spoc: spocSlice,
         uAdmin: uAdminSlice,
     },
+    devTools: process.env.NODE_ENV !== 'production',
 });
