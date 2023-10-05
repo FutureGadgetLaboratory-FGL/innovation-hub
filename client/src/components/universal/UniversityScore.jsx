@@ -16,8 +16,8 @@ const UniversityScore = () => {
 	return (
 		<div className="rounded-lg w-fit p-4 m-2 flex flex-col grow bg-violet-300 ">
 			<p className="text-7xl text-white mb-1">
-				{(loading && <FontAwesomeIcon icon="fa-loading" />) ||
-					(error && <FontAwesomeIcon icon="icon-error" />) ||
+				{(loading && <FontAwesomeIcon icon="spinner" className="text-4xl text-blue-500 animate-spin" />) ||
+					(error && <FontAwesomeIcon icon="exclamation-circle" className="text-4xl text-red-500" />) ||
 					university?.popularity}
 			</p>
 			<p className="text-2xl text-white">University Score</p>
