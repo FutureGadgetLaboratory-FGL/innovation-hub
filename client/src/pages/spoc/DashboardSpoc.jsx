@@ -17,13 +17,15 @@ function DashboardSpoc() {
 				<OngoingCollaborations />
 				<UniversityScore />
 			</div>
-			<div className="flex mt-3 ">
+			<div className="flex mt-3 pl-3">
 				<div className="w-1/2 flex flex-col gap-1">
 					<ViewAllUploads />
 					<StudentLeaderboardCard />
 				</div>
-				<PopularityStats />
-				<ViewAllCollaborations />
+				<div className="w-1/2 flex  gap-1">
+					<PopularityStats />
+					<ViewAllCollaborations />
+				</div>
 			</div>
 			<ProjectFeed />
 		</div>
