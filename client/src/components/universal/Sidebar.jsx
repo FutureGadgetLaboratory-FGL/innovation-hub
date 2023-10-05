@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import ProfileCard from "./ProfileCard";
 
 const Sidebar = () => {
-  const user = useSelector(state => state.user.user);
+  const user = useSelector((state) => state.user.user);
   return (
     <aside className="w-1/5 h-[100vh] overflow-y-auto no-scrollbar bg-[#f4f5fa] border-r pr-1 pt-[90px] sticky top-0">
       {/* <div className="text-[#7445cb] text-[1.2rem] h-[60px] font-semibold  flex flex-col justify-center items-start border-b mb-3 p-[20px]">
@@ -47,7 +47,10 @@ const Sidebar = () => {
             end
           >
             <li>
-              <FontAwesomeIcon icon="fa-solid fa-people-group" className="pr-3" />
+              <FontAwesomeIcon
+                icon="fa-solid fa-people-group"
+                className="pr-3"
+              />
               Collaboration Requests
             </li>
           </NavLink>
@@ -151,7 +154,10 @@ const Sidebar = () => {
             end
           >
             <li>
-              <FontAwesomeIcon icon="fa-solid fa-people-group" className="pr-3" />
+              <FontAwesomeIcon
+                icon="fa-solid fa-people-group"
+                className="pr-3"
+              />
               Collaboration
             </li>
           </NavLink>
@@ -162,10 +168,10 @@ const Sidebar = () => {
             }
             end
           >
-              <li>
-                <FontAwesomeIcon icon="fa-solid fa-trophy" className="pr-3" />
-                Contests
-              </li>
+            <li>
+              <FontAwesomeIcon icon="fa-solid fa-trophy" className="pr-3" />
+              Contests
+            </li>
           </NavLink>
 
           <NavLink
@@ -206,7 +212,7 @@ const Sidebar = () => {
             end
           >
             <li>
-              <i className="fa-solid fa-house"></i>
+              <FontAwesomeIcon icon="fa-solid fa-house" className="pr-3" />
               Dashboard
             </li>
           </NavLink>
@@ -218,7 +224,10 @@ const Sidebar = () => {
             }
             end
           >
-            <li>Verify SPOC</li>
+            <li>
+              <FontAwesomeIcon icon="fa-solid fa-user-check" className="pr-3" />
+              Verify SPOC
+            </li>
           </NavLink>
           <NavLink
             to={"/superadmin/verify-recruiters"}
@@ -227,7 +236,13 @@ const Sidebar = () => {
             }
             end
           >
-            <li>Verify Recruiters</li>
+            <li>
+              <FontAwesomeIcon
+                icon="fa-solid fa-building-user"
+                className="pr-3"
+              />
+              Verify Recruiters
+            </li>
           </NavLink>
           <NavLink
             to={"/superadmin/organize-competitions"}
@@ -236,7 +251,10 @@ const Sidebar = () => {
             }
             end
           >
-            <li>Organize Competitions</li>
+            <li>
+              <FontAwesomeIcon icon="fa-solid fa-trophy" className="pr-3" />
+              Organize Competitions
+            </li>
           </NavLink>
           <NavLink
             to={"/superadmin/manage-revenue"}
@@ -245,7 +263,13 @@ const Sidebar = () => {
             }
             end
           >
-            <li>Revenue Management</li>
+            <li>
+              <FontAwesomeIcon
+                icon="fa-solid fa-sack-dollar"
+                className="pr-3"
+              />
+              Revenue Management
+            </li>
           </NavLink>
 
           <NavLink
