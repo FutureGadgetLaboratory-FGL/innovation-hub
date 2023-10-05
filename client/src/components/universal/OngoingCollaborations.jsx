@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCollaborationsByUniversityId } from "../../redux/actions/collaborationActions";
 
 const OngoingCollaborations = () => {
-    return (
-			<div className=" rounded-lg w-fit p-4 m-2 flex flex-col grow bg-[rgba(123,152,188,0.2)] backdrop-filter backdrop-blur-md">
-				<p className="text-7xl text-white mb-1">17</p>
-				<p className="text-2xl text-white">Ongoing Collaborations</p>
-			</div>
-		);
-}
+	const dispatch = useDispatch();
+	const user = useSelector((state) => state.user.user);
+	const collaborations = useSelector((state) => state.collaboration.collaborations);
+
+	useEffect(() => {
+		dispatch(getCollaborationsByUniversityId(user.university));
+	}, [dispatch, user]);
+
+	return (
+		<div className=" rounded-lg w-fit p-4 m-2 flex flex-col grow bg-violet-300 ">
+			<p className="text-7xl text-white mb-1">{collaborations.length}</p>
+			<p className="text-2xl text-white">Ongoing Collaborations</p>
+		</div>
+	);
+};
 
 export default OngoingCollaborations;
